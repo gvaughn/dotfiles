@@ -2,5 +2,4 @@ tags
 tags/*
 *.o
 *.log
-vim/backup/*
-
+*.swp
