@@ -41,3 +41,6 @@
 [submodule "vim/bundle/indent-object"]
 	path = vim/bundle/indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "vim/bundle/javascript-indent"]
+	path = vim/bundle/javascript-indent
+	url = https://github.com/pangloss/vim-javascript.git
