@@ -62,3 +62,6 @@
 [submodule "vim/bundle/textobj-rubyblock"]
 	path = vim/bundle/textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "vim/bundle/AutoComplPop"]
+	path = vim/bundle/AutoComplPop
+	url = https://github.com/vim-scripts/AutoComplPop.git
