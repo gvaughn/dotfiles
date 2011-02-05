@@ -65,3 +65,6 @@
 [submodule "vim/bundle/AutoComplPop"]
 	path = vim/bundle/AutoComplPop
 	url = https://github.com/vim-scripts/AutoComplPop.git
+[submodule "vim/bundle/lusty"]
+	path = vim/bundle/lusty
+	url = https://github.com/sjbach/lusty.git
