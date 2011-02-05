@@ -11,3 +11,8 @@ Switch to the `~/.vim` directory, and fetch submodules:
 
     cd ~/.vim
     git submodule update --init
+
+To add a new git-based plugin:
+
+    git submodule add https://github.com/tpope/vim-cucumber.git vim/bundle/cucumber
+
