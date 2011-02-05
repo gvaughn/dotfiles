@@ -2,7 +2,9 @@
 " figure out statusline
 " use %{fugitive#statusline()} for git info
 "
-" investigate http://code.google.com/p/conque/  A shell in a VIM buffer
+" http://code.google.com/p/conque/  A shell in a VIM buffer
+" http://www.vim.org/scripts/script.php?script_id=273  buffer to list tags
+" https://github.com/ervandew/supertab  TAB insert mode completion
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
