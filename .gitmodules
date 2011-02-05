@@ -50,3 +50,6 @@
 [submodule "vim/bundle/rspec"]
 	path = vim/bundle/rspec
 	url = https://github.com/taq/vim-rspec.git
+[submodule "vim/bundle/delimitMate"]
+	path = vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
