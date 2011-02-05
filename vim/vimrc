@@ -1,6 +1,8 @@
 " TODO
 " figure out statusline
 " use %{fugitive#statusline()} for git info
+"
+" investigate http://code.google.com/p/conque/  A shell in a VIM buffer
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
