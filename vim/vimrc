@@ -1,3 +1,7 @@
+" TODO
+" figure out statusline
+" use %{fugitive#statusline()} for git info
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
