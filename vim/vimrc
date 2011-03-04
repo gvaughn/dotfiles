@@ -27,6 +27,9 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
+" Use mac system cliboard by Default
+set clipboard=unnamed
+
 " Searching
 set hlsearch
 set incsearch
