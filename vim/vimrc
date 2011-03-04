@@ -12,6 +12,8 @@ call pathogen#helptags()
 
 set nocompatible
 runtime macros/matchit.vim
+" preserve default comma behavior as backslash (reverse of f,t search)
+map \ ,
 let mapleader = ","
 
 set number
@@ -43,6 +45,10 @@ set laststatus=2
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
 
+" Hopefully a temporary mapping to deal with TFS write-only files
+" map <Leader>q :!tf checkout %<CR>
+au BufWritePre * :if &readonly | !tf co <afile>
+
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
@@ -55,6 +61,12 @@ map <Leader><Leader> :ZoomWin<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+
+" turn off search highlighting
+nmap <silent> <Leader>/ :nohlsearch<CR>
+" couldn't get the below working -- reuses existing redraw behavior
+"nmap <silent> <C-l> :redraw \| nohlsearch<CR>
+"imap <silent> <C-l> <Esc><C-L>a
 
 " Remember last location in file
 if has("autocmd")
