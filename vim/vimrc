@@ -8,6 +8,7 @@
 " https://github.com/tsaleh/vim-align  would I use this?
 
 call pathogen#infect()
+call pathogen#helptags()
 
 set nocompatible
 runtime macros/matchit.vim
@@ -18,6 +19,7 @@ let mapleader = ","
 set number
 set ruler
 syntax on
+:set hidden "LustyExplorer complains without this
 
 " Whitespace stuff
 set nowrap
