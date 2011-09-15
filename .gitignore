@@ -3,3 +3,6 @@ tags/*
 *.o
 *.log
 *.swp
+vim/backup/*
+.netrwhist
+

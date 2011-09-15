@@ -35,9 +35,9 @@ function StartTerm()
 endfunction
 
 " Project Tree
-autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
-autocmd FocusGained * call s:UpdateNERDTree()
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+" autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
+" autocmd FocusGained * call s:UpdateNERDTree()
+" autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
@@ -132,7 +132,7 @@ endfunction
 
 function Touch(file)
   execute "!touch " . a:file
-  call s:UpdateNERDTree()
+  " call s:UpdateNERDTree()
 endfunction
 
 function Remove(file)
@@ -145,7 +145,7 @@ function Remove(file)
     execute "!rm " . a:file
   endif
 
-  call s:UpdateNERDTree()
+  " call s:UpdateNERDTree()
 endfunction
 
 function Edit(file)
@@ -167,10 +167,10 @@ RUBY
 endfunction
 
 " Define the NERDTree-aware aliases
-call s:DefineCommand("cd", "ChangeDirectory")
-call s:DefineCommand("touch", "Touch")
-call s:DefineCommand("rm", "Remove")
-call s:DefineCommand("e", "Edit")
+" call s:DefineCommand("cd", "ChangeDirectory")
+" call s:DefineCommand("touch", "Touch")
+" call s:DefineCommand("rm", "Remove")
+" call s:DefineCommand("e", "Edit")
 
 " Include user's local vim config
 if filereadable(expand("~/.gvimrc.local"))
