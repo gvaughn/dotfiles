@@ -7,8 +7,7 @@
 " https://github.com/ervandew/supertab  TAB insert mode completion
 " https://github.com/tsaleh/vim-align  would I use this?
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
 set nocompatible
 runtime macros/matchit.vim
