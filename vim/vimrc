@@ -20,8 +20,30 @@ set number
 set ruler
 set autoread
 syntax on
-:set hidden "LustyExplorer complains without this
 
+" LustyExplorer finesse
+map <Leader>f :LustyFilesystemExplorer<CR>
+map <Leader>r :LustyFilesystemExplorerFromHere<CR>
+map <Leader>b :LustyBufferExplorer<CR>
+map <Leader>g :LustyBufferGrep<CR>
+map <Leader>j :LustyJuggler<CR>
+
+let g:LustyJugglerShowKeys = 'a'
+let g:LustyJugglerAltTabMode = 1
+noremap <silent> <A-TAB> :LustyJuggler<CR>
+
+set hidden
+
+map <Space> <PageDown>
+
+" easier window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+set cursorline
+ 
 " Whitespace stuff
 set nowrap
 set shiftwidth=2
@@ -31,6 +53,9 @@ set list listchars=tab:\ \ ,trail:·
 
 " Use mac system cliboard by Default
 set clipboard=unnamed
+
+set cpoptions+=$ "visual indicator of end of edit area
+"set virtualedit=all "see h 'virtualedit'     
 
 " Searching
 set hlsearch
@@ -134,6 +159,23 @@ vmap <C-Down> ]egv
 " Use modeline overrides
 set modeline
 set modelines=10
+
+if !exists(":RubyHook")
+  function! RubyHook()
+      " formats K ri docs without embedded control chars
+      setlocal keywordprg=ri\ -T\ -f\ bs 
+  endfunction
+endif
+
+autocmd FileType ruby,eruby call RubyHook()
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif 
 
 " Default color scheme
 color desert
