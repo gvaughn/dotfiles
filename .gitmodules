@@ -65,3 +65,6 @@
 [submodule "vim/bundle/lusty"]
 	path = vim/bundle/lusty
 	url = https://github.com/sjbach/lusty.git
+[submodule "vim/bundle/taskpaper"]
+	path = vim/bundle/taskpaper
+	url = https://github.com/davidoc/taskpaper.vim.git
