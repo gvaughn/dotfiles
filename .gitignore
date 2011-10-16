@@ -1,5 +1,6 @@
 tags
 tags/*
+doc/tags/*
 *.o
 *.log
 *.swp

@@ -18,6 +18,7 @@ let mapleader = ","
 
 set number
 set ruler
+set autoread
 syntax on
 :set hidden "LustyExplorer complains without this
 
@@ -53,9 +54,12 @@ set noequalalways
 " map <Leader>q :!tf checkout %<CR>
 au BufWritePre * :if &readonly | !tf co <afile>
 
+" Ack needs easy access
+nnoremap <leader>a :Ack 
+
 " NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\~$']
-map <Leader>n :NERDTreeToggle<CR>
+" let NERDTreeIgnore=['\.rbc$', '\~$']
+" map <Leader>n :NERDTreeToggle<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
