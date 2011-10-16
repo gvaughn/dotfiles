@@ -150,5 +150,5 @@ set directory=~/.vim/backup
 " xterm not recognized right by vim
 set term=builtin_ansi
 
-let $MYTODO = '~/Documents/todo.taskpaper'
+let $MYTODO = '~/Dropbox//todo.taskpaper'
 
