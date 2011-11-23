@@ -56,7 +56,7 @@ set list listchars=tab:\ \ ,trail:·
 set clipboard=unnamed
 
 set cpoptions+=$ "visual indicator of end of edit area
-"set virtualedit=all "see h 'virtualedit'     
+"set virtualedit=onemore "see h 'virtualedit'     
 
 " Searching
 set hlsearch
