@@ -31,6 +31,7 @@ map <Leader>j :LustyJuggler<CR>
 let g:LustyJugglerShowKeys = 'a'
 let g:LustyJugglerAltTabMode = 1
 noremap <silent> <A-TAB> :LustyJuggler<CR>
+let g:LustyJugglerSuppressRubyWarning = 1
 
 set hidden
 
