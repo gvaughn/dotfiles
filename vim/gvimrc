@@ -169,6 +169,9 @@ ruby << RUBY
 RUBY
 endfunction
 
+" rails.vim menu
+let g:rails_menu=2
+
 " Define the NERDTree-aware aliases
 " call s:DefineCommand("cd", "ChangeDirectory")
 " call s:DefineCommand("touch", "Touch")
