@@ -1,0 +1,11 @@
+function doit {
+  LOCAL_BRANCH=$(git symbolic-ref head | sed -e 's/.*\///g')
+  REMOTE_NAME=$(git config --get branch.$LOCAL_BRANCH.remote)
+  REMOTE_BRANCH=$(git config --get branch.$LOCAL_BRANCH.merge | sed -e 's/.*\///g')
+  REMOTE=$(git config --get remote.$REMOTE_NAME.url)
+  HOST=$(echo ${REMOTE%:*} | cut -d@ -f2)
+  PROJECT=$(echo ${REMOTE##*/} | cut -d. -f1)
+  open http://$HOST/$REMOTE_NAME/$PROJECT/tree/$REMOTE_BRANCH
+}
+
+doit
