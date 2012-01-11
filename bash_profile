@@ -29,6 +29,15 @@ export HISTSIZE=10000
 # e: exit without q at end, r: color codes, X: leave results in buffer
 export LESS="-erX"
 
+# control Terminal.app tab names
+function tabname {
+  printf "\e]1;$1\a"
+}
+ 
+function winname {
+  printf "\e]2;$1\a"
+}
+
 # REE for LivingSocial
 export RUBY_HEAP_FREE_MIN=1024
 export RUBY_HEAP_MIN_SLOTS=4000000
@@ -39,6 +48,8 @@ export CC=/usr/bin/gcc-4.2 #makes rvm install ree happy
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
 export PATH=/usr/local/bin:~/bin:/usr/local/mysql/bin:$PATH
+# so bundle open {gemname} works
+export BUNDLER_EDITOR=v
 
 export LDFLAGS=-L/usr/local/Cellar/libxml2/2.7.8/lib
 export CPPFLAGS=-I/usr/local/Cellar/libxml2/2.7.8/include
