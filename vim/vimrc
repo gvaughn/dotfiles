@@ -6,6 +6,8 @@
 " http://www.vim.org/scripts/script.php?script_id=273  buffer to list tags
 " https://github.com/ervandew/supertab  TAB insert mode completion
 " https://github.com/tsaleh/vim-align  would I use this?
+" :set complete=.,t   "limit complete to current file and ctags
+" map <Leader>rt :!ctags --extra=+f --exclude=.git --exclude=log -R * `rvm gemdir`/gems/*<CR><CR>  "include gems in tags
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -81,7 +83,9 @@ set noequalalways
 au BufWritePre * :if &readonly | !tf co <afile>
 
 " Ack needs easy access
-nnoremap <leader>a :Ack 
+"nnoremap <leader>a :Ack 
+map <leader>a :tabnew<CR>:Ack<space>
+vmap <leader>a "hy:tabnew<CR>:Ack "<C-r>=escape(@h,'./"*()[]')<CR>"
 
 " Execute test in buffer
 nnoremap <leader>s :!ruby -rubygems -I app -I test %<CR>
@@ -197,4 +201,7 @@ set directory=~/.vim/backup
 set term=builtin_ansi
 
 let $MYTODO = '~/Dropbox/todo.taskpaper'
+
+"auto-source this file on save
+autocmd! BufWritePost $MYVIMRC source $MYVIMRC
 
