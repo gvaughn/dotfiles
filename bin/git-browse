@@ -5,7 +5,9 @@ function doit {
   REMOTE=$(git config --get remote.$REMOTE_NAME.url)
   HOST=$(echo ${REMOTE%:*} | cut -d@ -f2)
   PROJECT=$(echo ${REMOTE##*/} | cut -d. -f1)
-  open http://$HOST/$REMOTE_NAME/$PROJECT/tree/$REMOTE_BRANCH
+  URL=http://$HOST/$REMOTE_NAME/$PROJECT/tree/$REMOTE_BRANCH
+  echo $URL | pbcopy
+  open $URL
 }
 
 doit

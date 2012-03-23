@@ -1,6 +1,9 @@
 # git goodies
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
+export GREP_OPTIONS='--color=auto'
+export LESS='-iMRXFfx4'
+
 # brew install bash-completion for this to work
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
@@ -57,11 +60,12 @@ export CPPFLAGS=-I/usr/local/Cellar/libxml2/2.7.8/include
 alias ls='ls -aFGh'
 alias ll='ls -lah'
 alias mark_live_deals='RAILS_ENV=development script/offline_tasks.rb mark_live_deals'
-alias dbup='DB_ENCRYPTION_KEY=hungry2601 DB_PASSWORD=your_password rake db:reload && say "db finished"'
+alias dbup='DB_ENCRYPTION_KEY=hungry2601 DB_PASSWORD=your_password bin/rake db:reload && say "db finished"'
 #Opening the VPN dialog from Terminal; kills racoon just to be sure.
 #    Note: from @andy.atkinson to brew install proctools so that pgrep works
 alias openvpn="/usr/local/bin/pgrep racoon | xargs sudo kill -9; osascript ~/Documents/applescripts/openvpn.scpt"
 alias flush='echo "flush_all" | nc localhost 11211'
+alias raket='USE_TURN=true time rake | grep -v PASS; growlnotify -s -m "Rake tests: DONE"'
 
 # Nice ideas, but don't handle collab branches or any non-deals app.
 function new_pr { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head| sed -e 's/.*\///g'); }
@@ -69,6 +73,44 @@ function new_pr { open http://svn.livingsocial.com/$(git config --get github.use
 #lestrade myqa settings
 export MYQA_INSTANCE=325
 export MYQA_API_KEY=jUqIWrrboIQnXngk2S8b
+
+# no need to prefix bin/rake etc. in a bundle'd project
+BUNDLED_COMMANDS="foreman rackup rails rake rspec ruby shotgun spec watchr nesta cap"
+
+## Functions
+
+bundler-installed()
+{
+    which bundle > /dev/null 2>&1
+}
+
+within-bundled-project()
+{
+    local dir="$(pwd)"
+    while [ "$(dirname $dir)" != "/" ]; do
+        
+        [ -f "$dir/Gemfile" ] && return
+        dir="$(dirname $dir)"
+    done
+    false
+}
+
+run-with-bundler()
+{
+    local command="$1"
+    shift
+    if bundler-installed && within-bundled-project; then
+        bundle exec $command $*
+    else
+        $command $*
+    fi
+}
+
+## Main program
+
+for CMD in $BUNDLED_COMMANDS; do
+    alias $CMD="run-with-bundler $CMD"
+done
 
 #RVM goodies
 [[ -s /Users/enduser/.rvm/scripts/rvm ]] && source /Users/enduser/.rvm/scripts/rvm  # This loads RVM into a shell session.

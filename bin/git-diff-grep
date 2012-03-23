@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# Usage: git-diff-grep [OPTIONS] <query>
+
+# Example: "git-diff-grep -c 10 login_required" will grep for
+# login_required in the last 10 commits diffs
+
+# Text color variables
+txtund=$(tput sgr 0 1)    # Underline
+txtbld=$(tput bold)       # Bold
+txtred=$(tput setaf 1)    # Red
+txtgrn=$(tput setaf 2)    # Green
+txtylw=$(tput setaf 3)    # Yellow
+txtblu=$(tput setaf 4)    # Blue
+txtpur=$(tput setaf 5)    # Purple
+txtcyn=$(tput setaf 6)    # Cyan
+txtwht=$(tput setaf 7)    # White
+txtrst=$(tput sgr0)       # Text reset
+
+# Get rid of multiple whitespaces
+function trim {
+  echo $*
+}
+
+# Set usage for error cases
+usage="Usage: git-diff-grep [OPTIONS] <query>
+  -c INTEGER    Set number of commits"
+
+# Parse options
+while getopts ":c:" opt; do
+  case $opt in
+    c )
+      revs_number=$OPTARG
+
+      # Check if revs_number is a number
+      numeric=$(echo $revs_number | grep "[0-9]\+")
+      if [ ! $numeric ]; then
+        echo "$usage"
+        exit 1
+      else
+        revs_number="-$revs_number"
+        shift 2
+      fi
+      ;;
+    \? )
+      echo "Invalid option -$OPTARG" >&2
+      echo "$usage"
+      exit 1
+      ;;
+  esac
+done
+
+# Query should be at position $1
+if [ "$1" ]; then
+  query=$1
+else
+  echo "$usage"
+  exit 1
+fi
+
+git log --pretty=oneline $revs_number | awk '{print $1}' |
+while read rev; do
+  git diff $rev |
+
+  grep -q "$query"
+  if [ $? -eq 0 ]
+  then
+    echo "  ${txtylw}commit $rev${txtrst}"
+    git show -s --format="  Author: %cn <%cE>" $rev
+    git show -s --format="  Date: %cd" $rev
+    git show -s --format="    %s" $rev
+    echo
+    git_diff=$(git diff $rev | grep "$query")
+    echo "$git_diff" | while read line
+    do
+      add_remove=$(echo $line | grep '^[-+]')
+      if [ "$add_remove" ]; then
+        add=$(echo $line | grep '^[-]')
+        if [ "$add" ]; then
+          color=$txtred
+        else
+          color=$txtgrn
+        fi
+      else
+        color=$txtrst
+      fi
+
+      echo "    ${color}$(trim $line)${txtrst}"
+    done
+    echo
+    echo
+  fi
+
+done
+
