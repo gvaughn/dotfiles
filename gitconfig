@@ -24,7 +24,6 @@
        sync = "!f() { echo syncing with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
        pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
        prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
-       subpull = submodule foreach git pull origin master
        #newpr= "!f() { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head | sed -e 's/.*\///g'); }; f"
 [color]
        ui = true

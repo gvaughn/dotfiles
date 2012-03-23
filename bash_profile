@@ -66,6 +66,7 @@ alias dbup='DB_ENCRYPTION_KEY=hungry2601 DB_PASSWORD=your_password bin/rake db:r
 alias openvpn="/usr/local/bin/pgrep racoon | xargs sudo kill -9; osascript ~/Documents/applescripts/openvpn.scpt"
 alias flush='echo "flush_all" | nc localhost 11211'
 alias raket='USE_TURN=true time rake | grep -v PASS; growlnotify -s -m "Rake tests: DONE"'
+alias update_submodules='git pull --recurse-submodules && git submodule update'
 
 # Nice ideas, but don't handle collab branches or any non-deals app.
 function new_pr { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head| sed -e 's/.*\///g'); }
