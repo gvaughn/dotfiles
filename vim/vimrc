@@ -35,7 +35,10 @@ let g:LustyJugglerAltTabMode = 1
 noremap <silent> <A-TAB> :LustyJuggler<CR>
 let g:LustyJugglerSuppressRubyWarning = 1
 
-set hidden
+set nobackup
+set noswapfile
+set bufhidden "delete"
+"set hidden
 
 map <Space> <PageDown>
 
@@ -44,6 +47,10 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+" gf opens in tab
+nnoremap gf <C-W>gf
+" e opens new tab
+cab      e  tabe
 
 set cursorline
  
@@ -115,13 +122,15 @@ if has("autocmd")
     \| exe "normal g'\"" | endif
 endif
 
-function s:setupWrapping()
+if !exists(":setupWrapping")
+function! s:setupWrapping()
   set wrap
   set wm=2
   set textwidth=72
 endfunction
+endif
 
-function s:setupMarkup()
+function! s:setupMarkup()
   call s:setupWrapping()
   map <buffer> <Leader>p :Mm <CR>
 endfunction
