@@ -13,6 +13,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 set nocompatible
+
 runtime macros/matchit.vim
 " preserve default comma behavior as backslash (reverse of f,t search)
 map \ ,
@@ -49,8 +50,6 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 " gf opens in tab
 nnoremap gf <C-W>gf
-" e opens new tab
-cab      e  tabe
 
 set cursorline
  
@@ -103,6 +102,9 @@ nnoremap <leader>s :!ruby -rubygems -I app -I test %<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
+let g:CommandTAcceptSelectionTabMap='<CR>'
+let g:CommandTAcceptSelectionMap='<C-t>'
+map <Leader>tf :CommandTFlush
 
 " ZoomWin configuration
 map <Leader><Leader> :ZoomWin<CR>
@@ -209,8 +211,8 @@ endif
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
-" xterm not recognized right by vim
-set term=builtin_ansi
+" xterm not recognized right by vim ?? this screws up cursor when exiting cli vim
+" set term=builtin_ansi
 
 let $MYTODO = '~/Dropbox/todo.taskpaper'
 

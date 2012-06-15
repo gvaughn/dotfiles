@@ -1,5 +1,10 @@
+#stop hiding Library folder, Apple
+chflags nohidden ~/Library
+# case insensitive bash filename completion
+shopt -s nocaseglob
+
 # git goodies
-PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+PS1='\[\033[G\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 export GREP_OPTIONS='--color=auto'
 export LESS='-iMRXFfx4'
@@ -50,12 +55,13 @@ export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export CC=/usr/bin/gcc-4.2 #makes rvm install ree happy
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
-export PATH=/usr/local/bin:~/bin:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/mysql/bin:$PATH
 # so bundle open {gemname} works
 export BUNDLER_EDITOR=v
 
-export LDFLAGS=-L/usr/local/Cellar/libxml2/2.7.8/lib
-export CPPFLAGS=-I/usr/local/Cellar/libxml2/2.7.8/include
+# Don't remember what these two below were for, but trying them off for now
+#export LDFLAGS=-L/usr/local/Cellar/libxml2/2.7.8/lib
+#export CPPFLAGS=-I/usr/local/Cellar/libxml2/2.7.8/include
 
 alias ls='ls -aFGh'
 alias ll='ls -lah'
@@ -69,12 +75,13 @@ alias raket='USE_TURN=true time rake | grep -v PASS; growlnotify -s -m "Rake tes
 alias update_submodules='git pull --recurse-submodules && git submodule update'
 #alias foreman_no_web="foreman start -c $(ruby -e 'print (File.read("./Procfile").scan(/^(\w+):/).flatten - ["web"]).join("=1,") + "=1"')"
 alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
+alias mdns_restart='sudo killall -HUP mDNSResponder'
 
 # Nice ideas, but don't handle collab branches or any non-deals app.
 function new_pr { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head| sed -e 's/.*\///g'); }
 
 #lestrade myqa settings
-export MYQA_INSTANCE=325
+export MYQA_INSTANCE=492
 export MYQA_API_KEY=jUqIWrrboIQnXngk2S8b
 
 # no need to prefix bin/rake etc. in a bundle'd project
@@ -91,7 +98,6 @@ within-bundled-project()
 {
     local dir="$(pwd)"
     while [ "$(dirname $dir)" != "/" ]; do
-        
         [ -f "$dir/Gemfile" ] && return
         dir="$(dirname $dir)"
     done

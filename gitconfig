@@ -1,36 +1,47 @@
 [user]
-	name = Greg Vaughn
-	email = greg.vaughn@livingsocial.com
+  name = Greg Vaughn
+  email = greg.vaughn@livingsocial.com
 [github]
-	user = gregvaughn
-	token = 5403df02406d176c0866b6b0d3b80af6
+  user = gregvaughn
+  token = 5403df02406d176c0866b6b0d3b80af6
 [push]
-	default = tracking
+  default = tracking
 [alias]
-       up = add -u
-       hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-       mhist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --author greg.vaughn
-       ll = log ORIG_HEAD..HEAD --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-       so = commit -v --amend --signoff
-       peek = show --name-only 
-       changed = !git log --pretty="format:" --name-only head ORIG_HEAD..HEAD | sort | uniq
-       yamldelta = !git log --pretty="format:" --name-only head $LASTHEAD..$CURHEAD | sort | uniq | grep ".*locales/deals.*yml"
-       headsha = rev-parse head
-       co = checkout
-       br = branch
-       ci = commit
-       st = status
-       unstage = reset HEAD --
-       last = log -1 HEAD
-       sync = "!f() { echo syncing with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
-       pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
-       prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
+  up = add -u
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  g = log --oneline --all --graph --decorate --color
+  mhist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --author greg.vaughn
+  ll = log ORIG_HEAD..HEAD --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  so = commit -v --amend --signoff
+  peek = show --name-only 
+  changed = !git log --pretty="format:" --name-only head ORIG_HEAD..HEAD | sort | uniq
+  yamldelta = !git log --pretty="format:" --name-only head $LASTHEAD..$CURHEAD | sort | uniq | grep ".*locales/deals.*yml"
+  headsha = rev-parse head
+  amend = !git commit --amend -C HEAD --date \"`date`\"
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  sync = "!f() { echo syncing with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
+  pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
+  rtree = ls-tree -r -t master^{tree}
+  prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
        #newpr= "!f() { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head | sed -e 's/.*\///g'); }; f"
 [color]
-       ui = true
+  ui = true
 [core]
-	editor = /usr/bin/vim
+  editor = /usr/bin/vim
 [rerere]
-	enabled = true
+  enabled = true
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
+[hub]
+  host = code.livingsocial.net
+[github "code.livingsocial.net"]
+  user = gregvaughn
+  token = 5403df02406d176c0866b6b0d3b80af6
+[credential]
+	helper = osxkeychain
