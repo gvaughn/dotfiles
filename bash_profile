@@ -8,6 +8,7 @@ PS1='\[\033[G\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 export GREP_OPTIONS='--color=auto'
 export LESS='-iMRXFfx4'
+export VISUAL='mvim'
 
 # brew install bash-completion for this to work
 if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -18,14 +19,14 @@ fi
 # Call git checkout and load rvmrc
 # useful when diff branches have diff rubies/gemsets
 #
-gco()
-{
-  git checkout $*
-  if [[ -s .rvmrc ]] ; then
-    unset rvm_rvmrc_cwd
-    cd .
-  fi
-}
+#gco()
+#{
+#  git checkout $*
+#  if [[ -s .rvmrc ]] ; then
+#    unset rvm_rvmrc_cwd
+#    cd .
+#  fi
+#}
 
 # This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
 export ARCHFLAGS='-arch x86_64'
@@ -52,7 +53,7 @@ export RUBY_HEAP_MIN_SLOTS=4000000
 export RUBY_HEAP_SLOTS_INCREMENT=250000
 export RUBY_GC_MALLOC_LIMIT=500000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export CC=/usr/bin/gcc-4.2 #makes rvm install ree happy
+#export CC=/usr/bin/gcc-4.2 #makes rvm install ree happy
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/mysql/bin:$PATH
@@ -122,4 +123,6 @@ for CMD in $BUNDLED_COMMANDS; do
 done
 
 #RVM goodies
-[[ -s /Users/enduser/.rvm/scripts/rvm ]] && source /Users/enduser/.rvm/scripts/rvm  # This loads RVM into a shell session.
+#[[ -s /Users/enduser/.rvm/scripts/rvm ]] && source /Users/enduser/.rvm/scripts/rvm  # This loads RVM into a shell session.
+# rbenv goodies
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
