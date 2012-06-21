@@ -1,0 +1,5 @@
+#!/bin/sh
+# From http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+# consider adding https://github.com/tpope/hookup call into this one alone
+.git/hooks/ctags >/dev/null 2>&1 &
+

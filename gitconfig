@@ -29,6 +29,7 @@
   pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
   rtree = ls-tree -r -t master^{tree}
   prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
+	ctags = !.git/hooks/ctags
        #newpr= "!f() { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head | sed -e 's/.*\///g'); }; f"
 [color]
   ui = true
@@ -45,3 +46,5 @@
   token = 5403df02406d176c0866b6b0d3b80af6
 [credential]
 	helper = osxkeychain
+[init]
+	templatedir = ~/dotfiles/git_template
