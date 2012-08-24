@@ -9,6 +9,7 @@ PS1='\[\033[G\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
 export GREP_OPTIONS='--color=auto'
 export LESS='-iMRXFfx4'
 export VISUAL='mvim'
+export EDITOR='vim'
 
 # brew install bash-completion for this to work
 if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -77,6 +78,7 @@ alias update_submodules='git pull --recurse-submodules && git submodule update'
 #alias foreman_no_web="foreman start -c $(ruby -e 'print (File.read("./Procfile").scan(/^(\w+):/).flatten - ["web"]).join("=1,") + "=1"')"
 alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
 alias mdns_restart='sudo killall -HUP mDNSResponder'
+alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 
 # Nice ideas, but don't handle collab branches or any non-deals app.
 function new_pr { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head| sed -e 's/.*\///g'); }

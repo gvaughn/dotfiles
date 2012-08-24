@@ -29,7 +29,8 @@
   pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
   rtree = ls-tree -r -t master^{tree}
   prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
-	ctags = !.git/hooks/ctags
+  ctags = !.git/hooks/ctags
+  fixup = 'commit --amend -C HEAD --date "`date`"'
        #newpr= "!f() { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head | sed -e 's/.*\///g'); }; f"
 [color]
   ui = true
