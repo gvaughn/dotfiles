@@ -1,10 +1,7 @@
 [user]
   name = Greg Vaughn
-  # prefer to keep this in individual repos' config
+  # prefer to keep email in individual repos' config
   # Use GIT_AUTHOR_EMAIL env var to override
-#[github]
-  #user = gregvaughn
-  #token = 5403df02406d176c0866b6b0d3b80af6
 [push]
   default = tracking
 [alias]
@@ -43,9 +40,6 @@
   autosetuprebase = always
 [hub]
   host = code.livingsocial.net
-[github "code.livingsocial.net"]
-  user = gregvaughn
-  #token = 5403df02406d176c0866b6b0d3b80af6
 [credential]
 	helper = osxkeychain
 [init]
