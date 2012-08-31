@@ -5,6 +5,7 @@ shopt -s nocaseglob
 
 # git goodies
 PS1='\[\033[G\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
+#export GIT_AUTHOR_EMAIL=greg.vaughn@livingsocial.com
 
 export GREP_OPTIONS='--color=auto'
 export LESS='-iMRXFfx4'
@@ -79,9 +80,6 @@ alias update_submodules='git pull --recurse-submodules && git submodule update'
 alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
 alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
-
-# Nice ideas, but don't handle collab branches or any non-deals app.
-function new_pr { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head| sed -e 's/.*\///g'); }
 
 #lestrade myqa settings
 export MYQA_INSTANCE=492
