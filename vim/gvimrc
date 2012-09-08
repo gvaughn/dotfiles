@@ -26,7 +26,8 @@ endif
 " Start without the toolbar
 set guioptions-=T
 
-set guifont=Menlo\ Regular:h15
+" changing tip: do ':set guifont=*' to set OS X font picker, then ':set guifont' to see its setting
+set guifont=Menlo\ Regular\ for\ Powerline:h15
 
 " Default gui color scheme
 " color ir_black

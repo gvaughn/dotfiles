@@ -84,6 +84,10 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 
 " Status bar
 set laststatus=2
+set encoding=utf-8
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
 
 " Without setting this, ZoomWin restores windows in a way that causes
 " equalalways behavior to be triggered the next time CommandT is used.
