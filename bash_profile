@@ -80,6 +80,7 @@ alias update_submodules='git pull --recurse-submodules && git submodule update'
 alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
 alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
+alias bl='bundle --local'
 
 #lestrade myqa settings
 export MYQA_INSTANCE=492

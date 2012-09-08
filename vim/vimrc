@@ -40,6 +40,8 @@ set nobackup
 set noswapfile
 set bufhidden "delete"
 "set hidden
+set undodir=~/.vim/tmp    " where to put undo files
+set undofile              " Keep undo history in a file
 
 map <Space> <PageDown>
 
@@ -64,7 +66,11 @@ set list listchars=tab:\ \ ,trail:·
 set clipboard=unnamed
 
 set cpoptions+=$ "visual indicator of end of edit area
-"set virtualedit=onemore "see h 'virtualedit'     
+"set virtualedit=onemore "see h 'virtualedit'
+
+set scrolloff=3           " Always show three lines above/below cursor
+set splitbelow splitright " Create split windows in more intuitive places
+set virtualedit=block     " Allow virtual editing in visual block mode
 
 " Searching
 set hlsearch
@@ -157,13 +163,20 @@ filetype plugin indent on
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+"map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+"map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" Inserts the path of the currently edited file into a command
+" Map <Leader>e to glob path matching (**/)
+nmap <Leader>e :tabe **/
+cmap <Leader>e **/
+
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv" Inserts the path of the currently edited file into a command
+
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
