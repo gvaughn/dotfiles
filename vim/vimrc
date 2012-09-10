@@ -176,6 +176,7 @@ filetype plugin indent on
 " Map <Leader>e to glob path matching (**/)
 nmap <Leader>e :tabe **/
 cmap <Leader>e **/
+nnoremap gf <C-W>gf " gf uses new tab by default
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
