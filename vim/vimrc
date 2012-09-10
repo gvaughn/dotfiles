@@ -1,3 +1,7 @@
+" To figure out what a current mapping is:
+" :verbose map {key-combo} where
+" key-combo is of the form <c-i> for Control I
+"                          <D-r> for Command R
 " TODO
 " figure out statusline
 " use %{fugitive#statusline()} for git info
