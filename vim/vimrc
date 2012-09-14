@@ -2,6 +2,9 @@
 " :verbose map {key-combo} where
 " key-combo is of the form <c-i> for Control I
 "                          <D-r> for Command R
+"
+" CamelCaseMotion plugin offers text objects for camel or snake cased words
+" use motions ,w ,b ,e (the comma is part of the object)
 " TODO
 " figure out statusline
 " use %{fugitive#statusline()} for git info
