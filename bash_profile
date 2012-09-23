@@ -90,6 +90,8 @@ alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
 alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
+alias ri='ri -f ansi'
+alias akcurl="curl -s -D - -o /dev/null -m 10  -H 'Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no' -I "
 
 #lestrade myqa settings
 export MYQA_INSTANCE=492
