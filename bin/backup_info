@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'time'
+
+Backup = Struct.new(:start_time, :end_time, :files, :size, :error_code) do
+  def to_s(guess='unfinished')
+    str = ""
+    str << (start_time.nil? ? '<unknown>' : start_time.strftime("%a %H:%M")) #('%m/%d(%H:%M)'))
+    str << ' --> '
+    str << (end_time.nil? ? '<unknown>' : end_time.strftime("%a %H:%M")) #('%m/%d(%H:%M)'))
+    unless files.nil?
+      str << " files: #{files} size: #{size}"
+    end
+    if start_time && end_time
+      str << " minutes: #{Time.at(end_time-start_time).min}"
+    end
+    str << case error_code
+           when false then ''
+           when nil   then " (#{guess})"
+           else            " (failed with error #{error_code})"
+           end
+    str
+  end
+end
+
+$current = nil
+
+def current
+  $current ||= Backup.new(nil, nil, nil, nil, nil)
+end
+
+def print_current(guess='unfinished')
+  puts $current.to_s(guess) if $current
+  $current = nil
+end
+
+File.open('/var/log/system.log', 'r') do |input|
+  input.each_line do |line|
+    case line
+    when /^(\w+ \d\d? \d+:\d+:\d+) .* Starting standard backup/
+      print_current
+      current.start_time = Time.parse($1)
+    when /Copied (\d+) files \((.+)\)/
+      current.files = $1
+      current.size = $2
+    when /^(\w+ \d\d? \d+:\d+:\d+) .* Backup completed successfully/
+      current.end_time = Time.parse($1)
+      current.error_code = false
+      print_current
+    when /^(\w+ \d\d? \d+:\d+:\d+) .* Backup failed with error: (\d+)/
+      current.end_time = Time.parse($1)
+      current.error_code = $2
+      print_current
+    end
+  end
+end
+
+print_current('still running')
+
