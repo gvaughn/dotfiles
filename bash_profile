@@ -75,6 +75,7 @@ export BUNDLER_EDITOR=v
 #export LDFLAGS=-L/usr/local/Cellar/libxml2/2.7.8/lib
 #export CPPFLAGS=-I/usr/local/Cellar/libxml2/2.7.8/include
 
+alias vim='mvim -v'
 alias ls='ls -aFGh'
 alias ll='ls -lah'
 alias mark_live_deals='RAILS_ENV=development script/offline_tasks.rb mark_live_deals'
