@@ -3,6 +3,12 @@ chflags nohidden ~/Library
 # case insensitive bash filename completion
 shopt -s nocaseglob
 
+# Bypass use of .inputrc with 'bind' syntax
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+bind "set show-all-if-unmodified on"
+bind "set visible-stats on"
+
 # git goodies
 PS1='\[\033[G\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
 #export GIT_AUTHOR_EMAIL=greg.vaughn@livingsocial.com
