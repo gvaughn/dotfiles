@@ -82,6 +82,7 @@ alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
 alias ri='ri -f ansi'
+alias rc='test -e script/console && bundle exec script/console || bundle exec rails console'
 
 # no need to prefix bin/rake etc. in a bundle'd project
 BUNDLED_COMMANDS="foreman rackup rails rake rspec ruby shotgun spec watchr nesta cap"
