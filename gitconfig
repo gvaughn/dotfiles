@@ -21,6 +21,7 @@
   br = branch
   ci = commit
   st = status
+  cl = checkout @{-1} # checkout last branch
   unstage = reset HEAD --
   last = log -1 HEAD
   sync = "!f() { echo syncing with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
@@ -29,6 +30,7 @@
   prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
   ctags = !.git/hooks/ctags
   fixup = 'commit --amend -C HEAD --date "`date`"'
+  mru = "!f() { git for-each-ref --format='%(authordate:relative)%09%(refname:short)%0a%(subject)%0a' --sort=-committerdate refs/heads | head -20; }; f"
        #newpr= "!f() { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head | sed -e 's/.*\///g'); }; f"
 [color]
   ui = true
