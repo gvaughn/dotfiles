@@ -29,7 +29,7 @@
   rtree = ls-tree -r -t master^{tree}
   prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
   ctags = !.git/hooks/ctags
-  fixup = 'commit --amend -C HEAD --date "`date`"'
+  fixup = "!f() { git commit --amend -C HEAD --date \"`date`\"; }; f"
   mru = "!f() { git for-each-ref --format='%(authordate:relative)%09%(refname:short)%0a%(subject)%0a' --sort=-committerdate refs/heads | head -20; }; f"
        #newpr= "!f() { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head | sed -e 's/.*\///g'); }; f"
 [color]
