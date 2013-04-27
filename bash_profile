@@ -84,42 +84,43 @@ alias bl='bundle --local'
 alias ri='ri -f ansi'
 alias rc='test -e script/console && bundle exec script/console || bundle exec rails console'
 
+# Now trying rbenv-binstubs instead https://github.com/ianheggie/rbenv-binstubs
 # no need to prefix bin/rake etc. in a bundle'd project
-BUNDLED_COMMANDS="foreman rackup rails rake rspec ruby shotgun spec watchr nesta cap"
-
-## Functions
-
-bundler-installed()
-{
-    which bundle > /dev/null 2>&1
-}
-
-within-bundled-project()
-{
-    local dir="$(pwd)"
-    while [ "$(dirname $dir)" != "/" ]; do
-        [ -f "$dir/Gemfile" ] && return
-        dir="$(dirname $dir)"
-    done
-    false
-}
-
-run-with-bundler()
-{
-    local command="$1"
-    shift
-    if bundler-installed && within-bundled-project; then
-        bundle exec $command $*
-    else
-        $command $*
-    fi
-}
-
-## Main program
-
-for CMD in $BUNDLED_COMMANDS; do
-    alias $CMD="run-with-bundler $CMD"
-done
+#BUNDLED_COMMANDS="foreman rackup rails rake rspec ruby shotgun spec watchr nesta cap"
+#
+### Functions
+#
+#bundler-installed()
+#{
+#    which bundle > /dev/null 2>&1
+#}
+#
+#within-bundled-project()
+#{
+#    local dir="$(pwd)"
+#    while [ "$(dirname $dir)" != "/" ]; do
+#        [ -f "$dir/Gemfile" ] && return
+#        dir="$(dirname $dir)"
+#    done
+#    false
+#}
+#
+#run-with-bundler()
+#{
+#    local command="$1"
+#    shift
+#    if bundler-installed && within-bundled-project; then
+#        bundle exec $command $*
+#    else
+#        $command $*
+#    fi
+#}
+#
+### Main program
+#
+#for CMD in $BUNDLED_COMMANDS; do
+#    alias $CMD="run-with-bundler $CMD"
+#done
 
 #RVM goodies
 #[[ -s /Users/enduser/.rvm/scripts/rvm ]] && source /Users/enduser/.rvm/scripts/rvm  # This loads RVM into a shell session.
