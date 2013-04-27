@@ -48,3 +48,5 @@
 	helper = osxkeychain
 [init]
 	templatedir = ~/dotfiles/git_template
+[diff]
+	algorithm = patience
