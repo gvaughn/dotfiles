@@ -6,4 +6,5 @@ doc/tags/*
 *.swp
 vim/backup/*
 .netrwhist
+vim/bundle/*
 

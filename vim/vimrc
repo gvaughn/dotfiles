@@ -3,8 +3,6 @@
 " key-combo is of the form <c-i> for Control I
 "                          <D-r> for Command R
 "
-" CamelCaseMotion plugin offers text objects for camel or snake cased words
-" use motions ,w ,b ,e (the comma is part of the object)
 " TODO
 " figure out statusline
 " use %{fugitive#statusline()} for git info
@@ -16,12 +14,9 @@
 " :set complete=.,t   "limit complete to current file and ctags
 " map <Leader>rt :!ctags --extra=+f --exclude=.git --exclude=log -R * `rvm gemdir`/gems/*<CR><CR>  "include gems in tags
 
-call pathogen#infect()
-call pathogen#helptags()
+" Vundle and bundles configuration
+source ~/.vim/bundles.vim
 
-set nocompatible
-
-runtime macros/matchit.vim
 " preserve default comma behavior as backslash (reverse of f,t search)
 map \ ,
 let mapleader = ","
@@ -30,18 +25,6 @@ set number
 set ruler
 set autoread
 syntax on
-
-" LustyExplorer finesse
-map <Leader>f :LustyFilesystemExplorer<CR>
-map <Leader>r :LustyFilesystemExplorerFromHere<CR>
-map <Leader>b :LustyBufferExplorer<CR>
-map <Leader>g :LustyBufferGrep<CR>
-map <Leader>j :LustyJuggler<CR>
-
-let g:LustyJugglerShowKeys = 'a'
-let g:LustyJugglerAltTabMode = 1
-noremap <silent> <A-TAB> :LustyJuggler<CR>
-let g:LustyJugglerSuppressRubyWarning = 1
 
 set nobackup
 set noswapfile
@@ -61,7 +44,7 @@ map <C-l> <C-w>l
 nnoremap gf <C-W>gf
 
 set cursorline
- 
+
 " Whitespace stuff
 set nowrap
 set shiftwidth=2
@@ -93,38 +76,21 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 set laststatus=2
 set encoding=utf-8
 
-" Powerline
-let g:Powerline_symbols = 'fancy'
-
-" Without setting this, ZoomWin restores windows in a way that causes
-" equalalways behavior to be triggered the next time CommandT is used.
-" This is likely a bludgeon to solve some other issue, but it works
-set noequalalways
-
 " Hopefully a temporary mapping to deal with TFS write-only files
 " map <Leader>q :!tf checkout %<CR>
-au BufWritePre * :if &readonly | !tf co <afile>
-
-" Ack needs easy access
-"nnoremap <leader>a :Ack 
-map <leader>a :tabnew<CR>:Ack<space>
-vmap <leader>a "hy:tabnew<CR>:Ack "<C-r>=escape(@h,'./"*()[]')<CR>"
+"au BufWritePre * :if &readonly | !tf co <afile>
 
 " Execute test in buffer
 nnoremap <leader>s :!ruby -rubygems -I app -I test %<CR>
 
-" NERDTree configuration
-" let NERDTreeIgnore=['\.rbc$', '\~$']
-" map <Leader>n :NERDTreeToggle<CR>
+" Command-T configuration (trying CtrlP instead)
+"let g:CommandTMaxHeight=20
+"let g:CommandTAcceptSelectionTabMap='<CR>'
+"let g:CommandTAcceptSelectionMap='<C-t>'
+"map <Leader>tf :CommandTFlush
 
-" Command-T configuration
-let g:CommandTMaxHeight=20
-let g:CommandTAcceptSelectionTabMap='<CR>'
-let g:CommandTAcceptSelectionMap='<C-t>'
-map <Leader>tf :CommandTFlush
-
-" ZoomWin configuration
-map <Leader><Leader> :ZoomWin<CR>
+" poor man's ZoomWin (doesn't restore)
+map <Leader><Leader> :on<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
@@ -169,9 +135,6 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
 "map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -183,22 +146,15 @@ filetype plugin indent on
 " Map <Leader>e to glob path matching (**/)
 nmap <Leader>e :tabe **/
 cmap <Leader>e **/
+
 nnoremap gf <C-W>gf " gf uses new tab by default
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv" Inserts the path of the currently edited file into a command
 
-" Command mode: Ctrl+P
+" Command mode: Ctrl+P inserts dir of current file
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Unimpaired configuration
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
 
 " Use modeline overrides
 set modeline
@@ -222,7 +178,6 @@ if !exists(":DiffOrig")
 endif 
 
 " Default color scheme
-"color desert
 syntax enable
 set background=dark
 colorscheme solarized
