@@ -24,7 +24,6 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 
 " another navigator. I really should limit to CtrlP or Lusty
 Bundle 'sjbach/lusty'
-" LustyExplorer finesse
 map <Leader>f :LustyFilesystemExplorer<CR>
 map <Leader>r :LustyFilesystemExplorerFromHere<CR>
 map <Leader>b :LustyBufferExplorer<CR>
@@ -33,7 +32,8 @@ map <Leader>j :LustyJuggler<CR>
 
 let g:LustyJugglerShowKeys = 'a'
 let g:LustyJugglerAltTabMode = 1
-noremap <silent> <A-TAB> :LustyJuggler<CR> "not working in terminal vim?
+noremap <silent> <A-TAB> :LustyJuggler<CR>
+ "not working in terminal vim?
 let g:LustyJugglerSuppressRubyWarning = 1
 
 Bundle 'altercation/vim-colors-solarized'
@@ -41,7 +41,7 @@ Bundle 'tpope/vim-rake'
 
 " new motions
 Bundle 'tpope/vim-unimpaired'
-" Bubble single lines
+" unimpaired Bubble single lines
 nmap <C-Up> [e
 nmap <C-Down> ]e
 " Bubble multiple lines

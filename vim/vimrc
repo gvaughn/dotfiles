@@ -2,6 +2,7 @@
 " :verbose map {key-combo} where
 " key-combo is of the form <c-i> for Control I
 "                          <D-r> for Command R
+" :map and :map! show existing mappings
 "
 " TODO
 " figure out statusline
@@ -14,12 +15,13 @@
 " :set complete=.,t   "limit complete to current file and ctags
 " map <Leader>rt :!ctags --extra=+f --exclude=.git --exclude=log -R * `rvm gemdir`/gems/*<CR><CR>  "include gems in tags
 
-" Vundle and bundles configuration
-source ~/.vim/bundles.vim
-
 " preserve default comma behavior as backslash (reverse of f,t search)
+" Make certain to remap leader before other leader mappings
 map \ ,
 let mapleader = ","
+
+" Vundle and bundles configuration
+source ~/.vim/bundles.vim
 
 set number
 set ruler
@@ -29,7 +31,7 @@ syntax on
 set nobackup
 set noswapfile
 set bufhidden "delete"
-"set hidden
+set hidden "shuts up LustyExplorer, but what are side-effects?
 set undodir=~/.vim/tmp    " where to put undo files
 set undofile              " Keep undo history in a file
 
@@ -182,14 +184,16 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-
 "Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
+
+" to save after opening a readonly file
+cmap w!! w !sudo tee % >/dev/null
+
+" enable very magic regexes by default
+nnoremap / /\v
+vnoremap / /\v
 
 " xterm not recognized right by vim ?? this screws up cursor when exiting cli vim
 " set term=builtin_ansi
@@ -198,4 +202,9 @@ let $MYTODO = '~/Dropbox/todo.taskpaper'
 
 "auto-source this file on save
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+
+" Include user's local vim config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
 
