@@ -10,8 +10,6 @@
 "
 " http://code.google.com/p/conque/  A shell in a VIM buffer
 " http://www.vim.org/scripts/script.php?script_id=273  buffer to list tags
-" https://github.com/ervandew/supertab  TAB insert mode completion
-" https://github.com/tsaleh/vim-align  would I use this?
 " :set complete=.,t   "limit complete to current file and ctags
 " map <Leader>rt :!ctags --extra=+f --exclude=.git --exclude=log -R * `rvm gemdir`/gems/*<CR><CR>  "include gems in tags
 
@@ -149,11 +147,12 @@ set backspace=indent,eol,start
 nmap <Leader>e :tabe **/
 cmap <Leader>e **/
 
-nnoremap gf <C-W>gf " gf uses new tab by default
+" gf uses new tab by Default
+nnoremap gf <C-W>gf 
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
-vnoremap > >gv" Inserts the path of the currently edited file into a command
+vnoremap > >gv
 
 " Command mode: Ctrl+P inserts dir of current file
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -194,6 +193,17 @@ cmap w!! w !sudo tee % >/dev/null
 " enable very magic regexes by default
 nnoremap / /\v
 vnoremap / /\v
+
+" toggle relative numbering
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <silent> <F5> :call NumberToggle()<cr>
 
 " xterm not recognized right by vim ?? this screws up cursor when exiting cli vim
 " set term=builtin_ansi

@@ -49,6 +49,7 @@ vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
 Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-endwise'
 "Bundle 'tpope/vim-cucumber'
