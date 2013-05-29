@@ -43,6 +43,16 @@ map <C-l> <C-w>l
 " gf opens in tab
 nnoremap gf <C-W>gf
 
+" split resizing by 50%
+"nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+"nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+"nnoremap <silent> <Leader>< :exe "vertical resize " (winwidth(0) * 3/2)<CR>
+"nnoremap <silent> <Leader>> :exe "vertical resize " (winwidth(0) * 2/3)<CR>
+nnoremap <silent> <leader>+ :resize +5<cr>
+nnoremap <silent> <leader>- :resize +5<cr>
+nnoremap <silent> <leader>> :vertical resize +5<cr>
+nnoremap <silent> <leader>< :vertical resize -5<cr>
+
 set cursorline
 
 " Whitespace stuff
@@ -81,7 +91,7 @@ set encoding=utf-8
 "au BufWritePre * :if &readonly | !tf co <afile>
 
 " Execute test in buffer
-nnoremap <leader>s :!ruby -rubygems -I app -I test %<CR>
+" nnoremap <leader>s :!ruby -rubygems -I app -I test %<CR>
 
 " Command-T configuration (trying CtrlP instead)
 "let g:CommandTMaxHeight=20
@@ -100,6 +110,9 @@ nmap <silent> <Leader>/ :nohlsearch<CR>
 " couldn't get the below working -- reuses existing redraw behavior
 "nmap <silent> <C-l> :redraw \| nohlsearch<CR>
 "imap <silent> <C-l> <Esc><C-L>a
+
+" xml pretty print
+map <Leader>px :%!xmllint --format --recover -<CR>
 
 " Remember last location in file
 if has("autocmd")
@@ -144,8 +157,10 @@ set backspace=indent,eol,start
 "map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Map <Leader>e to glob path matching (**/)
-nmap <Leader>e :tabe **/
+nmap <Leader>e :e **/
 cmap <Leader>e **/
+nmap <Leader>v :vsp **/
+nmap <Leader>s :sp **/
 
 " gf uses new tab by Default
 nnoremap gf <C-W>gf 
@@ -188,7 +203,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
 " to save after opening a readonly file
-cmap w!! w !sudo tee % >/dev/null
+" cmap w!! w !sudo tee % >/dev/null
 
 " enable very magic regexes by default
 nnoremap / /\v
