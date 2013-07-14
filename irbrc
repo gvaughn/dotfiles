@@ -72,7 +72,7 @@ if ENV['RAILS_ENV'] || defined? Rails
   logger = Logger.new(STDOUT)
 
   # Log to STDOUT if in Rails 3
-  if defined?(Rails) && Rails.respond_to?(:logger)
+  if defined?(Rails) && Rails.respond_to?(:logger=)
     Rails.logger = logger
     ActiveRecord::Base.logger = logger if defined? ActiveRecord::Base
     Mongoid.logger = logger if defined? Mongoid
