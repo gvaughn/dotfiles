@@ -28,10 +28,11 @@ syntax on
 
 set nobackup
 set noswapfile
-set bufhidden "delete"
-set hidden "shuts up LustyExplorer, but what are side-effects?
-set undodir=~/.vim/tmp    " where to put undo files
-set undofile              " Keep undo history in a file
+"set bufhidden "delete"
+"shuts up LustyExplorer, but what are side-effects?
+set hidden
+set undodir=~/.vim/tmp
+set undofile
 
 map <Space> <PageDown>
 
@@ -69,15 +70,19 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
-" Use mac system cliboard by Default
+" Use mac system cliboard by Default. Which I don't think works in tmux
 set clipboard=unnamed
 
-set cpoptions+=$ "visual indicator of end of edit area
+"visual indicator of end of edit area
+set cpoptions+=$
 "set virtualedit=onemore "see h 'virtualedit'
 
-set scrolloff=3           " Always show three lines above/below cursor
-set splitbelow splitright " Create split windows in more intuitive places
-set virtualedit=block     " Allow virtual editing in visual block mode
+"lines above/below cursor
+set scrolloff=5
+"intuitive locations of split windows
+set splitbelow splitright
+"allow virtual editing in visual block mode
+set virtualedit=block
 
 " Searching
 set hlsearch
