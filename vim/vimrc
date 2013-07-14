@@ -14,8 +14,8 @@
 " map <Leader>rt :!ctags --extra=+f --exclude=.git --exclude=log -R * `rvm gemdir`/gems/*<CR><CR>  "include gems in tags
 
 " preserve default comma behavior as backslash (reverse of f,t search)
-" Make certain to remap leader before other leader mappings
 map \ ,
+" Make certain to remap leader before other leader mappings
 let mapleader = ","
 
 " Vundle and bundles configuration
@@ -52,6 +52,13 @@ nnoremap <silent> <leader>+ :resize +5<cr>
 nnoremap <silent> <leader>- :resize +5<cr>
 nnoremap <silent> <leader>> :vertical resize +5<cr>
 nnoremap <silent> <leader>< :vertical resize -5<cr>
+
+" Map <Leader>e to glob path matching (**/)
+" CamelCaseMotion interferes with <leader>e
+nmap <Leader>e :e **/
+cmap <Leader>e **/
+nmap <Leader>v :vsp **/
+nmap <Leader>s :sp **/
 
 set cursorline
 
@@ -156,12 +163,6 @@ set backspace=indent,eol,start
 " Normal mode: <Leader>t
 "map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" Map <Leader>e to glob path matching (**/)
-nmap <Leader>e :e **/
-cmap <Leader>e **/
-nmap <Leader>v :vsp **/
-nmap <Leader>s :sp **/
-
 " gf uses new tab by Default
 nnoremap gf <C-W>gf 
 
@@ -219,6 +220,28 @@ function! NumberToggle()
 endfunc
 
 nnoremap <silent> <F5> :call NumberToggle()<cr>
+
+" Stolen from Learn Vimscript the Hard Way
+" http://learnvimscriptthehardway.stevelosh.com/chapters/34.html
+" ,g followed by any motion performs a grep for the match
+nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
+function! s:GrepOperator(type)
+  let saved_unnamed_register = @@
+
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+
+  silent execute "grep!  -R " . shellescape(@@) . " ."
+  copen
+
+  let @@ = saved_unnamed_register
+endfunction
 
 " xterm not recognized right by vim ?? this screws up cursor when exiting cli vim
 " set term=builtin_ansi
