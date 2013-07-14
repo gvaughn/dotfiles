@@ -23,12 +23,12 @@ Bundle 'kien/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMixed'
 
 " another navigator. I really should limit to CtrlP or Lusty
-Bundle 'sjbach/lusty'
-map <Leader>f :LustyFilesystemExplorer<CR>
-map <Leader>r :LustyFilesystemExplorerFromHere<CR>
-map <Leader>b :LustyBufferExplorer<CR>
-map <Leader>g :LustyBufferGrep<CR>
-map <Leader>j :LustyJuggler<CR>
+" Bundle 'sjbach/lusty'
+" map <Leader>f :LustyFilesystemExplorer<CR>
+" map <Leader>r :LustyFilesystemExplorerFromHere<CR>
+" map <Leader>b :LustyBufferExplorer<CR>
+" map <Leader>g :LustyBufferGrep<CR>
+" map <Leader>j :LustyJuggler<CR>
 
 let g:LustyJugglerShowKeys = 'a'
 let g:LustyJugglerAltTabMode = 1
@@ -59,9 +59,11 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-characterize'
 "Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-commentary'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/nerdcommenter'
+" Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'taq/vim-rspec'
 Bundle 'Raimondi/delimitMate'
@@ -98,6 +100,9 @@ Bundle 'rking/ag.vim'
 "nnoremap <leader>a :Ag 
 map <leader>a :tabnew<CR>:Ag<space>
 vmap <leader>a "hy:tabnew<CR>:Ag "<C-r>=escape(@h,'./"*()[]')<CR>"
+
+" elixir
+Bundle 'elixir-lang/vim-elixir'
 
 " on first launch, run vundle
 if iCanHazVundle == 0
