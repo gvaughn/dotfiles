@@ -83,6 +83,8 @@ alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
 alias ri='ri -f ansi'
 alias rc='test -e script/console && bundle exec script/console || bundle exec rails console'
+#alias iex='rlwrap -a -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
+alias iex='rlwrap -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
 
 # Now trying rbenv-binstubs instead https://github.com/ianheggie/rbenv-binstubs
 # no need to prefix bin/rake etc. in a bundle'd project
