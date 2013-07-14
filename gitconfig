@@ -6,9 +6,9 @@
   default = tracking
 [alias]
   up = add -u
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  hist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short
+  mhist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short --author greg.vaughn
   g = log --oneline --all --graph --decorate --color
-  mhist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --author greg.vaughn
   ll = log ORIG_HEAD..HEAD --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   so = commit -v --amend --signoff
@@ -50,3 +50,5 @@
 	templatedir = ~/dotfiles/git_template
 [diff]
 	algorithm = patience
+[mergetool]
+	keepBackup = false
