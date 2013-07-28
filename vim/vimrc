@@ -33,6 +33,9 @@ set noswapfile
 set hidden
 set undodir=~/.vim/tmp
 set undofile
+"
+"works in iTerm2, might also try =nicr or =i -- research
+set mouse=a
 
 map <Space> <PageDown>
 
@@ -42,7 +45,7 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 " gf opens in tab
-nnoremap gf <C-W>gf
+"nnoremap gf <C-W>gf
 
 " split resizing by 50%
 "nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -167,9 +170,6 @@ set backspace=indent,eol,start
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
 "map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" gf uses new tab by Default
-nnoremap gf <C-W>gf 
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
