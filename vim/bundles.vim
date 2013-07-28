@@ -21,6 +21,7 @@ Bundle 'gmarik/vundle'
 " File Navigator
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMixed'
+map <tab> :CtrlPBuffer<CR>
 
 " another navigator. I really should limit to CtrlP or Lusty
 " Bundle 'sjbach/lusty'
@@ -30,11 +31,11 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 " map <Leader>g :LustyBufferGrep<CR>
 " map <Leader>j :LustyJuggler<CR>
 
-let g:LustyJugglerShowKeys = 'a'
-let g:LustyJugglerAltTabMode = 1
-noremap <silent> <A-TAB> :LustyJuggler<CR>
- "not working in terminal vim?
-let g:LustyJugglerSuppressRubyWarning = 1
+" let g:LustyJugglerShowKeys = 'a'
+" let g:LustyJugglerAltTabMode = 1
+" noremap <silent> <A-TAB> :LustyJuggler<CR>
+"  "not working in terminal vim?
+" let g:LustyJugglerSuppressRubyWarning = 1
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-rake'
@@ -51,6 +52,8 @@ vmap <C-Down> ]egv
 Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-endwise'
 "Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-repeat'
@@ -98,11 +101,22 @@ Bundle 'zaiste/tmux.vim'
 " speedy searches
 Bundle 'rking/ag.vim'
 "nnoremap <leader>a :Ag 
-map <leader>a :tabnew<CR>:Ag<space>
-vmap <leader>a "hy:tabnew<CR>:Ag "<C-r>=escape(@h,'./"*()[]')<CR>"
+"map <leader>a :tabnew<CR>:Ag<space>
+"vmap <leader>a "hy:tabnew<CR>:Ag "<C-r>=escape(@h,'./"*()[]')<CR>"
+nnoremap <leader>a :Ag!<space>
+" this isn't working to search for the highlighted text TODO
+vnoremap <leader>a :Ag "<C-r>=escape(@h, './"*()[]')<CR>"
 
 " elixir
 Bundle 'elixir-lang/vim-elixir'
+" git/hg diff indicators
+Bundle 'mhinz/vim-signify'
+" fix bar/block cursor in tmux also FocusGained, FocusLost
+Bundle 'sjl/vitality.vim'
+" async test and build dispatcher for tmux (et.al.)
+Bundle 'tpope/vim-dispatch'
+" works with vim-dispatch for ,t test and ,T focused test
+Bundle 'jgdavey/vim-turbux'
 
 " on first launch, run vundle
 if iCanHazVundle == 0
