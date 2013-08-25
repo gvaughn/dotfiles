@@ -248,6 +248,13 @@ function! s:GrepOperator(type)
   let @@ = saved_unnamed_register
 endfunction
 
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+
 " xterm not recognized right by vim ?? this screws up cursor when exiting cli vim
 " set term=builtin_ansi
 

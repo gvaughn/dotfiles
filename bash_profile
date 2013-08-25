@@ -17,7 +17,7 @@ eval "$(hub alias -s)"
 
 export GREP_OPTIONS='--color=auto'
 export LESS='-iMRXFfx4'
-export VISUAL='mvim'
+#export VISUAL='mvim'
 export EDITOR='vim'
 
 # make man colorful
@@ -82,7 +82,7 @@ alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
 alias ri='ri -f ansi'
-alias rc='test -e script/console && bundle exec script/console || bundle exec rails console'
+alias rc='test -e script/console && bundle exec script/console "$@" || bundle exec rails console "$@"'
 #alias iex='rlwrap -a -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
 alias iex='rlwrap -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
 alias port_holder='sudo lsof -i -P | grep -i "listen"'

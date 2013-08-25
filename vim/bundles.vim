@@ -117,6 +117,8 @@ Bundle 'sjl/vitality.vim'
 Bundle 'tpope/vim-dispatch'
 " works with vim-dispatch for ,t test and ,T focused test
 Bundle 'jgdavey/vim-turbux'
+" consistent ctrl-hjkl between tmux panes and vim splits
+Bundle 'christoomey/vim-tmux-navigator'
 
 " on first launch, run vundle
 if iCanHazVundle == 0
