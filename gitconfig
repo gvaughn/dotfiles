@@ -65,3 +65,5 @@
 	algorithm = patience
 [mergetool]
 	keepBackup = false
+[merge]
+        tool = opendiff

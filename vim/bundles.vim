@@ -64,6 +64,7 @@ Bundle 'tpope/vim-characterize'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-vinegar'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'pangloss/vim-javascript'
 " Bundle 'scrooloose/nerdcommenter'
@@ -96,6 +97,7 @@ Bundle 'bkad/CamelCaseMotion'
 
 Bundle 'othree/html5.vim'
 Bundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
 Bundle 'zaiste/tmux.vim'
 
 " speedy searches
