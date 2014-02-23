@@ -1,3 +1,15 @@
+begin
+  # use pry meta-gem
+  require 'pry'
+  require 'pry-plus'
+  #require 'jazz_hands'
+  IRB = Pry
+  Pry.start
+  exit
+rescue LoadError => e
+  warn "=> unable to load pry"
+end
+=begin
 next_irbrc_candidates = %w{.irbrc irb.rc _irbrc}
 next_irbrc_candidates += $irbrc if defined? $irbrc
 next_irbrc_candidates.each do |cand|
@@ -66,6 +78,7 @@ rescue
   nil
 end
 
+=end
 if ENV['RAILS_ENV'] || defined? Rails
 
   require 'logger'
