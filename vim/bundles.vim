@@ -65,6 +65,8 @@ Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-vinegar'
+" JSON text-object 'j'
+Bundle 'tpope/vim-jdaddy'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'pangloss/vim-javascript'
 " Bundle 'scrooloose/nerdcommenter'
@@ -121,6 +123,8 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'jgdavey/vim-turbux'
 " consistent ctrl-hjkl between tmux panes and vim splits
 Bundle 'christoomey/vim-tmux-navigator'
+" self-evident
+Bundle 'maba/vim-markdown-preview'
 
 " on first launch, run vundle
 if iCanHazVundle == 0
