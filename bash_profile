@@ -77,7 +77,7 @@ alias flush='echo "flush_all" | nc localhost 11211'
 alias raket='USE_TURN=true time rake | grep -v PASS; growlnotify -s -m "Rake tests: DONE"'
 alias update_submodules='git pull --recurse-submodules && git submodule update'
 #alias foreman_no_web="foreman start -c $(ruby -e 'print (File.read("./Procfile").scan(/^(\w+):/).flatten - ["web"]).join("=1,") + "=1"')"
-alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
+#alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
 alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
@@ -87,6 +87,8 @@ alias rc='test -e script/console && bundle exec script/console "$@" || bundle ex
 alias iex='rlwrap -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
 alias port_holder='sudo lsof -i -P | grep -i "listen"'
 alias pryr='pry -r ./config/environment.rb'
+alias nginx_start='launchctl start homebrew.mxcl.nginx'
+alias resqueweb='bundle exec resque-web'
 
 # Now trying rbenv-binstubs instead https://github.com/ianheggie/rbenv-binstubs
 # no need to prefix bin/rake etc. in a bundle'd project
