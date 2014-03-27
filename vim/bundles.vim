@@ -98,8 +98,9 @@ Bundle 'henrik/vim-yaml-flattener'
 Bundle 'bkad/CamelCaseMotion'
 
 Bundle 'othree/html5.vim'
-Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-markdown'
 let g:vim_markdown_folding_disabled=1
+let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh']
 Bundle 'zaiste/tmux.vim'
 
 " speedy searches
@@ -125,6 +126,18 @@ Bundle 'jgdavey/vim-turbux'
 Bundle 'christoomey/vim-tmux-navigator'
 " self-evident
 Bundle 'maba/vim-markdown-preview'
+
+" clojure stuff
+Bundle 'tpope/vim-fireplace'
+Bundle 'guns/vim-clojure-static'
+Bundle 'vim-scripts/paredit.vim'
+
+" consistent split window opening from quickfix
+Bundle 'yssl/QFEnter'
+let g:qfenter_open_map = ['<CR>']
+let g:qfenter_vopen_map = ['<C-v>']
+let g:qfenter_hopen_map = ['<C-x>']
+let g:qfenter_topen_map = ['<C-t>']
 
 " on first launch, run vundle
 if iCanHazVundle == 0
