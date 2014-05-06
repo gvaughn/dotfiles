@@ -132,6 +132,9 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'guns/vim-clojure-static'
 Bundle 'vim-scripts/paredit.vim'
 
+" coffeescript *sigh*
+Bundle 'kchmck/vim-coffee-script'
+
 " consistent split window opening from quickfix
 Bundle 'yssl/QFEnter'
 let g:qfenter_open_map = ['<CR>']
