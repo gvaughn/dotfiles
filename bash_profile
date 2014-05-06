@@ -10,7 +10,9 @@ bind "set show-all-if-unmodified on"
 bind "set visible-stats on"
 
 # git goodies
-PS1='\[\033[G\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
+#PS1='\[\033[G\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
+# below 'gv' hardcoded instead of 'enduser'
+PS1='\[\033[G\][gv@\h \W$(__git_ps1 " (%s)")]\$ '
 #export GIT_AUTHOR_EMAIL=greg.vaughn@livingsocial.com
 # let's use hub for all my git needs
 eval "$(hub alias -s)"
@@ -81,6 +83,7 @@ alias update_submodules='git pull --recurse-submodules && git submodule update'
 alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
+alias b='(bundle check || bundle --local --jobs=4 || bundle --jobs=4)'
 alias ri='ri -f ansi'
 alias rc='test -e script/console && bundle exec script/console "$@" || bundle exec rails console "$@"'
 #alias iex='rlwrap -a -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
