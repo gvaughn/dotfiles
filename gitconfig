@@ -27,7 +27,9 @@
   unstage = reset HEAD --
   last = log -1 HEAD
   sync = "!f() { echo syncing with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
-  pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
+  #pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
+  pruneorigin = git checkout master && git branch -r --merged | grep -v master | sed -e 's/origin\\//:/' | xargs git push origin
+  prunelocal = !git checkout master && git branch --merged | grep -v master | xargs git branch -d
   rtree = ls-tree -r -t master^{tree}
   prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
   ctags = !.git/hooks/ctags
