@@ -24,6 +24,7 @@
   st = status
   cl = checkout @{-1} # checkout last branch
   bdiff = !git diff `git merge-base HEAD origin/master` #diff of branch back to branch point
+  diff = diff --word-diff
   unstage = reset HEAD --
   last = log -1 HEAD
   sync = "!f() { echo syncing with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
