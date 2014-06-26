@@ -5,6 +5,7 @@
 [push]
   default = tracking
 [alias]
+  copr = "!f() { git fetch origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
   la = "!git config -l | grep alias | cut -c 7-"
   up = add -u
   hist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short
@@ -29,10 +30,9 @@
   last = log -1 HEAD
   sync = "!f() { echo syncing with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
   #pruneall = "!f() { git remote | xargs -n 1 git remote prune; }; f"
-  pruneorigin = git checkout master && git branch -r --merged | grep -v master | sed -e 's/origin\\//:/' | xargs git push origin
+  pruneorigin = !git checkout master && git branch -r --merged | grep -v master | sed -e 's/origin\\//:/' | xargs git push origin
   prunelocal = !git checkout master && git branch --merged | grep -v master | xargs git branch -d
   rtree = ls-tree -r -t master^{tree}
-  prs= "!f() { open http://svn.livingsocial.com/dashboard/pulls; }; f"
   ctags = !.git/hooks/ctags
   fixup = "!f() { git commit --amend -C HEAD --date \"`date`\"; }; f"
   mru = "!f() { git for-each-ref --format='%(authordate:relative)%09%(refname:short)%0a%(subject)%0a' --sort=-committerdate refs/heads | head -20; }; f"
