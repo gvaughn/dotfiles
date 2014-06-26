@@ -5,7 +5,8 @@
 [push]
   default = tracking
 [alias]
-  copr = "!f() { git fetch origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
+  copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
+  prunepr = "!git for-each-ref refs/heads/pr-* --format='%(refname:short)' | while read ref ; do git branch -D $ref ; done"
   la = "!git config -l | grep alias | cut -c 7-"
   up = add -u
   hist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short
