@@ -38,7 +38,6 @@ map <tab> :CtrlPBuffer<CR>
 " let g:LustyJugglerSuppressRubyWarning = 1
 
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-rake'
 
 " new motions
 Bundle 'tpope/vim-unimpaired'
