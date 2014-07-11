@@ -37,17 +37,6 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 #
-# Call git checkout and load rvmrc
-# useful when diff branches have diff rubies/gemsets
-#
-#gco()
-#{
-#  git checkout $*
-#  if [[ -s .rvmrc ]] ; then
-#    unset rvm_rvmrc_cwd
-#    cd .
-#  fi
-#}
 
 # History: don't store duplicates
 export HISTCONTROL=erasedups
@@ -78,58 +67,26 @@ alias ll='ls -lah'
 alias flush='echo "flush_all" | nc localhost 11211'
 alias raket='USE_TURN=true time rake | grep -v PASS; growlnotify -s -m "Rake tests: DONE"'
 alias update_submodules='git pull --recurse-submodules && git submodule update'
-#alias foreman_no_web="foreman start -c $(ruby -e 'print (File.read("./Procfile").scan(/^(\w+):/).flatten - ["web"]).join("=1,") + "=1"')"
-#alias pow_restart='touch ~/.pow/ls/tmp/restart.txt'
 alias mdns_restart='sudo killall -HUP mDNSResponder'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
 alias b='(bundle check || bundle --local --jobs=4 || bundle --jobs=4)'
 alias ri='ri -f ansi'
 alias rc='test -e script/console && bundle exec script/console "$@" || bundle exec rails console "$@"'
-#alias iex='rlwrap -a -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
 alias iex='rlwrap -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
 alias port_holder='sudo lsof -i -P | grep -i "listen"'
 alias pryr='pry -r ./config/environment.rb'
 alias nginx_start='launchctl start homebrew.mxcl.nginx'
 alias resqueweb='bundle exec resque-web'
 
-# Now trying rbenv-binstubs instead https://github.com/ianheggie/rbenv-binstubs
-# no need to prefix bin/rake etc. in a bundle'd project
-#BUNDLED_COMMANDS="foreman rackup rails rake rspec ruby shotgun spec watchr nesta cap"
-#
-### Functions
-#
-#bundler-installed()
-#{
-#    which bundle > /dev/null 2>&1
-#}
-#
-#within-bundled-project()
-#{
-#    local dir="$(pwd)"
-#    while [ "$(dirname $dir)" != "/" ]; do
-#        [ -f "$dir/Gemfile" ] && return
-#        dir="$(dirname $dir)"
-#    done
-#    false
-#}
-#
-#run-with-bundler()
-#{
-#    local command="$1"
-#    shift
-#    if bundler-installed && within-bundled-project; then
-#        bundle exec $command $*
-#    else
-#        $command $*
-#    fi
-#}
-#
-### Main program
-#
-#for CMD in $BUNDLED_COMMANDS; do
-#    alias $CMD="run-with-bundler $CMD"
-#done
+function light() {
+  if [ -z "$2" ]
+    then src="pbpaste"
+  else
+    src="cat $2"
+  fi
+  $src | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-dark --font-size 24 | pbcopy
+}
 
 #RVM goodies
 #[[ -s /Users/enduser/.rvm/scripts/rvm ]] && source /Users/enduser/.rvm/scripts/rvm  # This loads RVM into a shell session.
