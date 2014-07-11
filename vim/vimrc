@@ -258,6 +258,21 @@ endfunction
 
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
+function! AdvanceCommitAndReload()
+  " test_forward is the branch name to move along. Only works on
+  " straight line branches
+  execute '!git reset --hard $(git rev-list head..test_forward | tail -n 1)'
+  windo e! | !:
+  redraw!
+endfunction
+function! RetreatCommitAndReload()
+  execute '!git reset --hard head~'
+  windo e! | !:
+  redraw!
+endfunction
+nmap <Leader><Space> :silent call AdvanceCommitAndReload()<CR>
+nmap <leader>m :silent call RetreatCommitAndReload()<CR>
+
 " xterm not recognized right by vim ?? this screws up cursor when exiting cli vim
 " set term=builtin_ansi
 
