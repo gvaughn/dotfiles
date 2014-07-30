@@ -259,9 +259,8 @@ endfunction
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
 function! AdvanceCommitAndReload()
-  " test_forward is the branch name to move along. Only works on
-  " straight line branches
-  execute '!git reset --hard $(git rev-list head..test_forward | tail -n 1)'
+  " hardcoded branch name to move along. Only works on straight line branches
+  execute '!git reset --hard $(git rev-list head..elixirconf2014 | tail -n 1)'
   windo e! | !:
   redraw!
 endfunction
