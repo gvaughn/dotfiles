@@ -178,6 +178,13 @@ set backspace=indent,eol,start
 vnoremap < <gv
 vnoremap > >gv
 
+" emacs style ctrl-a and ctrl-e in insert mode for begin/end of line
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
+
+" re-select visually what was just pasted
+nnoremap <leader>V V`]
+
 " Command mode: Ctrl+P inserts dir of current file
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
