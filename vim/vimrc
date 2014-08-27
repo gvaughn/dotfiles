@@ -40,10 +40,11 @@ set mouse=a
 map <Space> <PageDown>
 
 " easier window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" vim-tmux-navigator should do this
+" map <C-h> <C-w>h
+" map <C-j> <C-w>j
+" map <C-k> <C-w>k
+" map <C-l> <C-w>l
 " gf opens in tab
 "nnoremap gf <C-W>gf
 
@@ -195,7 +196,7 @@ set modelines=10
 if !exists(":RubyHook")
   function! RubyHook()
       " formats K ri docs without embedded control chars
-      setlocal keywordprg=ri\ -T\ -f\ bs 
+      setlocal keywordprg=ri\ -T\ -f\ bs
   endfunction
 endif
 
@@ -206,13 +207,14 @@ autocmd FileType ruby,eruby call RubyHook()
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif 
+	\ | wincmd p | diffthis
+endif
 
 " Default color scheme
 syntax enable
 set background=dark
 colorscheme solarized
+" colorscheme zenburn
 
 "Directories for swp files
 set backupdir=~/.vim/backup
