@@ -39,6 +39,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 " let g:LustyJugglerSuppressRubyWarning = 1
 
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-scripts/Zenburn'
 
 " new motions
 Bundle 'tpope/vim-unimpaired'
@@ -71,24 +72,26 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'pangloss/vim-javascript'
 " Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
-Bundle 'taq/vim-rspec'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'Raimondi/delimitMate'
 "Bundle 'msanders/snipmate.vim'
 Bundle 'kana/vim-textobj-user'
 
 " ar, ir (around-ruby, inner-ruby) text objects
 Bundle 'nelstrom/vim-textobj-rubyblock'
-runtime macros/matchit.vim "required config
+"required config
+runtime macros/matchit.viM
 
 Bundle 'vim-scripts/AutoComplPop'
 " TODO replace AutoComplPop with this?
-"Bundle 'Shougo/neocomplcache'
+"bundle 'shougo/neocomplcache'
+" or ajh17/VimCompletesMe
 
 Bundle 'davidoc/taskpaper.vim'
 
 " pretty status line
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
+Bundle 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
 
 Bundle 'henrik/vim-yaml-flattener'
 " shift-command-R (I think it is) that invokes it
@@ -105,7 +108,7 @@ Bundle 'zaiste/tmux.vim'
 
 " speedy searches
 Bundle 'rking/ag.vim'
-"nnoremap <leader>a :Ag 
+"nnoremap <leader>a :Ag
 "map <leader>a :tabnew<CR>:Ag<space>
 "vmap <leader>a "hy:tabnew<CR>:Ag "<C-r>=escape(@h,'./"*()[]')<CR>"
 nnoremap <leader>a :Ag!<space>
@@ -158,5 +161,5 @@ filetype plugin indent on
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed.." vundle requirements done
-" Setting up Vundle - the vim plugin bundler end 
+" Setting up Vundle - the vim plugin bundler end
 
