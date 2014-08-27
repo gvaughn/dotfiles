@@ -31,12 +31,14 @@ export LESS_TERMCAP_so=$'\E[1;31m'        # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;33;5;146m' # begin underline
 
+# ensure utf8 is enabled
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # brew install bash-completion for this to work
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
-
-#
 
 # History: don't store duplicates
 export HISTCONTROL=erasedups
@@ -54,7 +56,6 @@ function winname {
   printf "\e]2;$1\a"
 }
 
-#export CC=/usr/bin/gcc-4.2 #makes rvm install ree happy
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/mysql/bin:$PATH
@@ -89,7 +90,6 @@ function light() {
 }
 
 #RVM goodies
-#[[ -s /Users/enduser/.rvm/scripts/rvm ]] && source /Users/enduser/.rvm/scripts/rvm  # This loads RVM into a shell session.
 # rbenv goodies
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
