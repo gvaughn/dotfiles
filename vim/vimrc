@@ -65,6 +65,9 @@ cmap <Leader>e **/
 nmap <Leader>v :vsp **/
 nmap <Leader>s :sp **/
 
+" <leader>r reloads all open windows
+nnoremap <Leader>r :windo :e<CR>
+
 set cursorline
 
 " Whitespace stuff
@@ -213,8 +216,8 @@ endif
 " Default color scheme
 syntax enable
 set background=dark
-colorscheme solarized
-" colorscheme zenburn
+" colorscheme solarized
+colorscheme seoul256
 
 "Directories for swp files
 set backupdir=~/.vim/backup
