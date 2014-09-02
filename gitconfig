@@ -5,6 +5,7 @@
 [push]
   default = tracking
 [alias]
+  mels = "!f() { git config user.name "Greg Vaughn"; git config user.email greg.vaughn@livingsocial.com; git commit --amend --reset-author; } ; f"
   copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
   prunepr = "!git for-each-ref refs/heads/pr-* --format='%(refname:short)' | while read ref ; do git branch -D $ref ; done"
   la = "!git config -l | grep alias | cut -c 7-"
@@ -15,7 +16,7 @@
   ll = log ORIG_HEAD..HEAD --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   so = commit -v --amend --signoff
-  peek = show --name-only 
+  peek = show --name-only
   changed = !git log --pretty="format:" --name-only head ORIG_HEAD..HEAD | sort | uniq
   yamldelta = !git log --pretty="format:" --name-only head $LASTHEAD..$CURHEAD | sort | uniq | grep ".*locales/deals.*yml"
   headsha = rev-parse head
