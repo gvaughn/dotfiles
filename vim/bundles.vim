@@ -40,6 +40,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/Zenburn'
+Bundle 'junegunn/seoul256.vim'
 
 " new motions
 Bundle 'tpope/vim-unimpaired'
