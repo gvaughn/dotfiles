@@ -79,6 +79,7 @@ alias port_holder='sudo lsof -i -P | grep -i "listen"'
 alias pryr='pry -r ./config/environment.rb'
 alias nginx_start='launchctl start homebrew.mxcl.nginx'
 alias resqueweb='bundle exec resque-web'
+alias :q=exit
 
 function light() {
   if [ -z "$2" ]
