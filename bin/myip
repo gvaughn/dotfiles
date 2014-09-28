@@ -1,0 +1,7 @@
+#!/bin/bash
+
+MYIP=`curl -s 'http://checkip.dyndns.org' | sed 's/.*Current IP Address: \([0-9\.\.]*\).*/\1/g'`
+echo $MYIP
+echo -n $MYIP | pbcopy
+terminal-notifier -title "My public IP address:" -message $MYIP
+
