@@ -62,6 +62,22 @@ export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/mysql/bin:$PATH
 # so bundle open {gemname} works
 export BUNDLER_EDITOR=v
 
+# manage JVM now that I'm doing some clojure
+function setjdk() {
+  if [ $# -ne 0 ]; then
+    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+    if [ -n "${JAVA_HOME+x}" ]; then
+      removeFromPath $JAVA_HOME
+    fi
+    export JAVA_HOME=`/usr/libexec/java_home -v $@`
+    export PATH=$JAVA_HOME/bin:$PATH
+  fi
+}
+function removeFromPath() {
+  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+}
+setjdk 1.7
+
 alias vim='mvim -v'
 alias ls='ls -aFGh'
 alias ll='ls -lah'
