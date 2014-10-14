@@ -17,6 +17,7 @@
 map \ ,
 " Make certain to remap leader before other leader mappings
 let mapleader = ","
+let maplocalleader = ","
 
 " Vundle and bundles configuration
 source ~/.vim/bundles.vim
@@ -25,11 +26,11 @@ set number
 set ruler
 set autoread
 syntax on
+set title
 
 set nobackup
 set noswapfile
 "set bufhidden "delete"
-"shuts up LustyExplorer, but what are side-effects?
 set hidden
 set undodir=~/.vim/tmp
 set undofile
@@ -37,7 +38,10 @@ set undofile
 "works in iTerm2, might also try =nicr or =i -- research
 set mouse=a
 
-map <Space> <PageDown>
+nnoremap <Space> <PageDown>
+" Backspace in normal modes to the top of file
+nnoremap <BS> gg
+
 
 " easier window navigation
 " vim-tmux-navigator should do this
@@ -133,9 +137,6 @@ nmap <silent> <Leader>/ :nohlsearch<CR>
 " xml pretty print
 map <Leader>px :%!xmllint --format --recover -<CR>
 
-" Backspace in normal modes to the top of file
-nnoremap <BS> gg
-
 " Remember last location in file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -191,6 +192,10 @@ nnoremap <leader>V V`]
 
 " Command mode: Ctrl+P inserts dir of current file
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 
 " Use modeline overrides
 set modeline
