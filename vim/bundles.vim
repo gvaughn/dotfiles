@@ -134,7 +134,11 @@ Bundle 'maba/vim-markdown-preview'
 " clojure stuff
 Bundle 'tpope/vim-fireplace'
 Bundle 'guns/vim-clojure-static'
-Bundle 'vim-scripts/paredit.vim'
+Bundle 'tpope/vim-classpath'
+Bundle 'guns/vim-sexp'
+Bundle 'tpope/vim-sexp-mappings-for-regular-people'
+" this is too strict for me yet
+"Bundle 'vim-scripts/paredit.vim'
 
 " coffeescript *sigh*
 Bundle 'kchmck/vim-coffee-script'
