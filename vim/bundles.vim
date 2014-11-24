@@ -136,6 +136,7 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-classpath'
 Bundle 'guns/vim-sexp'
+Bundle 'guns/vim-clojure-highlight'
 Bundle 'tpope/vim-sexp-mappings-for-regular-people'
 " this is too strict for me yet
 "Bundle 'vim-scripts/paredit.vim'
