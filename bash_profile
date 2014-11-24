@@ -106,9 +106,14 @@ function light() {
   $src | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-dark --font-size 24 | pbcopy
 }
 
+function mdless {
+    pandoc -s -f markdown -t man $1 | groff -T utf8 -man | less
+}
 #RVM goodies
 # rbenv goodies
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# try without rehashing on every shell startup
+if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
 # Local host-only additions
 [[ -s ~/.local_bash_profile ]] && source ~/.local_bash_profile
