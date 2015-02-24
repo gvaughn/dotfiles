@@ -135,9 +135,11 @@ Bundle 'maba/vim-markdown-preview'
 Bundle 'tpope/vim-fireplace'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-leiningen'
 Bundle 'guns/vim-sexp'
 Bundle 'guns/vim-clojure-highlight'
 Bundle 'tpope/vim-sexp-mappings-for-regular-people'
+Bundle 'venantius/vim-eastwood'
 " this is too strict for me yet
 "Bundle 'vim-scripts/paredit.vim'
 
