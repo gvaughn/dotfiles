@@ -21,6 +21,7 @@ export GREP_OPTIONS='--color=auto'
 export LESS='-iMRXFfx4'
 #export VISUAL='mvim'
 export EDITOR='vim'
+export JAVA_CMD='java'
 
 # make man colorful
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -90,12 +91,14 @@ alias bl='bundle --local'
 alias b='(bundle check || bundle --local --jobs=4 || bundle --jobs=4)'
 alias ri='ri -f ansi'
 alias rc='test -e script/console && bundle exec script/console "$@" || bundle exec rails console "$@"'
-alias iex='rlwrap -H "/Users/enduser/.iex_history" -c -D 2 -r iex'
+#alias iex='rlwrap -H "/Users/gv/.iex_history" -c -D 3 -r iex'
 alias port_holder='sudo lsof -i -P | grep -i "listen"'
 alias pryr='pry -r ./config/environment.rb'
 alias nginx_start='launchctl start homebrew.mxcl.nginx'
 alias resqueweb='bundle exec resque-web'
 alias :q=exit
+# join.me mutes globally; this fixes it
+alias micfix="osascript -e 'set volume input volume 80'"
 
 function light() {
   if [ -z "$2" ]
