@@ -72,6 +72,9 @@ nmap <Leader>s :sp **/
 " <leader>r reloads all open windows
 nnoremap <Leader>r :windo :e<CR>
 
+" leave netrw buffers out of jumplist
+let g:netrw_altfile = 1
+
 set cursorline
 
 " Whitespace stuff
