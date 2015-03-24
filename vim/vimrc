@@ -155,6 +155,7 @@ endfunction
 endif
 
 function! s:setupMarkup()
+  let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'clojure']
   call s:setupWrapping()
   map <buffer> <Leader>p :Mm <CR>
 endfunction
