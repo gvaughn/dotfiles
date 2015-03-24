@@ -112,6 +112,11 @@ function light() {
 function mdless {
     pandoc -s -f markdown -t man $1 | groff -T utf8 -man | less
 }
+
+function guitar_tuner {
+  #note: requires 'brew install sox'
+  n=('' E4 B3 G3 D3 A2 E2);while read -n1 -p 'string? ' i;do case $i in [1-6]) play -n synth pl ${n[i]} fade 0 1 ;; *) echo;break;;esac;done
+}
 #RVM goodies
 # rbenv goodies
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -120,3 +125,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
 # Local host-only additions
 [[ -s ~/.local_bash_profile ]] && source ~/.local_bash_profile
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
