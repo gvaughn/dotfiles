@@ -44,7 +44,7 @@ fi
 # History: don't store duplicates
 export HISTCONTROL=erasedups
 # History: 10,000 entries
-export HISTSIZE=10000
+export HISTSIZE=100000
 # e: exit without q at end, r: color codes, X: leave results in buffer
 export LESS="-erX"
 
