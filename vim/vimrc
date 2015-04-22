@@ -293,6 +293,17 @@ endfunction
 nmap <Leader><Space> :silent call AdvanceCommitAndReload()<CR>
 nmap <leader>m :silent call RetreatCommitAndReload()<CR>
 
+function! s:Marko()
+  noautocmd silent execute "!open -a \"Marko\" " . expand("%:p")
+  if v:shell_error
+    echohl Error
+    echon "Problem opening the file."
+    echohl Normal
+  endif
+endfunction
+
+command! -bar -nargs=0 Marko call s:Marko()
+
 " xterm not recognized right by vim ?? this screws up cursor when exiting cli vim
 " set term=builtin_ansi
 
