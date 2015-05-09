@@ -5,7 +5,8 @@
 [push]
   default = tracking
 [alias]
-  mels = "!f() { git config user.name "Greg Vaughn"; git config user.email greg.vaughn@livingsocial.com; git commit --amend --reset-author; } ; f"
+  mebo = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@bonobos.com; git commit --amend --reset-author; } ; f"
+  mep = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@gmail.com; git commit --amend --reset-author; } ; f"
   copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
   prunepr = "!git for-each-ref refs/heads/pr-* --format='%(refname:short)' | while read ref ; do git branch -D $ref ; done"
   la = "!git config -l | grep alias | cut -c 7-"
