@@ -72,3 +72,12 @@ apps=(
 # Default is: /Users/$user/Applications
 echo "installing apps..."
 brew cask install --appdir="/Applications" ${apps[@]}
+
+# Let's get rbenv set up
+mkdir -p ~/.rbenv/plugins/
+cd ~/.rbenv/plugins/
+git clone https://github.com/sstephenson/ruby-build.git
+git clone https://github.com/ianheggie/rbenv-binstubs.git
+git clone https://github.com/sstephenson/rbenv-gem-rehash.git
+git clone https://github.com/sstephenson/rbenv-default-gems.git
+ln -s ~/dotfiles/default-gems ~/.rbenv/default-gems

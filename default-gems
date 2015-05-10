@@ -1,0 +1,6 @@
+# used by rbenv-default-gems plugin
+bundler
+foreman
+rake
+rspec
+
