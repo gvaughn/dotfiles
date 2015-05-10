@@ -13,6 +13,10 @@
 " :set complete=.,t   "limit complete to current file and ctags
 " map <Leader>rt :!ctags --extra=+f --exclude=.git --exclude=log -R * `rvm gemdir`/gems/*<CR><CR>  "include gems in tags
 
+" RANDOM TIPS
+" :set ff=unix
+" changes file format (line endings) without any regex business
+
 " preserve default comma behavior as backslash (reverse of f,t search)
 map \ ,
 " Make certain to remap leader before other leader mappings
