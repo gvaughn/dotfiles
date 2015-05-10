@@ -3,6 +3,7 @@
 utils=(
   bash-completion
   git
+  ctags
   macvim
   the_silver_searcher
   httpie
@@ -64,6 +65,7 @@ apps=(
   nvalt
   quicklook-json
   viscosity
+  limechat
 )
 
 # Install apps to /Applications
