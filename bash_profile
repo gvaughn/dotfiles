@@ -59,7 +59,7 @@ function winname {
 
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
 # so bundle open {gemname} works
 export BUNDLER_EDITOR=v
 
@@ -125,6 +125,3 @@ if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
 # Local host-only additions
 [[ -s ~/.local_bash_profile ]] && source ~/.local_bash_profile
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
