@@ -66,6 +66,9 @@ apps=(
   quicklook-json
   viscosity
   limechat
+  mattr-slate
+  meteorologist
+  day-o
 )
 
 # Install apps to /Applications
@@ -81,3 +84,6 @@ git clone https://github.com/ianheggie/rbenv-binstubs.git
 git clone https://github.com/sstephenson/rbenv-gem-rehash.git
 git clone https://github.com/sstephenson/rbenv-default-gems.git
 ln -s ~/dotfiles/default-gems ~/.rbenv/default-gems
+
+# cups at http://localhost:631
+cupsctl WebInterface=yes
