@@ -74,3 +74,5 @@
 	keepBackup = false
 [merge]
         tool = opendiff
+[help]
+	autocorrect = 1
