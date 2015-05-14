@@ -11,7 +11,7 @@ utils=(
   wemux
   hub
   rbenv
-  ruby-build
+  keybase
 )
 
 brew install ${utils[@]}
