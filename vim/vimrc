@@ -53,8 +53,12 @@ nnoremap <BS> gg
 " map <C-j> <C-w>j
 " map <C-k> <C-w>k
 " map <C-l> <C-w>l
-" gf opens in tab
-"nnoremap gf <C-W>gf
+
+" Use arrow keys to resize windows
+noremap <up>    <C-W>+
+noremap <down>  <C-W>-
+noremap <left>  3<C-W><
+noremap <right> 3<C-W>>
 
 " split resizing by 50%
 "nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
