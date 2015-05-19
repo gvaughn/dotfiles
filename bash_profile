@@ -102,6 +102,13 @@ alias :q=exit
 # join.me mutes globally; this fixes it
 alias micfix="osascript -e 'set volume input volume 80'"
 
+function gmux {
+  # This is Greg's tmux/wemux so I can stop looking up precise syntax
+  # This is a find or create function for how I use tmux
+  name=${1:-work} #use 1st arg or "work" as default
+  wemux new -s $name || wemux attach-session -t $name
+}
+
 function light() {
   if [ -z "$2" ]
     then src="pbpaste"
