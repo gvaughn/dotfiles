@@ -92,7 +92,7 @@ Bundle 'davidoc/taskpaper.vim'
 
 " pretty status line
 Bundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 Bundle 'henrik/vim-yaml-flattener'
 " shift-command-R (I think it is) that invokes it
