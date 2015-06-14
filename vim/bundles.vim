@@ -109,10 +109,10 @@ Bundle 'zaiste/tmux.vim'
 
 " speedy searches
 Bundle 'rking/ag.vim'
-"nnoremap <leader>a :Ag
-"map <leader>a :tabnew<CR>:Ag<space>
 "vmap <leader>a "hy:tabnew<CR>:Ag "<C-r>=escape(@h,'./"*()[]')<CR>"
 nnoremap <leader>a :Ag!<space>
+" mnemonic for this is global search
+nnoremap g/ :Ag!<space>
 " this isn't working to search for the highlighted text TODO
 vnoremap <leader>a :Ag "<C-r>=escape(@h, './"*()[]')<CR>"
 
