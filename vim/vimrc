@@ -90,7 +90,12 @@ set nowrap
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-set list listchars=tab:\ \ ,trail:·
+" these listchars might get in the way, but give them a try
+set listchars=eol:↲,tab:▶▹,nbsp:␣,extends:…,trail:•
+set list
+":set nolist to turn off
+" old vals below
+"set list listchars=tab:\ \ ,trail:·
 
 " Use mac system cliboard by Default. Which I don't think works in tmux
 set clipboard=unnamed
@@ -241,7 +246,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
 " to save after opening a readonly file
-" cmap w!! w !sudo tee % >/dev/null
+cmap w!! w !sudo tee % >/dev/null
 
 " enable very magic regexes by default
 nnoremap / /\v
