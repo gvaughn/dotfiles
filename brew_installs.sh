@@ -16,6 +16,9 @@ utils=(
 
 brew install ${utils[@]}
 brew install caskroom/cask/brew-cask
+#emcacs port support
+# brew tap raiwaycat/emacsmacport
+
 # Jared's Apps
 # apps=(
 #   alfred
@@ -69,6 +72,8 @@ apps=(
   mattr-slate
   meteorologist
   day-o
+  cyberduck
+  #emacs-mac
 )
 
 # Install apps to /Applications
