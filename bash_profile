@@ -48,6 +48,7 @@ export HISTSIZE=100000
 # e: exit without q at end, r: color codes, X: leave results in buffer
 export LESS="-erX"
 
+
 # control Terminal.app tab names
 function tabname {
   printf "\e]1;$1\a"
@@ -101,6 +102,7 @@ alias resqueweb='bundle exec resque-web'
 alias :q=exit
 # join.me mutes globally; this fixes it
 alias micfix="osascript -e 'set volume input volume 80'"
+alias add_ssh_ids="ssh-add ~/.ssh/*rsa*"
 
 function gmux {
   # This is Greg's tmux/wemux so I can stop looking up precise syntax
