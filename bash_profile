@@ -128,6 +128,23 @@ function guitar_tuner {
   #note: requires 'brew install sox'
   n=('' E4 B3 G3 D3 A2 E2);while read -n1 -p 'string? ' i;do case $i in [1-6]) play -n synth pl ${n[i]} fade 0 1 ;; *) echo;break;;esac;done
 }
+
+
+function explain () {
+if [ "$#" -eq 0 ]; then
+while read  -p "Command: " cmd; do
+      curl -Gs "https://www.mankier.com/api/explain/?cols="$(tput cols) --data-urlencode "q=$cmd"
+    done
+  echo "Bye!"
+elif [ "$#" -eq 1 ]; then
+    curl -Gs "https://www.mankier.com/api/explain/?cols="$(tput cols) --data-urlencode "q=$1"
+  else
+  echo "Usage"
+echo "explain                  interactive mode."
+echo "explain 'cmd -o | ...'   one quoted command to explain it."
+fi
+}
+
 #RVM goodies
 # rbenv goodies
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
