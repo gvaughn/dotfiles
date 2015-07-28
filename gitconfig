@@ -16,6 +16,7 @@
   g = log --oneline --all --graph --decorate --color
   ll = log ORIG_HEAD..HEAD --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  churn = "!f() { git log --name-only --no-merges | grep \\.rb$ | grep -v ^vendor | sort | uniq -c | sort -nr | head -50; }; f"
   so = commit -v --amend --signoff
   peek = show --name-only
   changed = !git log --pretty="format:" --name-only head ORIG_HEAD..HEAD | sort | uniq
