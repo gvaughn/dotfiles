@@ -97,13 +97,14 @@ let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh'
 Bundle 'zaiste/tmux.vim'
 
 " speedy searches
-Bundle 'rking/ag.vim'
-"vmap <leader>a "hy:tabnew<CR>:Ag "<C-r>=escape(@h,'./"*()[]')<CR>"
-nnoremap <leader>a :Ag!<space>
+Bundle 'mileszs/ack.vim'
+if executable('ag')
+  " use silver searcher whenever we can
+  let g:ackprg = 'ag --vimgrep'
+endif
 " mnemonic for this is global search
-nnoremap g/ :Ag!<space>
-" this isn't working to search for the highlighted text TODO
-vnoremap <leader>a :Ag "<C-r>=escape(@h, './"*()[]')<CR>"
+nnoremap g/ :Ack!<space>
+xnoremap g/ y:Ack <C-r>=fnameescape(@")<CR><CR>
 
 " elixir
 Bundle 'elixir-lang/vim-elixir'
