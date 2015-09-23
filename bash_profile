@@ -84,11 +84,13 @@ alias vim='mvim -v'
 alias ls='ls -aFGh'
 alias ll='ls -lah'
 alias flush='echo "flush_all" | nc localhost 11211'
+alias flushredis='redis-cli flushall'
 alias raket='USE_TURN=true time rake | grep -v PASS; growlnotify -s -m "Rake tests: DONE"'
 alias update_submodules='git pull --recurse-submodules && git submodule update'
 #alias mdns_restart='sudo killall -HUP mDNSResponder'
 # above is pre-Yosemite
 alias dns_restart='sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.discoveryd.plist && sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.discoveryd.plist'
+alias dns_flush='sudo arp -a -d; sudo dscacheutil -flushcache'
 alias gemkill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias bl='bundle --local'
 alias b='(bundle check || bundle --local --jobs=4 || bundle --jobs=4)'
@@ -103,6 +105,8 @@ alias :q=exit
 # join.me mutes globally; this fixes it
 alias micfix="osascript -e 'set volume input volume 80'"
 alias add_ssh_ids="ssh-add ~/.ssh/*rsa*"
+alias natinfo="natutil -vx -s"
+alias webpack-watcher="$(npm bin)/webpack --progress --colors --watch -d"
 
 function gmux {
   # This is Greg's tmux/wemux so I can stop looking up precise syntax
@@ -111,7 +115,15 @@ function gmux {
   wemux new -s $name || wemux attach-session -t $name
 }
 
-function light() {
+function g {
+  if [[ $# > 0 ]]; then
+    git "$@"
+  else
+    git status --short --branch
+  fi
+}
+
+ function light() {
   if [ -z "$2" ]
     then src="pbpaste"
   else
