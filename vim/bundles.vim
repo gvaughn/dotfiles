@@ -16,27 +16,16 @@ endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" improve tmux integration with focus events
+Bundle "vim-scripts/Terminus"
+
 Bundle 'gmarik/vundle'
 
 " File Navigator
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 "let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 " map <tab> :CtrlPBuffer<CR>
-
-" another navigator. I really should limit to CtrlP or Lusty
-" Bundle 'sjbach/lusty'
-" map <Leader>f :LustyFilesystemExplorer<CR>
-" map <Leader>r :LustyFilesystemExplorerFromHere<CR>
-" map <Leader>b :LustyBufferExplorer<CR>
-" map <Leader>g :LustyBufferGrep<CR>
-" map <Leader>j :LustyJuggler<CR>
-
-" let g:LustyJugglerShowKeys = 'a'
-" let g:LustyJugglerAltTabMode = 1
-" noremap <silent> <A-TAB> :LustyJuggler<CR>
-"  "not working in terminal vim?
-" let g:LustyJugglerSuppressRubyWarning = 1
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/Zenburn'
