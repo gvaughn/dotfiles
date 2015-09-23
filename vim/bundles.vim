@@ -136,6 +136,9 @@ Bundle 'maba/vim-markdown-preview'
 " coffeescript *sigh*
 Bundle 'kchmck/vim-coffee-script'
 
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'vim-scripts/taglist.vim'
+
 " consistent split window opening from quickfix
 Bundle 'yssl/QFEnter'
 let g:qfenter_open_map = ['<CR>']
