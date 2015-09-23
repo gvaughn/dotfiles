@@ -76,12 +76,16 @@ nmap <Leader>e :e **/
 cmap <Leader>e **/
 nmap <Leader>v :vsp **/
 nmap <Leader>s :sp **/
+nmap <Leader>b :20Lexplore<CR>
 
 " <leader>r reloads all open windows
 nnoremap <Leader>r :windo :e<CR>
 
 " leave netrw buffers out of jumplist
 let g:netrw_altfile = 1
+
+" default to netrw tree view ('i' to cycle)
+let g:netrw_liststyle=3
 
 set cursorline
 
