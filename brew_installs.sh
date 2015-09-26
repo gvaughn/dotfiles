@@ -73,6 +73,7 @@ apps=(
   meteorologist
   day-o
   cyberduck
+  macdown
   #emacs-mac
 )
 
