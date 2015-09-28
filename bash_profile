@@ -122,6 +122,8 @@ function g {
     git status --short --branch
   fi
 }
+# get tab completion with my function
+__git_complete g _git
 
  function light() {
   if [ -z "$2" ]
