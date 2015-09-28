@@ -146,6 +146,10 @@ let g:qfenter_vopen_map = ['<C-v>']
 let g:qfenter_hopen_map = ['<C-x>']
 let g:qfenter_topen_map = ['<C-t>']
 
+" <leader>fml shows all leader mappings
+Bundle 'ktonga/vim-follow-my-lead'
+let g:fml_all_sources = 1
+
 " on first launch, run vundle
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
