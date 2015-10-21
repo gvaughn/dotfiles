@@ -76,7 +76,9 @@ nmap <Leader>e :e **/
 cmap <Leader>e **/
 nmap <Leader>v :vsp **/
 nmap <Leader>s :sp **/
-nmap <Leader>b :20Lexplore<CR>
+" this one always opens in the window it was first launched from
+" nmap <Leader>b :20Lexplore<CR>
+nmap <Leader>b :20Vexplore<CR>
 
 " <leader>r reloads all open windows
 nnoremap <Leader>r :windo :e<CR>
