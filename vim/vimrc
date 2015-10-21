@@ -192,7 +192,7 @@ au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 
-au BufRead,BufnewFile *.es6 set ft=coffee
+au BufRead,BufnewFile *.es6 set ft=javascript
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
