@@ -36,6 +36,9 @@ export LESS_TERMCAP_us=$'\E[04;33;5;146m' # begin underline
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# no spying homebrew
+export HOMEBREW_NO_ANALYTICS=1
+
 # brew install bash-completion for this to work
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
