@@ -1,0 +1,90 @@
+#!/usr/bin/env ruby
+# Install in PATH as foremux
+# source: https://gist.github.com/tpope/5119811
+# GGV: this doesn't quite meet my needs yet because it opens each in a tmux window
+#      and I want them in different panes in the same window
+
+if %w(help --help -h).include?(ARGV.first)
+  $stderr.puts <<-help
+Usage:
+  foremux [PROCESS]
+
+Options:
+  -e, [--env=ENV]           # Specify an env file to load, defaults to .env
+  -d, [--root=ROOT]         # Default: Procfile directory
+  -f, [--procfile=PROCFILE] # Default: Procfile
+  -m, [--formation="alpha=5,bar=3"]
+  -p, [--port=N]
+  -x, [--exec=COMMAND]      # Run COMMAND in first pane in lieu of shell
+
+Start the application (or a specific PROCESS)
+  help
+  exit
+end
+
+require 'foreman/engine'
+require 'foreman/cli'
+require 'shellwords'
+
+module Foremux
+  class Engine < Foreman::Engine
+
+    def start
+      arguments = ['tmux']
+      processes = @processes.dup
+      if !ENV['TMUX']
+        arguments << 'new-session'
+        arguments << options[:exec] if options[:exec]
+        arguments << ';'
+      end
+      processes.each do |process|
+        count = formation[@names[process]]
+        1.upto(count) do |n|
+          name = @names[process]
+          name += '-' + n.to_s if count > 1
+          arguments << 'new-window' << '-dn' << name << command_for(process, n) << ';'
+        end
+      end
+      arguments.pop
+      Kernel.system(*arguments)
+      exec(options[:exec]) if ENV['TMUX'] && options[:exec]
+    end
+
+    def command_for(process, n=1)
+      extra = {}
+      if n
+       extra = {'PORT' => port_for(process, n).to_s}
+      end
+      command = process.expanded_command(extra)
+      env_command = "env"
+      env.merge(extra).each do |k, v|
+        env_command << " #{k}=#{Shellwords.escape(v)}"
+      end
+      "cd #{Shellwords.escape(root)}; exec #{env_command} #{command}"
+    end
+
+  end
+
+  class CLI < Foreman::CLI
+    default_task :mux
+    desc "mux [PROCESS]", "Start processes in individual tmux panes"
+
+    method_option :exec,      :type => :string,  :aliases => "-x"
+    method_option :env,       :type => :string,  :aliases => "-e"
+    method_option :formation, :type => :string,  :aliases => "-m"
+    method_option :port,      :type => :numeric, :aliases => "-p"
+
+    def mux(command = nil)
+      start(command)
+    end
+
+    no_tasks do
+      def engine
+        @engine ||= Foremux::Engine.new(options)
+      end
+    end
+  end
+end
+
+ARGV.unshift('mux')
+Foremux::CLI.start
