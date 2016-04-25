@@ -158,6 +158,9 @@ let g:qfenter_topen_map = ['<C-t>']
 Bundle 'ktonga/vim-follow-my-lead'
 let g:fml_all_sources = 1
 
+"no more need to do :set paste (or so it claims)
+Bundle 'ConradIrwin/vim-bracketed-paste'
+
 " on first launch, run vundle
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
