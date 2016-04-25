@@ -115,6 +115,7 @@ xnoremap g/ y:Ack <C-r>=fnameescape(@")<CR><CR>
 
 " elixir
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'slashmili/alchemist.vim'
 " git/hg diff indicators
 Bundle 'mhinz/vim-signify'
 " fix bar/block cursor in tmux also FocusGained, FocusLost
