@@ -74,6 +74,7 @@ apps=(
   day-o
   cyberduck
   macdown
+  licecap
   #emacs-mac
 )
 
