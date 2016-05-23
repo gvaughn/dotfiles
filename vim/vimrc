@@ -271,6 +271,33 @@ cmap w!! w !sudo tee % >/dev/null
 nnoremap / /\v
 vnoremap / /\v
 
+" pulse cursorline when FocusGained
+function! s:Pulse()
+  setlocal nocursorline
+  redraw
+  sleep 200m
+
+  setlocal cursorline
+  redraw
+  sleep 200m
+
+  setlocal nocursorline
+  redraw
+  sleep 200m
+
+  setlocal cursorline
+  redraw
+  sleep 200m
+
+  setlocal nocursorline
+  redraw
+  sleep 200m
+
+  setlocal cursorline
+  redraw
+endfunction
+autocmd FocusGained * call s:Pulse()
+
 " toggle relative numbering
 function! NumberToggle()
   if(&relativenumber == 1)
