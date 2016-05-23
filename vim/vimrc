@@ -113,6 +113,9 @@ set cpoptions+=$
 
 "lines above/below cursor
 set scrolloff=5
+" horizontal scroll per character with offset of 3
+set sidescroll=1
+set sidescrolloff=3
 "intuitive locations of split windows
 set splitbelow splitright
 "allow virtual editing in visual block mode
