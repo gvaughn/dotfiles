@@ -222,6 +222,10 @@ inoremap <c-e> <esc>A
 " re-select visually what was just pasted
 nnoremap <leader>V V`]
 
+" preserve cursor postion when yanking
+" note the simple version (myy`y`) doesn't allow targeting buffer. The fancy one does
+vnoremap <expr>y "my\"" . v:register . "y`y"
+
 " Command mode: Ctrl+P inserts dir of current file
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
