@@ -1,3 +1,5 @@
+# TODO can this be aliased well?
+# heroku git:remote -a {heroku repo name} -r {local remote name}
 [user]
   name = Greg Vaughn
   # prefer to keep email in individual repos' config
