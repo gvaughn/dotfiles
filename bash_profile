@@ -171,3 +171,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
 # Local host-only additions
 [[ -s ~/.local_bash_profile ]] && source ~/.local_bash_profile
+
+# slackbot prank
+# HUBOT_SLACK_TOKEN=blahblahblah
+# function botpost () {
+#   curl -X POST -F token=$HUBOT_SLACK_TOKEN -F channel="$1" -F text="$2" https://slack.com/api/chat.postMessage
+# }
