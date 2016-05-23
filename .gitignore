@@ -7,4 +7,4 @@ doc/tags/*
 vim/backup/*
 .netrwhist
 vim/bundle/*
-
+bundle/cache/*
