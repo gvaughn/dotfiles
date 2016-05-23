@@ -112,6 +112,15 @@ endif
 " mnemonic for this is global search
 nnoremap g/ :Ack!<space>
 xnoremap g/ y:Ack <C-r>=fnameescape(@")<CR><CR>
+nnoremap gr/ :Ack! --ruby<space>
+xnoremap gr/ y:Ack --ruby <C-r>=fnameescape(@")<CR><CR>
+
+" try new ultimate searcher plugin
+"   can't figure out how to use .agignore
+" Bundle 'mhinz/vim-grepper'
+" nnoremap g/ :Grepper! -tool ag -open -switch -cword<cr>
+" "xmap g/ <plug>(GrepperOperator)
+" xnoremap g/ y:Grepper! -tool ag -open -switch -cword<cr>
 
 " elixir
 Bundle 'elixir-lang/vim-elixir'
