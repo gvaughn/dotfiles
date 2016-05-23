@@ -110,6 +110,7 @@ alias micfix="osascript -e 'set volume input volume 80'"
 alias add_ssh_ids="ssh-add ~/.ssh/*rsa*"
 alias natinfo="natutil -vx -s"
 alias webpack-watcher="$(npm bin)/webpack --progress --colors --watch -d"
+alias ag='ag --path-to-agignore ~/.agignore'
 
 function gmux {
   # This is Greg's tmux/wemux so I can stop looking up precise syntax
