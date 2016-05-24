@@ -1,5 +1,4 @@
-# TODO can this be aliased well?
-# heroku git:remote -a {heroku repo name} -r {local remote name}
+# NOTE: git help {alias} shows its definition
 [user]
   name = Greg Vaughn
   # prefer to keep email in individual repos' config
@@ -12,6 +11,7 @@
   copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
   prunepr = "!git for-each-ref refs/heads/pr-* --format='%(refname:short)' | while read ref ; do git branch -D $ref ; done"
   la = "!git config -l | grep alias | cut -c 7-"
+  fromheroku = "!f() { heroku git:remote -a $1 -r $2; }; f" # use with $1 as heroku repo name, $2 as desired local name
   up = add -u
   hist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short
   mhist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short --author greg.vaughn
