@@ -287,14 +287,6 @@ function! s:Pulse()
 
   setlocal cursorline
   redraw
-  sleep 200m
-
-  setlocal nocursorline
-  redraw
-  sleep 200m
-
-  setlocal cursorline
-  redraw
 endfunction
 autocmd FocusGained * call s:Pulse()
 
