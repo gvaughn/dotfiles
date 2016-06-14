@@ -75,6 +75,7 @@
 	templatedir = ~/dotfiles/git_template
 [diff]
 	algorithm = patience
+	compactionHeuristic = true
 [mergetool]
 	keepBackup = false
 [merge]

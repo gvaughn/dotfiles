@@ -275,15 +275,15 @@ vnoremap / /\v
 function! s:Pulse()
   setlocal nocursorline
   redraw
-  sleep 200m
+  sleep 100m
 
   setlocal cursorline
   redraw
-  sleep 200m
+  sleep 100m
 
   setlocal nocursorline
   redraw
-  sleep 200m
+  sleep 100m
 
   setlocal cursorline
   redraw
