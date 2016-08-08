@@ -170,6 +170,11 @@ let g:fml_all_sources = 1
 "no more need to do :set paste (or so it claims)
 Bundle 'ConradIrwin/vim-bracketed-paste'
 
+" sequence diagrams rendered in browser
+Bundle 'xavierchow/vim-sequence-diagram'
+nmap <unique> <leader>sq <Plug>GenerateDiagram
+" let g:generate_diagram_theme_hand = 1
+
 " on first launch, run vundle
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
