@@ -4,7 +4,7 @@ utils=(
   bash-completion
   git
   ctags
-  macvim
+  neovim
   the_silver_searcher
   httpie
   reattach-to-user-namespace
@@ -12,6 +12,7 @@ utils=(
   hub
   rbenv
   keybase
+  heroku
 )
 
 brew install ${utils[@]}
@@ -75,6 +76,7 @@ apps=(
   cyberduck
   macdown
   licecap
+  itsycal
   #emacs-mac
 )
 

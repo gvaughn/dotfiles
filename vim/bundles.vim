@@ -137,6 +137,8 @@ Bundle 'jgdavey/vim-turbux'
 Bundle 'christoomey/vim-tmux-navigator'
 " self-evident
 Bundle 'maba/vim-markdown-preview'
+" heard about but also saw bug report, so try later
+" andyl/vim-textobj-elixir
 
 " clojure stuff
 " Bundle 'tpope/vim-fireplace'

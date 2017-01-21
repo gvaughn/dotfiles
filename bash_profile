@@ -83,7 +83,8 @@ export BUNDLER_EDITOR=v
 # }
 # setjdk 1.7
 
-alias vim='mvim -v'
+#alias vim='mvim -v'
+alias vim=nvim
 alias ls='ls -aFGh'
 alias ll='ls -lah'
 alias flush='echo "flush_all" | nc localhost 11211'

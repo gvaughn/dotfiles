@@ -2,7 +2,7 @@
 [user]
   name = Greg Vaughn
   # prefer to keep email in individual repos' config
-  # Use GIT_AUTHOR_EMAIL env var to override
+  # Use GIT_AUTHOR_EMAIL env var to override or mep, mebo
 [push]
   default = tracking
 [alias]
@@ -43,7 +43,6 @@
   ctags = !.git/hooks/ctags
   fixup = "!f() { git commit --amend -C HEAD --date \"`date`\"; }; f"
   mru = "!f() { git for-each-ref --format='%(authordate:relative)%09%(refname:short)%0a%(subject)%0a' --sort=-committerdate refs/heads | head -20; }; f"
-       #newpr= "!f() { open http://svn.livingsocial.com/$(git config --get github.user)/deals/pull/new/$(git symbolic-ref head | sed -e 's/.*\///g'); }; f"
   mybranches = "!f() { if test $# = 0 ; then set -- refs/remotes ; fi ; git for-each-ref --format='%(authordate:relative)\t%(refname:short)\t%(authoremail)' --sort=authordate \"$@\" | sed -ne \"s/\t<$(git config user.email)>//p\" | column -s '\t' -t ; } ; f"
 [color]
   ui = true
@@ -67,18 +66,16 @@
   enabled = true
 [branch]
   autosetuprebase = always
-[hub]
-  host = code.livingsocial.net
 [credential]
-	helper = osxkeychain
+ helper = osxkeychain
 [init]
-	templatedir = ~/dotfiles/git_template
+  templatedir = ~/dotfiles/git_template
 [diff]
-	algorithm = patience
-	compactionHeuristic = true
+  algorithm = patience
+  compactionHeuristic = true
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [merge]
-        tool = opendiff
+  tool = opendiff
 [help]
-	autocorrect = 1
+  autocorrect = 1
