@@ -79,3 +79,5 @@
   tool = opendiff
 [help]
   autocorrect = 1
+[commit]
+	verbose = true
