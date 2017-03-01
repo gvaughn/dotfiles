@@ -329,14 +329,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'henrik/vim-yaml-flattener'
 " shift-command-R (I think it is) that invokes it
 
-" repeats f,t searches with f,t instead of ;
-"  I'm not sure about it yet because it removes use of ;
-"  but maybe I could make ; the leader or localleader
-Plug 'rhysd/clever-f.vim'
-  let g:clever_f_smart_case = 1
-  " f; finds all punctuation
-  let g:clever_f_chars_match_any_signs = ';'
-
 " CamelCaseMotion plugin offers text objects for camel or snake cased words
 " use motions ,w ,b ,e (the comma is part of the object)
 " Plug 'bkad/CamelCaseMotion' "doesn't appear to be working in neovim
@@ -387,7 +379,8 @@ Plug 'Yggdroot/indentLine'
 " we get a vertical pipe with setColors 0
 " let g:indentLine_setColors = 0
 " we get a very faint color with 239
-let g:indentLine_color_term = 239
+" let g:indentLine_color_term = 239
+let g:indentLine_color_term = 255
 " TODO not sure how to get this configured yet
 " saw it working once, kinda
 
@@ -580,7 +573,7 @@ endfunction
 
 " BufRead seems more appropriate here but for some reason the final `wincmd p` doesn't work if we do that.
 autocmd VimEnter COMMIT_EDITMSG call OpenCommitMessageDiff()
-function OpenCommitMessageDiff()
+function! OpenCommitMessageDiff()
   " Save the contents of the z register
   let old_z = getreg("z")
   let old_z_type = getregtype("z")
@@ -612,3 +605,9 @@ function OpenCommitMessageDiff()
   " Get back to the commit message
   wincmd p
 endfunction
+
+" debug syntax highlighting
+" originally sourced from https://github.com/elixir-lang/vim-elixir/issues/229#issuecomment-265768856
+map <leader>syn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
