@@ -13,6 +13,7 @@ utils=(
   rbenv
   keybase
   heroku
+  jq
 )
 
 brew install ${utils[@]}

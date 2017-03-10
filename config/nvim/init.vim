@@ -496,7 +496,9 @@ vnoremap <expr>y "my\"" . v:register . "y`y"
 nmap <Leader>px :%!xmllint --format --recover -<CR>
 
 " json pretty print
-nmap <Leader>pj :%!python -m json.tool<CR>
+" nmap <Leader>pj :%!python -m json.tool<CR>
+nnoremap <Leader>pj :%!jq '.'<CR>
+vnoremap <Leader>pj !jq '.'<CR>
 
 " Remember last location in file
 if has("autocmd")
