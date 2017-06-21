@@ -51,6 +51,7 @@ export HISTSIZE=100000
 # e: exit without q at end, r: color codes, X: leave results in buffer
 export LESS="-erX"
 
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
 # control Terminal.app tab names
 function tabname {
@@ -63,7 +64,7 @@ function winname {
 
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/opt/postgresql@9.5/bin:/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
 # so bundle open {gemname} works
 export BUNDLER_EDITOR=v
 
@@ -111,7 +112,13 @@ alias micfix="osascript -e 'set volume input volume 80'"
 alias add_ssh_ids="ssh-add ~/.ssh/*rsa*"
 alias natinfo="natutil -vx -s"
 alias webpack-watcher="$(npm bin)/webpack --progress --colors --watch -d"
-alias ag='ag --path-to-agignore ~/.agignore'
+# alias ag='ag --path-to-agignore ~/.agignore'
+# autocorrect all changed files
+alias autorubo='git diff `git merge-base origin/master HEAD` --name-only | xargs -I {} rubocop --auto-correct {}'
+alias npm-exec='PATH=$(npm bin):$PATH'
+
+alias iep='iex -S mix phoenix.server'
+alias iem='iex -S mix'
 
 function gmux {
   # This is Greg's tmux/wemux so I can stop looking up precise syntax
@@ -170,6 +177,10 @@ fi
 # try without rehashing on every shell startup
 if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
+export PATH="/Users/gvaughn/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # Local host-only additions
 [[ -s ~/.local_bash_profile ]] && source ~/.local_bash_profile
 
@@ -178,3 +189,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 # function botpost () {
 #   curl -X POST -F token=$HUBOT_SLACK_TOKEN -F channel="$1" -F text="$2" https://slack.com/api/chat.postMessage
 # }
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
