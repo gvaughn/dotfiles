@@ -93,6 +93,10 @@ set diffopt=vertical "vertical diff splits
 " fuzzier find with :find
 set path+=**
 
+" python stuff cargo culted from internet
+let g:python_host_prog = '/Users/gvaughn/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/gvaughn/.pyenv/versions/neovim3/bin/python'
+
 " enable omni syntax completion
 augroup omnifuncs
   autocmd!
@@ -105,7 +109,7 @@ augroup omnifuncs
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 augroup end
 
-set wildignore+=*.o,*.obj,.git,*.rbc,**/vendor/**,**/public/**,node_modules,**/*.js.map,*.png,*.jpg,*.svg,*.wof,*.zip,*.exe
+set wildignore+=*.o,*.obj,.git,*.rbc,**/vendor/**,**/public/**,node_modules,**/*.js.map,*.png,*.jpg,*.svg,*.wof,*.zip,*.exe,*.beam,*deps/*,*_build/*
 
 if empty(glob(('~/.config/nvim/autoload/plug.vim')))
     " we're on a new machine, so start from scratch"
@@ -199,29 +203,43 @@ Plug 'neomake/neomake'
   let g:neomake_markdown_enabled_makers = []
 
   " Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
-  let g:neomake_elixir_enabled_makers = ['mix', 'mycredo']
-  function! NeomakeCredoErrorType(entry)
-    if a:entry.type ==# 'F'      " Refactoring opportunities
-      let l:type = 'W'
-    elseif a:entry.type ==# 'D'  " Software design suggestions
-      let l:type = 'I'
-    elseif a:entry.type ==# 'W'  " Warnings
-      let l:type = 'W'
-    elseif a:entry.type ==# 'R'  " Readability suggestions
-      let l:type = 'I'
-    elseif a:entry.type ==# 'C'  " Convention violation
-      let l:type = 'W'
-    else
-      let l:type = 'M'           " Everything else is a message
-    endif
-    let a:entry.type = l:type
-  endfunction
+  " seems to break phoenix autloading though -- using elixirc directly instead
+  " of mix is rumored to work
+  " let g:neomake_elixir_enabled_makers = ['mix', 'mycredo']
+  " function! NeomakeCredoErrorType(entry)
+  "   if a:entry.type ==# 'F'      " Refactoring opportunities
+  "     let l:type = 'W'
+  "   elseif a:entry.type ==# 'D'  " Software design suggestions
+  "     let l:type = 'I'
+  "   elseif a:entry.type ==# 'W'  " Warnings
+  "     let l:type = 'W'
+  "   elseif a:entry.type ==# 'R'  " Readability suggestions
+  "     let l:type = 'I'
+  "   elseif a:entry.type ==# 'C'  " Convention violation
+  "     let l:type = 'W'
+  "   else
+  "     let l:type = 'M'           " Everything else is a message
+  "   endif
+  "   let a:entry.type = l:type
+  " endfunction
 
-  let g:neomake_elixir_mycredo_maker = {
-        \ 'exe': 'mix',
-        \ 'args': ['credo', 'list', '%:p', '--format=oneline'],
-        \ 'errorformat': '[%t] %. %f:%l:%c %m,[%t] %. %f:%l %m',
-        \ 'postprocess': function('NeomakeCredoErrorType')
+  " let g:neomake_elixir_mycredo_maker = {
+  "       \ 'exe': 'mix',
+  "       \ 'args': ['credo', 'list', '%:p', '--format=oneline'],
+  "       \ 'errorformat': '[%t] %. %f:%l:%c %m,[%t] %. %f:%l %m',
+  "       \ 'postprocess': function('NeomakeCredoErrorType')
+  "       \ }
+  let g:neomake_elixir_enabled_makers = ['elixir']
+  let g:neomake_elixir_elixir_maker = {
+        \ 'exe': 'elixirc',
+        \ 'args': [
+          \ '--ignore-module-conflict', '--warnings-as-errors',
+          \ '--app', 'mix', '--app', 'ex_unit',
+          \ '-o', $TMPDIR, '%:p'
+        \ ],
+        \ 'errorformat':
+            \ '%E** %s %f:%l: %m,' .
+            \ '%W%f:%l'
         \ }
 
 Plug 'ngmy/vim-rubocop'
