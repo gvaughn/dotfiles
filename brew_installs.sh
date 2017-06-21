@@ -4,7 +4,7 @@ utils=(
   bash-completion
   git
   ctags
-  neovim
+  neovim/neovim/neovim
   the_silver_searcher
   httpie
   reattach-to-user-namespace
@@ -62,9 +62,6 @@ apps=(
   dropbox
   google-chrome
   slack
-  firefox
-  seil
-  karabiner
   iterm2
   flux
   nvalt
@@ -85,6 +82,9 @@ apps=(
 # Default is: /Users/$user/Applications
 echo "installing apps..."
 brew cask install --appdir="/Applications" ${apps[@]}
+
+brew tap caskroom/fonts
+brew cask install font-fira-code
 
 # Let's get rbenv set up
 mkdir -p ~/.rbenv/plugins/
