@@ -9,3 +9,4 @@ vim/backup/*
 .netrwhist
 vim/bundle/*
 bundle/cache/*
+config/hub
