@@ -83,6 +83,7 @@ set scrolloff=5
 " horizontal scroll per character with offset of 5
 set sidescroll=1
 set sidescrolloff=5
+set mouse=a
 
 "intuitive locations of split windows
 set splitbelow splitright
@@ -123,6 +124,12 @@ call plug#begin('~/.config/nvim/plugged')
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" example from CiT vim room about using rg with fzf
+" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+" let g:fzf_action = {
+" \ 'ctrl-s': 'split',
+" \ 'ctrl-v': 'vsplit'
+" \ }
   let g:fzf_nvim_statusline = 0 " disable statusline overwriting
   " Ctrl-N and Ctrl-P navigate history of searches instead of list
   let g:fzf_history_dir = '~/.config/nvim/fzf-history'
@@ -270,6 +277,13 @@ Plug 'tpope/vim-projectionist' " required for some navigation features
   augroup END
 
 Plug 'slashmili/alchemist.vim' " elixir goodies
+  " function signatures in preview
+  let g:alchemist#extended_autocomplete = 1
+
+  "optional if you want to close the preview window automatically
+  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 " heard about this, but saw bug report, so try later
 " Plug 'andyl/vim-textobj-elixir'
 
@@ -592,39 +606,39 @@ endfunction
 " For the most accurate diffs, use `git config --global commit.verbose true`
 
 " BufRead seems more appropriate here but for some reason the final `wincmd p` doesn't work if we do that.
-autocmd VimEnter COMMIT_EDITMSG call OpenCommitMessageDiff()
-function! OpenCommitMessageDiff()
-  " Save the contents of the z register
-  let old_z = getreg("z")
-  let old_z_type = getregtype("z")
+" autocmd VimEnter COMMIT_EDITMSG call OpenCommitMessageDiff()
+" function! OpenCommitMessageDiff()
+"   " Save the contents of the z register
+"   let old_z = getreg("z")
+"   let old_z_type = getregtype("z")
 
-  try
-    call cursor(1, 0)
-    let diff_start = search("^diff --git")
-    if diff_start == 0
-      " There's no diff in the commit message; generate our own.
-      let @z = system("git diff --cached -M -C")
-    else
-      " Yank diff from the bottom of the commit message into the z register
-      :.,$yank z
-      call cursor(1, 0)
-    endif
+"   try
+"     call cursor(1, 0)
+"     let diff_start = search("^diff --git")
+"     if diff_start == 0
+"       " There's no diff in the commit message; generate our own.
+"       let @z = system("git diff --cached -M -C")
+"     else
+"       " Yank diff from the bottom of the commit message into the z register
+"       :.,$yank z
+"       call cursor(1, 0)
+"     endif
 
-    " Paste into a new buffer
-    vnew
-    normal! V"zP
-  finally
-    " Restore the z register
-    call setreg("z", old_z, old_z_type)
-  endtry
+"     " Paste into a new buffer
+"     vnew
+"     normal! V"zP
+"   finally
+"     " Restore the z register
+"     call setreg("z", old_z, old_z_type)
+"   endtry
 
-  " Configure the buffer
-  set filetype=diff noswapfile nomodified readonly
-  silent file [Changes\ to\ be\ committed]
+"   " Configure the buffer
+"   set filetype=diff noswapfile nomodified readonly
+"   silent file [Changes\ to\ be\ committed]
 
-  " Get back to the commit message
-  wincmd p
-endfunction
+"   " Get back to the commit message
+"   wincmd p
+" endfunction
 
 " debug syntax highlighting
 " originally sourced from https://github.com/elixir-lang/vim-elixir/issues/229#issuecomment-265768856
