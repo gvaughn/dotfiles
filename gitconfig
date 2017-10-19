@@ -30,9 +30,8 @@
   ci = commit
   st = status
   short-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(refname:short)'
-  ; long-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
-  ; note: could get fancy with fields and formatting, but whole matching value passed to git checkout
-  b = !git checkout $(git short-recent-branches | fzf) # interactive branch switcher via fzf
+  long-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(HEAD)%(color:yellow)%(refname:short) %(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  b = !git checkout $(git long-recent-branches | fzf --ansi --color=light --no-sort -n1| sed -E 's/(\\*)?([^ ]+).*/\\2/') # interactive branch switcher via fzf
   spull = !git stash && git pull && git stash pop
   bdiff = !git diff `git merge-base HEAD origin/master` #diff of branch back to branch point
   diff = diff --word-diff
