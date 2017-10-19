@@ -6,13 +6,13 @@
 [push]
   default = tracking
 [alias]
-  mebo = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@bonobos.com; git commit --amend --reset-author; } ; f"
-  mep = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@gmail.com; git commit --amend --reset-author; } ; f"
+  mep = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@gmail.com; } ; f"
+  mess = "!f() { git config user.name "Greg Vaughn"; git config user.email greg@seatscouts.com; } ; f"
   copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
   prunepr = "!git for-each-ref refs/heads/pr-* --format='%(refname:short)' | while read ref ; do git branch -D $ref ; done"
   la = "!git config -l | grep alias | cut -c 7-"
   fromheroku = "!f() { heroku git:remote -a $1 -r $2; }; f" # use with $1 as heroku repo name, $2 as desired local name
-  up = add -u
+  ; up = add -u
   ; hist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short
   hist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad (%cr)%Creset | %s %Cblue[%an]%Creset' --graph --date=short -5
   mhist = log  --pretty=format:'%Cred%h%Creset %C(yellow)%ad%Creset | %s%Cgreen%d %Cblue[%an]%Creset' --graph --date=short --author greg.vaughn
@@ -23,14 +23,16 @@
   so = commit -v --amend --signoff
   peek = show --name-only
   changed = !git log --pretty="format:" --name-only head ORIG_HEAD..HEAD | sort | uniq
-  yamldelta = !git log --pretty="format:" --name-only head $LASTHEAD..$CURHEAD | sort | uniq | grep ".*locales/deals.*yml"
   headsha = rev-parse head
   amend = !git commit --amend -C HEAD --date \"`date`\"
   co = checkout
   br = branch
   ci = commit
   st = status
-  cl = checkout @{-1} # checkout last branch
+  short-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+  ; long-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  ; note: could get fancy with fields and formatting, but whole matching value passed to git checkout
+  b = !git checkout $(git short-recent-branches | fzf) # interactive branch switcher via fzf
   spull = !git stash && git pull && git stash pop
   bdiff = !git diff `git merge-base HEAD origin/master` #diff of branch back to branch point
   diff = diff --word-diff
