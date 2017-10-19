@@ -53,6 +53,8 @@ export LESS="-erX"
 
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # control Terminal.app tab names
 function tabname {
   printf "\e]1;$1\a"
@@ -112,7 +114,7 @@ alias micfix="osascript -e 'set volume input volume 80'"
 alias add_ssh_ids="ssh-add ~/.ssh/*rsa*"
 alias natinfo="natutil -vx -s"
 alias webpack-watcher="$(npm bin)/webpack --progress --colors --watch -d"
-alias ag='ag --path-to-agignore ~/.agignore'
+# alias ag='ag --path-to-agignore ~/.agignore'
 # autocorrect all changed files
 alias autorubo='git diff `git merge-base origin/master HEAD` --name-only | xargs -I {} rubocop --auto-correct {}'
 alias npm-exec='PATH=$(npm bin):$PATH'

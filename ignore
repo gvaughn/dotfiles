@@ -1,3 +1,4 @@
+.git/*
 *.beam
 /_build/*
 node_modules/
