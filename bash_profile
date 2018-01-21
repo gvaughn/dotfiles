@@ -53,6 +53,7 @@ export LESS="-erX"
 
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
+# NOTE MacOS needs you to 'touch ~/.iex_history' before it works
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # control Terminal.app tab names
