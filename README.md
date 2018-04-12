@@ -1,4 +1,5 @@
 ##Installation
+```
     cd ~
     git clone git://github.com/gvaughn/dotfiles.git
     ln -s ~/dotfiles/bash_profile ~/.bash_profile
@@ -9,6 +10,8 @@
     ln -s ~/dotfiles/ctags ~/.ctags
     ln -s ~/dotfiles/bin ~/bin
     ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
+    ln -s ~/dotfiles/config/ripgrep ~/.config/ripgrep
     dotfiles/brew_installs.sh
     dotfiles/extremesetup.sh
+```
 

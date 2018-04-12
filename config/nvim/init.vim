@@ -206,12 +206,18 @@ Plug 'neomake/neomake'
   augroup localneomake
     autocmd! BufWritePost * Neomake
   augroup END
+  " line below errors on vim startup
+  " call neomake#configure#automake('nw', 1000)
   " Don't tell me to use smartquotes in markdown ok?
   let g:neomake_markdown_enabled_makers = []
   " elixir maker has problems finding structs, mix seems to be better
-  let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+  " let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+  let g:neomake_elixir_enabled_makers = ['mix']
 
   let g:neomake_ruby_enabled_makers = ['rubocop', 'mri']
+
+  " let g:neomake_open_list = 2
+  " let g:neomake_logfile = '/tmp/neomake.log'
 
 Plug 'ngmy/vim-rubocop'
 
@@ -223,6 +229,7 @@ Plug 'c-brenn/phoenix.vim'
 Plug 'tpope/vim-projectionist' " required for some navigation features
   augroup elixir
     au!
+    autocmd BufWritePost *.exs,*.ex silent :!mix format %
     au FileType elixir nn <buffer> <localleader>a :A<CR>
     au FileType elixir nn <buffer> <localleader>d :ExDoc<Space>
     au FileType elixir nn <buffer> <localleader>gc :Econtroller<Space>
@@ -337,18 +344,13 @@ Plug 'henrik/vim-yaml-flattener'
 " git-gutter only works with git, but allows hunk navigation and staging/unstaging
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_map_keys = 0
-  " let g:gitgutter_max_signs = 200 "default 500
   let g:gitgutter_realtime = 1
   let g:gitgutter_eager = 1
-  " let g:gitgutter_sign_removed = '–'
-  " let g:gitgutter_diff_args = '--ignore-space-at-eol'
   nmap <silent> ]h :GitGutterNextHunk<CR>
   nmap <silent> [h :GitGutterPrevHunk<CR>
   nmap <silent> <leader>hs <Plug>GitGutterStageHunk
   nmap <silent> <leader>hu <Plug>GitGutterUndoHunk
   nmap <silent> <leader>hp <Plug>GitGutterPreviewHunk
-  " force update is probably unnecessary
-  " nnoremap <Leader>gt :GitGutterAll<CR>
 
 " fix bar/block cursor in tmux also FocusGained, FocusLost
 Plug 'sjl/vitality.vim'
@@ -390,11 +392,15 @@ colorscheme seoul256
 
 let $MYTODO = '~/Dropbox/todo.taskpaper'
 
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
-  " if I include --hidden, I'll get back dot-files and rely on ~/.agignore
-  " instead of wildignore
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
+" if executable('ag')
+"   set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+"   " if I include --hidden, I'll get back dot-files and rely on ~/.agignore
+"   " instead of wildignore
+"   set grepformat=%f:%l:%c:%m,%f:%l:%m
+" endif
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep
 endif
 
 " enable very magic regexes by default

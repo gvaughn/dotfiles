@@ -51,7 +51,8 @@ export HISTSIZE=100000
 # e: exit without q at end, r: color codes, X: leave results in buffer
 export LESS="-erX"
 
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+# export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_DEFAULT_COMMAND='rg --files'
 
 # NOTE MacOS needs you to 'touch ~/.iex_history' before it works
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -70,6 +71,9 @@ export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 export PATH=/usr/local/opt/postgresql@9.5/bin:/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
 # so bundle open {gemname} works
 export BUNDLER_EDITOR=v
+
+# rg has no default path; must be specified
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep
 
 # manage JVM now that I'm doing some clojure
 # function setjdk() {
@@ -120,7 +124,7 @@ alias webpack-watcher="$(npm bin)/webpack --progress --colors --watch -d"
 alias autorubo='git diff `git merge-base origin/master HEAD` --name-only | xargs -I {} rubocop --auto-correct {}'
 alias npm-exec='PATH=$(npm bin):$PATH'
 
-alias iep='iex -S mix phoenix.server'
+alias iep='iex -S mix phx.server'
 alias iem='iex -S mix'
 
 function gmux {
