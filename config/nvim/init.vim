@@ -359,9 +359,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'henrik/vim-yaml-flattener'
 " shift-command-R (I think it is) that invokes it
 
-" CamelCaseMotion plugin offers text objects for camel or snake cased words
-" use motions ,w ,b ,e (the comma is part of the object)
-" Plug 'bkad/CamelCaseMotion' "doesn't appear to be working in neovim
+" camel and snake case word delimiters (replaces CamelCaseMotion)
+" I can supply
+" let g:wordmotion_prefix = ','
+" to have same behavior as CamelCaseMotion
+Plug 'chaoren/vim-wordmotion'
 
 " git/hg/mercurial/darcs/etc. diff indicators
 " author says if you only use git, then gitgutter is better
