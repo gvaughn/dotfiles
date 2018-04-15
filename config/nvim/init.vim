@@ -288,9 +288,6 @@ Plug 'powerman/vim-plugin-AnsiEsc' "better ANSI sequence handling
 
 Plug 'christoomey/vim-tmux-navigator'
 
-" improve tmux integration with focus events
-"Plug 'vim-scripts/Terminus'
-
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'artcticicestudio/nord-vim'
@@ -382,7 +379,9 @@ Plug 'airblade/vim-gitgutter'
   nmap <silent> <leader>hp <Plug>GitGutterPreviewHunk
 
 " fix bar/block cursor in tmux also FocusGained, FocusLost
-Plug 'sjl/vitality.vim'
+" Plug 'sjl/vitality.vim'
+" seems the above is obsolete in favor of
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 "no more need to do :set paste (or so it claims)
 Plug 'ConradIrwin/vim-bracketed-paste'
