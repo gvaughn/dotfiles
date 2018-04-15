@@ -124,12 +124,6 @@ call plug#begin('~/.config/nvim/plugged')
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" example from CiT vim room about using rg with fzf
-" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-" let g:fzf_action = {
-" \ 'ctrl-s': 'split',
-" \ 'ctrl-v': 'vsplit'
-" \ }
   let g:fzf_nvim_statusline = 0 " disable statusline overwriting
   " Ctrl-N and Ctrl-P navigate history of searches instead of list
   let g:fzf_history_dir = '~/.config/nvim/fzf-history'
@@ -157,12 +151,41 @@ Plug 'junegunn/fzf.vim'
   " TODO sizing is not right, but I don't use it much either, yet
   nnoremap <silent> <leader>O :MyTags<CR>
 
+  nnoremap <leader>b :Buffers<CR>
+  nnoremap <leader>gl :Commits<CR>
+  nnoremap <leader>gh :BCommits<CR>
+  nnoremap <leader>m :Maps<CR>
+
+" Stolen from https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+" command! -bang -nargs=* Fzgrep call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+"
+" another version from fzf README with preview window
+" the '?' shows a very cool preview! Doing Fzgrep! does a fullscreen preview/search
+command! -bang -nargs=* Fzgrep
+  \ call fzf#vim#grep(
+  \  'rg --column --line-number --no-heading --color "always" '.shellescape(<q-args>), 1,
+  \  <bang>0 ? fzf#vim#with_preview('up:60%')
+  \          : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \  <bang>0)
+
   " cross file regex search
   " FYI Ag is defined by fzf
   " still need to figure out global .agignore
-  nnoremap <silent> g/ :Ag<CR>
+  " nnoremap <silent> g/ :Ag<CR>
+  nnoremap <silent> g/ :Fzgrep!<CR>
   " search project for word under cursor
-  nnoremap <silent> <leader>* :Ag <C-R><C-W><CR>
+  " nnoremap <silent> <leader>* :Ag <C-R><C-W><CR>
+  nnoremap <silent> <leader>* :Fzgrep <C-R><C-W><CR>
   vnoremap <leader>* :call SearchVisualSelectionWithAg()<CR>
   function! SearchVisualSelectionWithAg() range
     let old_reg = getreg('"')
@@ -173,20 +196,24 @@ Plug 'junegunn/fzf.vim'
     let selection = getreg('"')
     call setreg('"', old_reg, old_regtype)
     let &clipboard = old_clipboard
-    execute 'Ag' selection
+    " execute 'Ag' selection
+    execute 'Fzgrep' selection
   endfunction
 
-  nnoremap <leader>b :Buffers<CR>
-  nnoremap <leader>gl :Commits<CR>
-  nnoremap <leader>gh :BCommits<CR>
-  nnoremap <leader>m :Maps<CR>
-
-" try new ultimate searcher plugin
-"   can't figure out how to use .agignore
+" I really want to use vim-grepper but Fzgrep above gets me 90% of what I want
+" What I like better about vim-grepper is that I can supply extra flags to rg (like -telixir)
+" This is very cool, but it uses quickfix window
+" I need to figure out how to config quickfix to act
+" more like the fzf window: esc to dismiss, ctrl-x/ctrl-v for splits, etc.
+" plus inverting it with best match on bottom would be nice
+" for now I'm fitting ripgrep into fzf paradigm
 " Plug 'mhinz/vim-grepper'
-" nnoremap g/ :Grepper! -tool ag -open -switch -cword<cr>
-" "xmap g/ <plug>(GrepperOperator)
-" xnoremap g/ y:Grepper! -tool ag -open -switch -cword<cr>
+" let g:grepper.tools = ['rg', 'git', 'grep']
+" let g:grepper.next_tool = '<leader>g'
+" nnoremap g/ :Grepper -tool rg<cr>
+" nmap gs <plug>(GrepperOperator)
+" xmap gs <plug>(GrepperOperator)
+" nnoremap <leader>* :Grepper -cword -noprompt<cr>
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
