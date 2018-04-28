@@ -1,4 +1,4 @@
 github.com:
 - user: gvaughn
-  oauth_token: b4dbe24e091bec62119f269626678911e4c8748c
+  oauth_token: $TOBESUPPLIED
   protocol: https
