@@ -274,13 +274,71 @@ Plug 'tpope/vim-projectionist' " required for some navigation features
     au FileType elixir nn <buffer> <localleader>x :Mix<Space>
   augroup END
 
-Plug 'slashmili/alchemist.vim' " elixir goodies
-  " function signatures in preview
-  let g:alchemist#extended_autocomplete = 1
+"Plug 'slashmili/alchemist.vim' " elixir goodies
+"  " function signatures in preview
+"  let g:alchemist#extended_autocomplete = 1
+
+"  "optional if you want to close the preview window automatically
+"  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+Plug 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+let $ELIXIRLS = '/Users/gvaughn/dotfiles/config/nvim/elixir-ls-release'
+let g:LanguageClient_serverCommands = {
+    \ 'elixir': ['$ELIXIRLS/language_server.sh']
+    \ }
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+  " TODO use custom LS event to only do this stuff when a LanguageServer is active
+  " need an augroup but also need "autcmd User LanguageClientStarted"
+  " and I gotta look up the syntax and can't be bothered right now
+" augroup LanguageClient_config
+"   autocmd!
+  " set up gq to use language server's formatting
+  set formatexpr=LanguageClient#textDocument_rangeFormatting()
+
+  " none of these did much for debugging, but vim-lsp below showed
+  " me everything ElixirLS was doing
+  " let g:LanguageClient_trace = 'verbose'
+  " let g:LanguageClient_windowLogMessageLevel = 'Log'
+  " let g:LanguageClient_loggingLevel = 'DEBUG'
+  " let g:LanguageClient_rootMarkers = {
+  "    \ 'elixir': ['mix.exs']
+  "    \ }
+
+  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+  " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
   "optional if you want to close the preview window automatically
   autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
   autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" augroup END
+
+" TODO this one below has good logging and helped me debug ElixirLS
+" but it's a very bare-bones plugin. I like that it's only vimscript though
+" instead of the python that LanguageClient_neovim requires
+
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+
+" let g:lsp_log_verbose = 1
+" " let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:lsp_log_file = expand('/tmp/vim-lsp.log')
+" " let g:lsp_signs_error = {'text': '!'}
+" " let g:lsp_signs_warning = {'text': '?'}
+" " let g:lsp_signs_hint = {'text': ';'}
+" let g:lsp_signs_enabled = 1
+
+" augroup elixir_lsp
+"   au!
+"   au User lsp_setup call lsp#register_server({
+"     \ 'name': 'elixirls',
+"     \ 'cmd': {server_info->['/Users/gvaughn/dotfiles/config/nvim/elixir-ls-release/language_server.sh']},
+"     \ 'whitelist': ['elixir', 'eelixir']
+"     \ })
+" augroup END
 
 " heard about this, but saw bug report, so try later
 " Plug 'andyl/vim-textobj-elixir'
@@ -291,7 +349,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'artcticicestudio/nord-vim'
+" Plug 'artcticicestudio/nord-vim'
 
 " new motions
 Plug 'tpope/vim-unimpaired'
