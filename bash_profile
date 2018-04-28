@@ -184,9 +184,10 @@ fi
 # try without rehashing on every shell startup
 if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
-export PATH="/Users/gvaughn/.pyenv/bin:$PATH"
+export PYENV_ROOT='~/.pyenv'
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # Local host-only additions
 [[ -s ~/.local_bash_profile ]] && source ~/.local_bash_profile

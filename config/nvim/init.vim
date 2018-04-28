@@ -12,7 +12,6 @@
 
 "auto-source this file on save
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " preserve default comma behavior as backslash (reverse of f,t search)
 map \ ,
@@ -95,6 +94,8 @@ set diffopt=vertical "vertical diff splits
 set path+=**
 
 " python stuff cargo culted from internet
+" NOTE using pyenv, so I need to `pyenv local neovim2` or `pyenv local neovim3`
+" before executing what :CheckHealth suggests
 let g:python_host_prog = '/Users/gvaughn/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/Users/gvaughn/.pyenv/versions/neovim3/bin/python'
 
@@ -357,10 +358,10 @@ Plug 'henrik/vim-yaml-flattener'
 " shift-command-R (I think it is) that invokes it
 
 " camel and snake case word delimiters (replaces CamelCaseMotion)
-" I can supply
-" let g:wordmotion_prefix = ','
-" to have same behavior as CamelCaseMotion
+" the prefix makes it act like CamelCaseMotion which I like better
+" than the default of always doing inner-Word "words"
 Plug 'chaoren/vim-wordmotion'
+  let g:wordmotion_prefix = ','
 
 " git/hg/mercurial/darcs/etc. diff indicators
 " author says if you only use git, then gitgutter is better
