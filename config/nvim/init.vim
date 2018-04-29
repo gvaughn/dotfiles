@@ -222,8 +222,19 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#omni#input_patterns = {}
   endif
   " use tab for completion
-  inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
-  inoremap <expr><S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
+  " inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
+  " inoremap <expr><S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
+
+" cargo cult from LanguageClient_neovim wiki
+"  this ends up inserting literal "(pumvisible ..." junk
+" Plug 'roxma/nvim-completion-manager'
+" imap <expr> <CR> (pumvisible() ? "\<C-Y>\<Plug>(expand_or_cr)" : "\<CR>")
+" imap <expr> <Plug>(expand_or_cr) (cm#completed_is_snippet() ? "\<C-U>" : "\<CR>")
+" Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+" inoremap <silent> <C-U> <C-R>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<CR>
+" let g:UltiSnipsJumpForwardTrigger = "<C-J>"
+" let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
 
 " Polyglot loads language support on demand!
 Plug 'sheerun/vim-polyglot'
@@ -274,47 +285,55 @@ Plug 'tpope/vim-projectionist' " required for some navigation features
     au FileType elixir nn <buffer> <localleader>x :Mix<Space>
   augroup END
 
-"Plug 'slashmili/alchemist.vim' " elixir goodies
-"  " function signatures in preview
-"  let g:alchemist#extended_autocomplete = 1
-
-"  "optional if you want to close the preview window automatically
-"  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-Plug 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
-let $ELIXIRLS = '/Users/gvaughn/dotfiles/config/nvim/elixir-ls-release'
-let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['$ELIXIRLS/language_server.sh']
-    \ }
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-  " TODO use custom LS event to only do this stuff when a LanguageServer is active
-  " need an augroup but also need "autcmd User LanguageClientStarted"
-  " and I gotta look up the syntax and can't be bothered right now
-" augroup LanguageClient_config
-"   autocmd!
-  " set up gq to use language server's formatting
-  set formatexpr=LanguageClient#textDocument_rangeFormatting()
-
-  " none of these did much for debugging, but vim-lsp below showed
-  " me everything ElixirLS was doing
-  " let g:LanguageClient_trace = 'verbose'
-  " let g:LanguageClient_windowLogMessageLevel = 'Log'
-  " let g:LanguageClient_loggingLevel = 'DEBUG'
-  " let g:LanguageClient_rootMarkers = {
-  "    \ 'elixir': ['mix.exs']
-  "    \ }
-
-  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-  " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-  nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+Plug 'slashmili/alchemist.vim' " elixir goodies
+  " function signatures in preview
+  let g:alchemist#extended_autocomplete = 1
 
   "optional if you want to close the preview window automatically
   autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
   autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-" augroup END
+
+"Plug 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+"let $ELIXIRLS = '/Users/gvaughn/dotfiles/config/nvim/elixir-ls-release'
+"let g:LanguageClient_serverCommands = {
+"    \ 'elixir': ['$ELIXIRLS/language_server.sh']
+"    \ }
+"" Automatically start language servers.
+"let g:LanguageClient_autoStart = 1
+
+"  " TODO use custom LS event to only do this stuff when a LanguageServer is active
+"  " need an augroup but also need "autcmd User LanguageClientStarted"
+"  " and I gotta look up the syntax and can't be bothered right now
+"" augroup LanguageClient_config
+""   autocmd!
+"  " set up gq to use language server's formatting
+"  set formatexpr=LanguageClient#textDocument_rangeFormatting()
+
+"  " none of these did much for debugging, but vim-lsp below showed
+"  " me everything ElixirLS was doing
+"  " let g:LanguageClient_trace = 'verbose'
+"  " let g:LanguageClient_windowLogMessageLevel = 'Log'
+"  " let g:LanguageClient_loggingLevel = 'DEBUG'
+"  " let g:LanguageClient_rootMarkers = {
+"  "    \ 'elixir': ['mix.exs']
+"  "    \ }
+
+"  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"  " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"  nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+"  "optional if you want to close the preview window automatically
+"  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"" augroup END
+
+" only doing this because LanguageClient_neovim sends completions as snippets
+" Doesn't look like it parses the format LC sends them in
+" Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+" inoremap <silent> <C-U> <C-R>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<CR>
+" let g:UltiSnipsJumpForwardTrigger = "<C-J>"
+" let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
 
 " TODO this one below has good logging and helped me debug ElixirLS
 " but it's a very bare-bones plugin. I like that it's only vimscript though
