@@ -325,7 +325,7 @@ Plug 'slashmili/alchemist.vim' " elixir goodies
 "  "optional if you want to close the preview window automatically
 "  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 "  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"" augroup END
+" augroup END
 
 " only doing this because LanguageClient_neovim sends completions as snippets
 " Doesn't look like it parses the format LC sends them in
@@ -334,6 +334,13 @@ Plug 'slashmili/alchemist.vim' " elixir goodies
 " inoremap <silent> <C-U> <C-R>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<CR>
 " let g:UltiSnipsJumpForwardTrigger = "<C-J>"
 " let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
+
+" I'm going to try this along with pre-built snippets for a while
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" elixir snippets are listed here: https://github.com/honza/vim-snippets/blob/master/snippets/elixir.snippets
+" not sure if I like ctrl-j/k navigation and I may also want to have final
+" cursor on following line in all cases
 
 " TODO this one below has good logging and helped me debug ElixirLS
 " but it's a very bare-bones plugin. I like that it's only vimscript though
