@@ -301,6 +301,11 @@ Plug 'slashmili/alchemist.vim' " elixir goodies
 "" Automatically start language servers.
 "let g:LanguageClient_autoStart = 1
 
+" cribbed from https://github.com/JakeBecker/elixir-ls/issues/76
+" let g:languageClient_rootMarkers = {
+"   \ 'elixir': ['mix.exs'],
+"   | }
+
 "  " TODO use custom LS event to only do this stuff when a LanguageServer is active
 "  " need an augroup but also need "autcmd User LanguageClientStarted"
 "  " and I gotta look up the syntax and can't be bothered right now
