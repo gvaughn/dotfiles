@@ -68,7 +68,7 @@ function winname {
 
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
-export PATH=/usr/local/opt/postgresql@9.5/bin:/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/opt/postgresql@9.6/bin:/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
 # so bundle open {gemname} works
 export BUNDLER_EDITOR=v
 
