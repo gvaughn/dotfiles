@@ -1,4 +1,0 @@
-github.com:
-- user: gvaughn
-  oauth_token: $TOBESUPPLIED
-  protocol: https

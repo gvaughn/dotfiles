@@ -122,6 +122,13 @@ if empty(glob(('~/.config/nvim/autoload/plug.vim')))
 endif
 call plug#begin('~/.config/nvim/plugged')
 
+" camel and snake case word delimiters (replaces CamelCaseMotion)
+" the prefix makes it act like CamelCaseMotion which I like better
+" than the default of always doing inner-Word "words"
+" needs to come before fzf to avoid taking over <leader>b
+Plug 'chaoren/vim-wordmotion'
+  let g:wordmotion_prefix = ','
+
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -152,7 +159,7 @@ Plug 'junegunn/fzf.vim'
   " TODO sizing is not right, but I don't use it much either, yet
   nnoremap <silent> <leader>O :MyTags<CR>
 
-  nnoremap <leader>b :Buffers<CR>
+  nnoremap <leader>bb :Buffers<CR>
   nnoremap <leader>gl :Commits<CR>
   nnoremap <leader>gh :BCommits<CR>
   nnoremap <leader>m :Maps<CR>
@@ -445,12 +452,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'henrik/vim-yaml-flattener'
 " shift-command-R (I think it is) that invokes it
-
-" camel and snake case word delimiters (replaces CamelCaseMotion)
-" the prefix makes it act like CamelCaseMotion which I like better
-" than the default of always doing inner-Word "words"
-Plug 'chaoren/vim-wordmotion'
-  let g:wordmotion_prefix = ','
 
 " git/hg/mercurial/darcs/etc. diff indicators
 " author says if you only use git, then gitgutter is better

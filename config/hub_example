@@ -1,0 +1,4 @@
+github.com:
+- user: gvaughn
+  oauth_token: <<create me in github -> personal settings -> personal access tokens>>
+  protocol: https
