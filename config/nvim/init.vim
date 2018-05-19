@@ -300,24 +300,25 @@ Plug 'slashmili/alchemist.vim' " elixir goodies
   autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
   autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-"Plug 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
-"let $ELIXIRLS = '/Users/gvaughn/dotfiles/config/nvim/elixir-ls-release'
-"let g:LanguageClient_serverCommands = {
-"    \ 'elixir': ['$ELIXIRLS/language_server.sh']
+" Plug 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+" let $ELIXIRLS = '/Users/gvaughn/dotfiles/config/nvim/elixir-ls-release'
+" let g:LanguageClient_serverCommands = {
+"     \ 'elixir': ['$ELIXIRLS/language_server.sh']
+"     \ }
+" " Automatically start language servers.
+" let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_hasSnippetSupport = 0
+
+"  " cribbed from https://github.com/JakeBecker/elixir-ls/issues/76
+"  let g:languageClient_rootMarkers = {
+"    \ 'elixir': ['mix.exs'],
 "    \ }
-"" Automatically start language servers.
-"let g:LanguageClient_autoStart = 1
 
-" cribbed from https://github.com/JakeBecker/elixir-ls/issues/76
-" let g:languageClient_rootMarkers = {
-"   \ 'elixir': ['mix.exs'],
-"   | }
-
-"  " TODO use custom LS event to only do this stuff when a LanguageServer is active
-"  " need an augroup but also need "autcmd User LanguageClientStarted"
-"  " and I gotta look up the syntax and can't be bothered right now
-"" augroup LanguageClient_config
-""   autocmd!
+  " TODO use custom LS event to only do this stuff when a LanguageServer is active
+  " need an augroup but also need "autcmd User LanguageClientStarted"
+  " and I gotta look up the syntax and can't be bothered right now
+"augroup LanguageClient_config
+"  autocmd!
 "  " set up gq to use language server's formatting
 "  set formatexpr=LanguageClient#textDocument_rangeFormatting()
 
