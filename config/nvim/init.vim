@@ -602,6 +602,11 @@ let g:netrw_altfile = 1
 " v opens file in new vertical split
 " t opens file in new tab
 let g:netrw_liststyle=3
+" use this percent size for 'o' or 'v' splits
+let g:netrw_winsize = 75
+" let g:netrw_alto = 1
+" let g:netrw_altv = 1
+" let g:netrw_browse_split = 4
 
 " poor man's ZoomWin (doesn't restore)
 " zoom to only this window
