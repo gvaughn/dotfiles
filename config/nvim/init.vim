@@ -270,6 +270,8 @@ Plug 'neomake/neomake'
   " elixir maker has problems finding structs, mix seems to be better
   " let g:neomake_elixir_enabled_makers = ['mix', 'credo']
   let g:neomake_elixir_enabled_makers = ['mix']
+  " workaround so dev-mode autoload still works
+  let $MIX_ENV = 'test'
 
   let g:neomake_ruby_enabled_makers = ['rubocop', 'mri']
 
