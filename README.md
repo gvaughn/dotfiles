@@ -15,3 +15,9 @@
     dotfiles/extremesetup.sh
 ```
 
+## TODO
+consider a bare git repo with explicit workspace setting of $HOME to avoid symlinking
+https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+
+`brew bundle dump` and `brew bundle` via a Brewfile (which can handle casks and font casks)
+https://robots.thoughtbot.com/brewfile-a-gemfile-but-for-homebrew
