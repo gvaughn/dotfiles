@@ -28,7 +28,6 @@ let maplocalleader = ","
 set termguicolors
 set encoding=utf-8
 set laststatus=2
-set number " line numbering
 set ruler " show line, col info in statusline
 set autoread " re-read opened files edited in another program
 set title " Set the title of the iterm tab
@@ -75,6 +74,22 @@ set undofile
 
 " Use mac system cliboard by default
 set clipboard=unnamedplus
+
+" OLD WAY
+" toggle relative numbering
+" nnoremap <silent> <F5> :set relativenumber!<CR>
+" fancier version that also toggles number -- I'm not sure I like it
+" nnoremap <silent> <F5> :exec &number == &relativenumber ? "set number!" : "set relativenumber!"<CR>
+
+" number management
+set number relativenumber
+" Use hybrid numbers for normal mode active window, but absolute number for
+" inactive window or active window in insert mode
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 "visual indicator of end of edit area
 set cpoptions+=$
@@ -686,11 +701,6 @@ cmap w!! w !sudo tee % >/dev/null
 "   redraw
 " endfunction
 "autocmd FocusGained * call s:Pulse()
-
-" toggle relative numbering
-nnoremap <silent> <F5> :set relativenumber!<CR>
-" fancier version that also toggles number -- I'm not sure I like it
-" nnoremap <silent> <F5> :exec &number == &relativenumber ? "set number!" : "set relativenumber!"<CR>
 
 " Removes trailing spaces
 function! TrimWhiteSpace()
