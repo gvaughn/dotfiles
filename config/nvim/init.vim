@@ -43,6 +43,9 @@ set smartcase
 " turn off search highlighting
 nnoremap <silent> <CR> :nohlsearch<CR>
 
+" new nvim feature to incremntally show command effects
+set inccommand=split
+
 " Whitespace stuff
 set nowrap
 set shiftwidth=2
