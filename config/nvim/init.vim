@@ -43,6 +43,7 @@ set smartcase
 nnoremap <silent> <CR> :nohlsearch<CR>
 
 " new nvim feature to incremntally show command effects
+" http://evantravers.com/articles/2019/02/13/enhancing-search-and-replace-in-neovim-with-inccomand/
 set inccommand=split
 
 " Whitespace stuff
