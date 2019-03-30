@@ -514,9 +514,10 @@ Plug 'airblade/vim-gitgutter'
   let g:gitgutter_eager = 1
   nmap <silent> ]h :GitGutterNextHunk<CR>
   nmap <silent> [h :GitGutterPrevHunk<CR>
-  nmap <silent> <leader>hs <Plug>GitGutterStageHunk
-  nmap <silent> <leader>hu <Plug>GitGutterUndoHunk
-  nmap <silent> <leader>hp <Plug>GitGutterPreviewHunk
+  " I'm not using these and they interfere with ,h for tabprev
+  " nmap <silent> <leader>hs <Plug>GitGutterStageHunk
+  " nmap <silent> <leader>hu <Plug>GitGutterUndoHunk
+  " nmap <silent> <leader>hp <Plug>GitGutterPreviewHunk
 
 " fix bar/block cursor in tmux also FocusGained, FocusLost
 " Plug 'sjl/vitality.vim'
