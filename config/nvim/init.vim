@@ -144,7 +144,7 @@ call plug#begin('~/.config/nvim/plugged')
 " camel and snake case word delimiters (replaces CamelCaseMotion)
 " the prefix makes it act like CamelCaseMotion which I like better
 " than the default of always doing inner-Word "words"
-" needs to come before fzf to avoid taking over <leader>b
+" I mostly use it for <option>-w to jump to inner part of snake cased words
 Plug 'chaoren/vim-wordmotion'
   " let g:wordmotion_prefix = ','
   " Instead of taking over the leader key, this uses the option key (with
@@ -189,7 +189,7 @@ Plug 'junegunn/fzf.vim'
   " TODO sizing is not right, but I don't use it much either, yet
   nnoremap <silent> <leader>O :MyTags<CR>
 
-  nnoremap <leader>bb :Buffers<CR>
+  nnoremap <leader>b :Buffers<CR>
   nnoremap <leader>gl :Commits<CR>
   nnoremap <leader>gh :BCommits<CR>
   nnoremap <leader>m :Maps<CR>
@@ -217,12 +217,8 @@ command! -bang -nargs=* Fzgrep
   \  <bang>0)
 
   " cross file regex search
-  " FYI Ag is defined by fzf
-  " still need to figure out global .agignore
-  " nnoremap <silent> g/ :Ag<CR>
   nnoremap <silent> g/ :Fzgrep!<CR>
   " search project for word under cursor
-  " nnoremap <silent> <leader>* :Ag <C-R><C-W><CR>
   nnoremap <silent> <leader>* :Fzgrep <C-R><C-W><CR>
   vnoremap <leader>* :call SearchVisualSelectionWithAg()<CR>
   function! SearchVisualSelectionWithAg() range
@@ -234,7 +230,6 @@ command! -bang -nargs=* Fzgrep
     let selection = getreg('"')
     call setreg('"', old_reg, old_regtype)
     let &clipboard = old_clipboard
-    " execute 'Ag' selection
     execute 'Fzgrep' selection
   endfunction
 
@@ -304,25 +299,26 @@ Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache'
 
 Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist' " required for some navigation features
-  augroup elixir
-    au!
-    autocmd BufWritePost *.exs,*.ex silent :!mix format %
-    au FileType elixir nn <buffer> <localleader>a :A<CR>
-    au FileType elixir nn <buffer> <localleader>d :ExDoc<Space>
-    au FileType elixir nn <buffer> <localleader>gc :Econtroller<Space>
-    au FileType elixir nn <buffer> <localleader>gf :Econfig<Space>
-    au FileType elixir nn <buffer> <localleader>gm :Emodel<Space>
-    au FileType elixir nn <buffer> <localleader>gt :Etest<Space>
-    au FileType elixir nn <buffer> <localleader>gr :Erouter<Space>
-    au FileType elixir nn <buffer> <localleader>gv :Eview<Space>
-    au FileType elixir nn <buffer> <localleader>gx :Echannel<Space>
-    au FileType elixir nn <buffer> <localleader>i :IEx<CR>
-    au FileType elixir nn <buffer> <localleader>pg :Pgenerate<Space>
-    au FileType elixir nn <buffer> <localleader>pp :Ppreview<Space>
-    au FileType elixir nn <buffer> <localleader>ps :Pgenerate<Space>
-    au FileType elixir nn <buffer> <localleader>x :Mix<Space>
-  augroup END
+" I really don't use projectionist
+" Plug 'tpope/vim-projectionist' " required for some navigation features
+"   augroup elixir
+"     au!
+"     autocmd BufWritePost *.exs,*.ex silent :!mix format %
+"     au FileType elixir nn <buffer> <localleader>a :A<CR>
+"     au FileType elixir nn <buffer> <localleader>d :ExDoc<Space>
+"     au FileType elixir nn <buffer> <localleader>gc :Econtroller<Space>
+"     au FileType elixir nn <buffer> <localleader>gf :Econfig<Space>
+"     au FileType elixir nn <buffer> <localleader>gm :Emodel<Space>
+"     au FileType elixir nn <buffer> <localleader>gt :Etest<Space>
+"     au FileType elixir nn <buffer> <localleader>gr :Erouter<Space>
+"     au FileType elixir nn <buffer> <localleader>gv :Eview<Space>
+"     au FileType elixir nn <buffer> <localleader>gx :Echannel<Space>
+"     au FileType elixir nn <buffer> <localleader>i :IEx<CR>
+"     au FileType elixir nn <buffer> <localleader>pg :Pgenerate<Space>
+"     au FileType elixir nn <buffer> <localleader>pp :Ppreview<Space>
+"     au FileType elixir nn <buffer> <localleader>ps :Pgenerate<Space>
+"     au FileType elixir nn <buffer> <localleader>x :Mix<Space>
+"   augroup END
 
 Plug 'slashmili/alchemist.vim' " elixir goodies
   " function signatures in preview
@@ -465,6 +461,25 @@ Plug 'kana/vim-textobj-user' "prerequisite for other text object plugins
 Plug 'nelstrom/vim-textobj-rubyblock'
 "required config
 runtime macros/matchit.vim
+
+" enhanced text objects
+" Improves/expands targets of `i` in and `a` around textobjects
+" some enhancements:
+" `daa` "d around argument" will remove only one comma between args
+" can use `n` next and `l` last prefix on textobject
+" `b` is any block type
+" `q` is any quote type
+" my customization below defines
+" `s` is any separator type
+Plug 'wellle/targets.vim'
+autocmd User targets#mappings#user call targets#mappings#extend({
+    \ 's': { 'separator': [{'d':','}, {'d':'.'}, {'d':';'}, {'d':':'}, {'d':'+'}, {'d':'-'},
+    \                      {'d':'='}, {'d':'~'}, {'d':'_'}, {'d':'*'}, {'d':'#'}, {'d':'/'},
+    \                      {'d':'\'}, {'d':'|'}, {'d':'&'}, {'d':'$'}] }
+    \ })
+" customization to help with snake case words.
+" Normally you'd need to `ca_` to change one portion of a snake cased word
+" This lets you use `cas` (mnemonic s = separator) to change snake and other separators
 
 " adds gS and gJ for syntax-aware splitting and joining
 Plug 'AndrewRadev/splitjoin.vim'
