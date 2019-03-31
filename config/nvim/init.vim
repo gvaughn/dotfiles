@@ -428,7 +428,8 @@ Plug 'tpope/vim-unimpaired'
   vmap <C-Up> [egv
   vmap <C-Down> ]egv
 
-Plug 'tpope/vim-surround'
+" I'm going to try vim-sandwich, but keeping this here as a reminder if I want to go back
+" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
@@ -444,6 +445,19 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_folding_disabled=1
   let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh', 'elixir']
+
+Plug 'machakann/vim-sandwich'
+" core commands are `sa` surround-add, `sd` surround-delete, `sr` surround-replace
+" commentary: http://evantravers.com/articles/2019/01/07/vim-sandwich-vs-vim-surround/
+" an Elixir keyword list (like [a: 1, b:2]) can be converted to a map via:
+" srbi%{<CR>}<CR> (mnemonic: surround-replace any _b_racket _i_nteractively
+" with start of '%{}' and end of '}')
+
+" per advice from vim-sandwich docs:
+" `s` can be replaced by `cl` but I don't commonly use it, so :shrug:
+nmap s <Nop>
+xmap s <Nop>
+" runtime macros/sandwich/keymap/surround.vim
 
 " many options, but simple to visual select, enter, type char to align on, and bam
 Plug 'junegunn/vim-easy-align'
