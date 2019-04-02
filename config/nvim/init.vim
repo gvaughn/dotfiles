@@ -457,7 +457,16 @@ Plug 'machakann/vim-sandwich'
 " `s` can be replaced by `cl` but I don't commonly use it, so :shrug:
 nmap s <Nop>
 xmap s <Nop>
+" I'm not sure I need these training wheels, but not sure yet
 " runtime macros/sandwich/keymap/surround.vim
+" these customizations let me do things like `saiwm`
+"       to surround an inner word with a 'm'ap syntax: %{...}
+"       or to visually select a line and `sa3"`
+"       to surround a line with """..."""
+autocmd FileType elixir call sandwich#util#addlocal([
+\   {'buns': ['"""', '"""'], 'nesting': 0, 'input': ['3"']},
+\   {'buns': ['%{', '}'], 'nesting': 1, 'input': ['m']},
+\ ])
 
 " many options, but simple to visual select, enter, type char to align on, and bam
 Plug 'junegunn/vim-easy-align'
