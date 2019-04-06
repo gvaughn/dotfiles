@@ -461,12 +461,28 @@ xmap s <Nop>
 " runtime macros/sandwich/keymap/surround.vim
 " these customizations let me do things like `saiwm`
 "       to surround an inner word with a 'm'ap syntax: %{...}
+"       a capital `M` will prompt for a struct name
 "       or to visually select a line and `sa3"`
 "       to surround a line with """..."""
+augroup elixir_sandwich
+  au!
 autocmd FileType elixir call sandwich#util#addlocal([
 \   {'buns': ['"""', '"""'], 'nesting': 0, 'input': ['3"']},
 \   {'buns': ['%{', '}'], 'nesting': 1, 'input': ['m']},
+\   {'buns': 'StructInput()', 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['M'], 'listexpr': 1, 'nesting': 1},
+\   {'buns': ['%\w\+{', '}'], 'input': ['M'], 'nesting': 1, 'regex': 1},
 \ ])
+augroup END
+
+function! StructInput() abort
+  let s:StructLast = input('Struct: ')
+  if s:StructLast !=# ''
+    let struct = printf('%%%s{', s:StructLast)
+  else
+    throw 'OperatorSandwichCancel'
+  endif
+  return [struct, '}']
+endfunction
 
 " many options, but simple to visual select, enter, type char to align on, and bam
 Plug 'junegunn/vim-easy-align'
