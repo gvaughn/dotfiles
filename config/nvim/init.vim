@@ -768,10 +768,11 @@ nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
 " tab navigation maybe I'll use
 nnoremap <leader>n :tabnew .<CR><C-P>
-" nnoremap <leader>h :tabprev<CR>
-" nnoremap <leader>l :tabnext<CR>
-nnoremap ]w gt
-nnoremap [w gT
+nnoremap <leader>h :tabprev<CR>
+nnoremap <leader>l :tabnext<CR>
+" interesting alternate idea, but not sure I'm ready to change
+" nnoremap ]w gt
+" nnoremap [w gT
 
 " Delete all hidden buffers
 nnoremap <silent> <Leader><BS>b :call DeleteHiddenBuffers()<CR>
