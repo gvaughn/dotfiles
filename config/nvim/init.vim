@@ -298,27 +298,11 @@ Plug 'ngmy/vim-rubocop'
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache'
 
-Plug 'c-brenn/phoenix.vim'
 " I really don't use projectionist
 " Plug 'tpope/vim-projectionist' " required for some navigation features
   augroup elixir
     au!
     autocmd BufWritePost *.exs,*.ex silent :!mix format %
-    " these are projectionist things below (I think)
-"     au FileType elixir nn <buffer> <localleader>a :A<CR>
-"     au FileType elixir nn <buffer> <localleader>d :ExDoc<Space>
-"     au FileType elixir nn <buffer> <localleader>gc :Econtroller<Space>
-"     au FileType elixir nn <buffer> <localleader>gf :Econfig<Space>
-"     au FileType elixir nn <buffer> <localleader>gm :Emodel<Space>
-"     au FileType elixir nn <buffer> <localleader>gt :Etest<Space>
-"     au FileType elixir nn <buffer> <localleader>gr :Erouter<Space>
-"     au FileType elixir nn <buffer> <localleader>gv :Eview<Space>
-"     au FileType elixir nn <buffer> <localleader>gx :Echannel<Space>
-"     au FileType elixir nn <buffer> <localleader>i :IEx<CR>
-"     au FileType elixir nn <buffer> <localleader>pg :Pgenerate<Space>
-"     au FileType elixir nn <buffer> <localleader>pp :Ppreview<Space>
-"     au FileType elixir nn <buffer> <localleader>ps :Pgenerate<Space>
-    au FileType elixir nn <buffer> <localleader>x :Mix<Space>
   augroup END
 
 Plug 'slashmili/alchemist.vim' " elixir goodies
