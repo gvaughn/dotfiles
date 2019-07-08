@@ -301,6 +301,8 @@ Plug 'ludovicchabant/vim-gutentags'
 " I really don't use projectionist
 " Plug 'tpope/vim-projectionist' " required for some navigation features
   augroup elixir
+    " I can disable on a particular buffer with
+    " :autocmd! elixir BufWritePost *.exs,*.ex
     au!
     autocmd BufWritePost *.exs,*.ex silent :!mix format %
   augroup END
