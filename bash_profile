@@ -17,6 +17,9 @@ PS1='\[\033[G\][gv@\h \W$(__git_ps1 " (%s)")]\$ '
 # let's use hub for all my git needs
 eval "$(hub alias -s)"
 
+# more colorful subshells
+export CLIE_COLOR=1
+
 export GREP_OPTIONS='--color=auto'
 export LESS='-iMRXFfx4'
 #export VISUAL='mvim'
@@ -95,9 +98,11 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep
 alias vim=nvim
 alias ls='ls -aFGh'
 alias ll='ls -lah'
+alias myip='curl ifconfig.co'
+# redis stuff
 alias flush='echo "flush_all" | nc localhost 11211'
 alias flushredis='redis-cli flushall'
-alias raket='USE_TURN=true time rake | grep -v PASS; growlnotify -s -m "Rake tests: DONE"'
+
 alias update_submodules='git pull --recurse-submodules && git submodule update'
 #alias mdns_restart='sudo killall -HUP mDNSResponder'
 # above is pre-Yosemite
