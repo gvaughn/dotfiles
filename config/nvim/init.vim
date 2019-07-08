@@ -480,6 +480,8 @@ Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'jiangmiao/auto-pairs' " duplicates above?
 
 Plug 'kana/vim-textobj-user' "prerequisite for other text object plugins
+" ae, ie (around-elixir, inner-elixir) text objects
+Plug 'andyl/vim-textobj-elixir'
 
 " ar, ir (around-ruby, inner-ruby) text objects
 Plug 'nelstrom/vim-textobj-rubyblock'
