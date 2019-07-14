@@ -11,7 +11,10 @@
 " changes file format (line endings) without any regex business
 
 "auto-source this file on save
-autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+augroup reload_vimrc
+  au!
+  au BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
 
 " preserve default comma behavior as backslash (reverse of f,t search)
 map \ ,
