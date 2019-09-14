@@ -1,4 +1,7 @@
+# how to upgrade urls from git protocol to ssh (rather than https)
+# git remote set-url origin ssh://git@github.com/user/repo.git
+# https://stackoverflow.com/questions/42735837/git-bash-remote-error-you-cant-push-to-git-github-com
 github.com:
 - user: gvaughn
-  oauth_token: <<create me in github -> personal settings -> personal access tokens>>
+  oauth_token: <<create me in github -> settings -> developer settings -> personal access tokens>>
   protocol: https
