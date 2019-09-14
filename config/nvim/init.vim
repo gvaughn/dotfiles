@@ -118,8 +118,9 @@ set path+=**
 " python stuff cargo culted from internet
 " NOTE using pyenv, so I need to `pyenv local neovim2` or `pyenv local neovim3`
 " before executing what :CheckHealth suggests
-let g:python_host_prog = '/Users/gvaughn/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/gvaughn/.pyenv/versions/neovim3/bin/python'
+" let g:python_host_prog = '/Users/gvaughn/.pyenv/versions/neovim2/bin/python'
+" let g:python3_host_prog = '/Users/gvaughn/.pyenv/versions/neovim3/bin/python'
+" NOTE both versions can be on path via asdf https://github.com/danhper/asdf-python#using-multiple-versions-of-python
 
 " enable omni syntax completion
 augroup omnifuncs
