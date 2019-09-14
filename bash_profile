@@ -123,11 +123,11 @@ alias :q=exit
 alias micfix="osascript -e 'set volume input volume 80'"
 alias add_ssh_ids="ssh-add ~/.ssh/*rsa*"
 alias natinfo="natutil -vx -s"
-alias webpack-watcher="$(npm bin)/webpack --progress --colors --watch -d"
+# alias webpack-watcher="$(npm bin)/webpack --progress --colors --watch -d"
 # alias ag='ag --path-to-agignore ~/.agignore'
 # autocorrect all changed files
 alias autorubo='git diff `git merge-base origin/master HEAD` --name-only | xargs -I {} rubocop --auto-correct {}'
-alias npm-exec='PATH=$(npm bin):$PATH'
+# alias npm-exec='PATH=$(npm bin):$PATH'
 
 alias iep='iex -S mix phx.server'
 alias iem='iex -S mix'
@@ -203,11 +203,11 @@ export FZF_TMUX_HEIGHT='20%'
 # rbenv goodies
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # try without rehashing on every shell startup
-if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
+# if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
-export PYENV_ROOT='~/.pyenv'
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT='~/.pyenv'
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
 # Local host-only additions
@@ -221,5 +221,9 @@ eval "$(pyenv init -)"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# use this if asdf installed directly from source:
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
+# use this for asdf installed via homebrew
+.  $(brew --prefix asdf)/asdf.sh
+
