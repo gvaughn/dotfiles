@@ -4,16 +4,16 @@ utils=(
   bash-completion
   git
   ctags
-  neovim/neovim/neovim
-  the_silver_searcher
+  neovim
   httpie
   reattach-to-user-namespace
   wemux
   hub
-  rbenv
   keybase
   heroku
   jq
+  ripgrep
+  asdf
 )
 
 brew install ${utils[@]}
