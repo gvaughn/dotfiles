@@ -18,7 +18,7 @@ defmodule Clipboard do
 
         val ->
           val
-          |> Inspect.Algebra.to_doc(%Inspect.Opts{limit: :infinity})
+          |> Inspect.Algebra.to_doc(%Inspect.Opts{limit: :infinity, pretty: true})
           |> Inspect.Algebra.format(:infinity)
       end
 
