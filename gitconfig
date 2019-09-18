@@ -82,4 +82,6 @@
 [help]
   autocorrect = 1
 [commit]
-	verbose = true
+  verbose = true
+[diff "elixir"]
+  xfuncname = ^[ \t]*((def(macro|module|impl|guard|protocol)?p?|test)[ \t].*)$
