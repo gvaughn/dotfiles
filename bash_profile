@@ -64,7 +64,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 function tabname {
   printf "\e]1;$1\a"
 }
- 
+
 function winname {
   printf "\e]2;$1\a"
 }
@@ -149,13 +149,24 @@ function g {
 # get tab completion with my function
 __git_complete g _git
 
- function light() {
+# light: source highlight code in clipboard or file to clipboard for pasting
+# note: requires `brew install highlight`
+# call as either `light <filetype || elixir>` or `light <filetype> <filename>`
+# available themes/langs: highlight --list-scripts=themes
+function light() {
   if [ -z "$2" ]
     then src="pbpaste"
   else
     src="cat $2"
   fi
-  $src | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-dark --font-size 24 | pbcopy
+  $src | \
+    highlight \
+      --out-format rtf \
+      --syntax ${1:-elixir} \
+      --font "Fira Code Retina" \
+      --font-size 24 \
+      --style github | \
+    pbcopy
 }
 
 function mdless {
