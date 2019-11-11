@@ -583,6 +583,8 @@ let g:indentLine_color_term = 255
 " TODO not sure how to get this configured yet
 " saw it working once, kinda
 
+" Plug 'zxqfl/tabnine-vim'
+
 call plug#end()
 
 " Default color scheme
