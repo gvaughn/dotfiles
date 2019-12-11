@@ -583,7 +583,14 @@ let g:indentLine_color_term = 255
 " TODO not sure how to get this configured yet
 " saw it working once, kinda
 
-" Plug 'zxqfl/tabnine-vim'
+" creates :Bclose to delete buffer without closing window
+" I've mapped it to <leader>q to see if I like the workflow
+Plug 'rbgrouleff/bclose.vim'
+  " don't delete if we have the same buffer open in multiple windows
+  let bclose_multiple = 0
+  " don't use default mapping of <leader>bd
+  let g:bclose_no_plugin_maps = 1
+  nmap <silent> <leader>q :Bclose<CR>
 
 call plug#end()
 
