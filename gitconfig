@@ -26,7 +26,9 @@
   headsha = rev-parse head
   amend = !git commit --amend -C HEAD --date \"`date`\"
   co = checkout
+  cb = checkout -b
   br = branch
+  bd = branch -D
   ci = commit
   st = status
   short-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(refname:short)'
