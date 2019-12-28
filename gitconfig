@@ -54,16 +54,26 @@
   remote = green
 [color "diff"]
   meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+  commit = yellow bold
+  ; old = red bold
+  ; new = green bold
+  whitespace = red reverse
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
+[color "diff-highlight"]
+  ; NOTE I think diff-highlight is only used by diff-so-fancy
+  oldNormal = red bold
+  oldHighlight = red bold reverse
+  newNormal = green bold
+  newHighlight = green reverse
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
+  ; must `brew install diff-so-fancy`
+  ; pattern means I can use `n/N` to navigate to each file in diff
+  pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [rerere]
   enabled = true
 [branch]
@@ -85,3 +95,5 @@
   verbose = true
 [diff "elixir"]
   xfuncname = ^[ \t]*((def(macro|module|impl|guard|protocol)?p?|test)[ \t].*)$
+[diff-so-fancy]
+  stripLeadingSymbols = false
