@@ -57,6 +57,8 @@
   commit = yellow bold
   ; old = red bold
   ; new = green bold
+  oldMoved = red ul
+  newMoved = green ul
   whitespace = red reverse
 [color "status"]
   added = yellow
@@ -85,6 +87,7 @@
 [diff]
   algorithm = patience
   compactionHeuristic = true
+  colorMoved = zebra
 [mergetool]
   keepBackup = false
 [merge]
