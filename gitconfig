@@ -77,7 +77,9 @@
   excludesfile = ~/.gitignore_global
   ; must `brew install diff-so-fancy`
   ; pattern means I can use `n/N` to navigate to each file in diff
-  pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+  ; pattern gives "Pattern not found" errors in logs and other things using pager
+  ; pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [rerere]
   enabled = true
 [branch]
