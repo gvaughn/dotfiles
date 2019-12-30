@@ -26,6 +26,7 @@
   headsha = rev-parse head
   amend = !git commit --amend -C HEAD --date \"`date`\"
   co = checkout
+  cm = checkout master
   cb = checkout -b
   br = branch
   bd = branch -D
