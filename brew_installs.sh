@@ -83,8 +83,10 @@ apps=(
 echo "installing apps..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
-brew tap caskroom/fonts
-brew cask install font-fira-code
+# brew tap caskroom/fonts
+# brew cask install font-fira-code
+brew tap homebrew/cask-fonts
+brew cask install font-jetbrains-mono-powerline
 
 # Let's get rbenv set up
 mkdir -p ~/.rbenv/plugins/
