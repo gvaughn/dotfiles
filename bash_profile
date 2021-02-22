@@ -60,6 +60,9 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # NOTE MacOS needs you to 'touch ~/.iex_history' before it works
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# asdf will build erlang docs available in iex (Elixir 1.11+ and OTP 23+)
+export KERL_BUILD_DOCS="yes"
+
 # control Terminal.app tab names
 function tabname {
   printf "\e]1;$1\a"
@@ -71,7 +74,7 @@ function winname {
 
 export RUBYOPT=-Itest # so we can just invoke ruby test/unit/foo.rb
 
-export PATH=/usr/local/opt/postgresql@9.6/bin:/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/opt/postgresql@11/bin:/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
 # so bundle open {gemname} works
 export BUNDLER_EDITOR=v
 
