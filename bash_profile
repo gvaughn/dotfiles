@@ -63,6 +63,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # asdf will build erlang docs available in iex (Elixir 1.11+ and OTP 23+)
 export KERL_BUILD_DOCS="yes"
 
+# avoid JInterface stuff in erlang
+export KERL_CONFIGURE_OPTIONS="--without-javac"
+
 # control Terminal.app tab names
 function tabname {
   printf "\e]1;$1\a"
