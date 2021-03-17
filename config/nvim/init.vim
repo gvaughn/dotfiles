@@ -254,8 +254,8 @@ command! -bang -nargs=* Fzgrep
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
-  if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
+  if !exists('g:deoplete#custom#var')
+    let g:deoplete#custom#var = {}
   endif
   " use tab for completion
   " inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
@@ -407,7 +407,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'trevordmiller/nova-vim'
+" Plug 'trevordmiller/nova-vim'
 " Plug 'artcticicestudio/nord-vim'
 
 " new motions
@@ -531,7 +531,8 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline_paste_symbol     = '∥'
   let g:airline#extensions#tabline#enabled = 0
 
-Plug 'henrik/vim-yaml-flattener'
+" NOTE requires neovim compiled with ruby support
+" Plug 'henrik/vim-yaml-flattener'
 " shift-command-R (I think it is) that invokes it
 
 " git/hg/mercurial/darcs/etc. diff indicators
@@ -596,10 +597,11 @@ call plug#end()
 
 " Default color scheme
 syntax enable
-set background=dark
-" colorscheme solarized
+" set background=dark
+set background=light
+colorscheme solarized
 " colorscheme seoul256
-colorscheme nova
+" colorscheme nova
 
 let $MYTODO = '~/Dropbox/todo.taskpaper'
 

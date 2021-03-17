@@ -2,11 +2,12 @@
 [user]
   name = Greg Vaughn
   # prefer to keep email in individual repos' config
-  # Use GIT_AUTHOR_EMAIL env var to override or mep, mebo
+  # Use GIT_AUTHOR_EMAIL env var to override or mep, meds
 [push]
   default = tracking
 [alias]
   mep = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@gmail.com; } ; f"
+  meds = "!f() { git config user.name "Greg Vaughn"; git config user.email greg.vaughn@dscout.com; } ; f"
   mess = "!f() { git config user.name "Greg Vaughn"; git config user.email greg@seatscouts.com; } ; f"
   copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
   prunepr = "!git for-each-ref refs/heads/pr-* --format='%(refname:short)' | while read ref ; do git branch -D $ref ; done"

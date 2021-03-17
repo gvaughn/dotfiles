@@ -1,7 +1,13 @@
 ##Installation
 ```
+Install homebrew
+set up ssh key and associate with github profile
+
     cd ~
     git clone git://github.com/gvaughn/dotfiles.git
+    mkdir -p ~/.,config/nvim
+    ln -s ~/dotfiles/profile ~/.profile
+    ln -s ~/dotfiles/zshrc ~/.zshrc
     ln -s ~/dotfiles/bash_profile ~/.bash_profile
     ln -s ~/dotfiles/gitconfig ~/.gitconfig
     ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
@@ -10,9 +16,11 @@
     ln -s ~/dotfiles/ctags ~/.ctags
     ln -s ~/dotfiles/bin ~/bin
     ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
+    ln -s ~/dotfiles/iex.exs ~/.iex.exs
+    ln -s ~/dotfiles/ignore ~/.ignore
     ln -s ~/dotfiles/config/ripgrep ~/.config/ripgrep
     dotfiles/brew_installs.sh
-    dotfiles/extremesetup.sh
+    <!-- dotfiles/extremesetup.sh -->
 ```
 
 ## TODO
