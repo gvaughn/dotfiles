@@ -74,6 +74,8 @@ function gmux {
   wemux new -s $name || wemux attach-session -t $name
 }
 
+# zsh prezto "helpfully" creates this alias
+unalias g
 function g {
   if [[ $# > 0 ]]; then
     git "$@"

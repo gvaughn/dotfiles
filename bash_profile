@@ -244,3 +244,7 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 # use this for asdf installed via homebrew
 .  $(brew --prefix asdf)/asdf.sh
 
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
