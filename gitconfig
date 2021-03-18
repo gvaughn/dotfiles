@@ -27,7 +27,8 @@
   headsha = rev-parse head
   amend = !git commit --amend -C HEAD --date \"`date`\"
   co = checkout
-  cm = checkout master
+  # look up what origin names their primary branch because of renaming
+  cm = "!git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
   cb = checkout -b
   br = branch
   bd = branch -D
