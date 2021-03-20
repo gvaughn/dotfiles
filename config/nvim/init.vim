@@ -407,7 +407,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
-" Plug 'trevordmiller/nova-vim'
+Plug 'trevordmiller/nova-vim'
 " Plug 'artcticicestudio/nord-vim'
 
 " new motions
@@ -597,11 +597,11 @@ call plug#end()
 
 " Default color scheme
 syntax enable
-" set background=dark
-set background=light
-colorscheme solarized
+set background=dark
+" set background=light
+" colorscheme solarized
 " colorscheme seoul256
-" colorscheme nova
+colorscheme nova
 
 let $MYTODO = '~/Dropbox/todo.taskpaper'
 
