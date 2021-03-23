@@ -65,7 +65,7 @@ alias ll='ls -lah'
 alias myip='curl ifconfig.co'
 alias :q=exit
 alias iep='iex -S mix phx.server'
-alias iem='iex -S mix'
+alias iem='iex -S mix'
 
 function gmux {
   # This is Greg's tmux/wemux so I can stop looking up precise syntax
