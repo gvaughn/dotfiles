@@ -75,7 +75,7 @@ function gmux {
 }
 
 # zsh prezto "helpfully" creates this alias
-unalias g
+# unalias g
 function g {
   if [[ $# > 0 ]]; then
     git "$@"
@@ -84,7 +84,7 @@ function g {
   fi
 }
 # get tab completion with my function
-# __git_complete g _git
+__git_complete g _git
 
 # light: source highlight code in clipboard or file to clipboard for pasting
 # note: requires `brew install highlight`
