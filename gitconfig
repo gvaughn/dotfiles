@@ -107,3 +107,5 @@
   xfuncname = ^[ \t]*((def(macro|module|impl|guard|protocol)?p?|test)[ \t].*)$
 [diff-so-fancy]
   stripLeadingSymbols = false
+[pull]
+	rebase = true
