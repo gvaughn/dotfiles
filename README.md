@@ -22,6 +22,7 @@ set up ssh key and associate with github profile
     dotfiles/brew_installs.sh
     <!-- dotfiles/extremesetup.sh -->
 ```
+Copy `config/hub_example` to `~/.config/hub` and follow steps to create Personal Access Token for smoother use of hub command
 
 ## TODO
 consider a bare git repo with explicit workspace setting of $HOME to avoid symlinking
