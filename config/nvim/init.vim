@@ -291,7 +291,8 @@ Plug 'neomake/neomake'
   " workaround so dev-mode autoload still works
   let $MIX_ENV = 'test'
 
-  let g:neomake_ruby_enabled_makers = ['rubocop', 'mri']
+  " let g:neomake_ruby_enabled_makers = ['rubocop', 'mri']
+  let g:neomake_ruby_enabled_makers = ['mri']
 
   " let g:neomake_open_list = 2
   " let g:neomake_logfile = '/tmp/neomake.log'

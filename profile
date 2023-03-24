@@ -84,7 +84,10 @@ function g {
   fi
 }
 # get tab completion with my function
-__git_complete g _git
+# this for bash
+# __git_complete g _git
+# this for zsh
+compdef _git g=git
 
 # light: source highlight code in clipboard or file to clipboard for pasting
 # note: requires `brew install highlight`

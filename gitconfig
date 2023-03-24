@@ -34,6 +34,7 @@
   bd = branch -D
   ci = commit
   st = status
+  pob = push -u origin HEAD
   short-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(refname:short)'
   long-recent-branches = for-each-ref --count=25 --sort=-committerdate refs/heads/ --format='%(HEAD)%(color:yellow)%(refname:short) %(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
   b = !git checkout $(git long-recent-branches | fzf --ansi --color=light --no-sort -n1| sed -E 's/(\\*)?([^ ]+).*/\\2/') # interactive branch switcher via fzf

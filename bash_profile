@@ -169,7 +169,7 @@ function light() {
     highlight \
       --out-format rtf \
       --syntax ${1:-elixir} \
-      --font "Fira Code Retina" \
+      --font "Menlo" \
       --font-size 24 \
       --style github | \
     pbcopy
