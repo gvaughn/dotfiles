@@ -1,4 +1,13 @@
-. /usr/local/opt/asdf/asdf.sh
+if type brew &>/dev/null
+then
+  # brew completionsß
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+
+. $(brew --prefix asdf)/libexec/asdf.sh
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

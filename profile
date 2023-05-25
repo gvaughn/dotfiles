@@ -54,7 +54,7 @@ export KERL_BUILD_DOCS="yes"
 # avoid JInterface stuff in erlang
 export KERL_CONFIGURE_OPTIONS="--without-javac"
 
-export PATH=/bin:/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+export PATH=/bin:~/bin:$PATH
 
 # rg has no default path; must be specified
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep

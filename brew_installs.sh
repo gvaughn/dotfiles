@@ -10,11 +10,13 @@ utils=(
   reattach-to-user-namespace
   wemux
   hub
-  keybase
+#  keybase
   jq
   ripgrep
   asdf
   fzf
+  wxwidgets
+  autoconf
 )
 
 brew install ${utils[@]}
@@ -42,9 +44,9 @@ apps=(
 
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
-echo "installing apps..."
-brew tap homebrew/cask
-brew install --appdir="/Applications" ${apps[@]}
+#echo "installing apps..."
+#brew tap homebrew/cask
+#brew install --appdir="/Applications" ${apps[@]}
 
 # brew install font-fira-code
 brew tap homebrew/cask-fonts

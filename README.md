@@ -19,6 +19,7 @@ set up ssh key and associate with github profile
     ln -s ~/dotfiles/iex.exs ~/.iex.exs
     ln -s ~/dotfiles/ignore ~/.ignore
     ln -s ~/dotfiles/config/ripgrep ~/.config/ripgrep
+    ln -s ~/dotfiles/config/fish ~/.config/fish
     dotfiles/brew_installs.sh
     <!-- dotfiles/extremesetup.sh -->
 ```
