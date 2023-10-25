@@ -1,6 +1,6 @@
 if type brew &>/dev/null
 then
-  # brew completionsß
+  # brew completions
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
   autoload -Uz compinit

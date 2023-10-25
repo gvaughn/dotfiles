@@ -289,7 +289,9 @@ Plug 'neomake/neomake'
   " let g:neomake_elixir_enabled_makers = ['mix', 'credo']
   let g:neomake_elixir_enabled_makers = ['mix']
   " workaround so dev-mode autoload still works
-  let $MIX_ENV = 'test'
+  " it appears using 'test' caused crazy test recompilation
+  " let $MIX_ENV = 'test'
+  let $MIX_ENV = 'dev'
 
   " let g:neomake_ruby_enabled_makers = ['rubocop', 'mri']
   let g:neomake_ruby_enabled_makers = ['mri']
