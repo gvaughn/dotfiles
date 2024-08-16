@@ -311,7 +311,7 @@ Plug 'ludovicchabant/vim-gutentags'
     " I can disable on a particular buffer with
     " :autocmd! elixir BufWritePost *.exs,*.ex
     au!
-    autocmd BufWritePost *.exs,*.ex silent :!mix format %
+    autocmd BufWritePost *.exs,*.ex,*.heex silent :!mix format %
   augroup END
 
 Plug 'slashmili/alchemist.vim' " elixir goodies
