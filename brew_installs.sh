@@ -1,8 +1,8 @@
 #!/bin/sh
 
 utils=(
-  bash-completion
-  git
+ # bash-completion
+#  git
   diff-so-fancy
   ctags
   neovim
@@ -13,22 +13,22 @@ utils=(
 #  keybase
   jq
   ripgrep
-  asdf
+#  asdf
   fzf
-  wxwidgets
-  autoconf
+#  wxwidgets
+#  autoconf
 )
 
 brew install ${utils[@]}
 
 apps=(
 #  quicksilver
-  dropbox
-  google-chrome
-  slack
+#  dropbox
+#  google-chrome
+#  slack
 #  iterm2
 #  flux
-  nvalt
+#  nvalt
 #  quicklook-json
 #  viscosity
 #  limechat
