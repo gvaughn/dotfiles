@@ -7,6 +7,7 @@
   default = tracking
 [alias]
   mep = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@gmail.com; } ; f"
+  mea = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@adobe.com; } ; f"
   mepapa = "!f() { git config user.name "Greg Vaughn"; git config user.email gvaughn@papa.com; } ; f"
   meds = "!f() { git config user.name "Greg Vaughn"; git config user.email greg.vaughn@dscout.com; } ; f"
   mess = "!f() { git config user.name "Greg Vaughn"; git config user.email greg@seatscouts.com; } ; f"
