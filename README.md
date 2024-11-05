@@ -5,7 +5,7 @@ set up ssh key and associate with github profile
 
     cd ~
     git clone git://github.com/gvaughn/dotfiles.git
-    mkdir -p ~/.,config/nvim
+    mkdir -p ~/.config/nvim
     ln -s ~/dotfiles/profile ~/.profile
     ln -s ~/dotfiles/zshrc ~/.zshrc
     ln -s ~/dotfiles/bash_profile ~/.bash_profile
