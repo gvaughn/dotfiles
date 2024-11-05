@@ -131,7 +131,7 @@ augroup omnifuncs
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 augroup end
 
 set wildignore+=*.o,*.obj,.git,*.rbc,**/vendor/**,**/public/**,node_modules,**/*.js.map,*.png,*.jpg,*.svg,*.wof,*.zip,*.exe,*.beam,*deps/*,*_build/*
@@ -252,11 +252,11 @@ command! -bang -nargs=* Fzgrep
 " xmap gs <plug>(GrepperOperator)
 " nnoremap <leader>* :Grepper -cword -noprompt<cr>
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
-  if !exists('g:deoplete#custom#var')
-    let g:deoplete#custom#var = {}
-  endif
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"   let g:deoplete#enable_at_startup = 1
+"   if !exists('g:deoplete#custom#var')
+"     let g:deoplete#custom#var = {}
+"   endif
   " use tab for completion
   " inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
   " inoremap <expr><S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
@@ -410,7 +410,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'trevordmiller/nova-vim'
+Plug 'zanglg/nova.nvim'
 " Plug 'artcticicestudio/nord-vim'
 
 " new motions
